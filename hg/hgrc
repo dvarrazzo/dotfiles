@@ -1,0 +1,13 @@
+[extensions]
+hgext.mq =
+hgext.record =
+hgext.hgshelve =
+hgext.graphlog =
+fetch =
+color =
+
+[diff]
+git=1
+
+[ui]
+username = Daniele Varrazzo <daniele.varrazzo@gmail.com>
