@@ -1,0 +1,161 @@
+" Copyright 2004, 2005, 2008 Develer S.r.l. (http://www.develer.com/)
+" All rights reserved.
+"
+" version: $Id: vimrc 23935 2009-03-02 00:05:59Z bernie $
+" author: Bernie Innocenti <bernie@codewiz.org>
+" author: Simone Zinanni <s.zinanni@develer.com>
+" author: Stefano Fedrigo <aleph@develer.com>
+"
+
+if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+   set fileencodings=ucs-bom,utf-8,latin1
+endif
+
+set nocompatible	" Use Vim defaults (much better!)
+set bs=indent,eol,start		" allow backspacing over everything in insert mode
+"set ai			" always set autoindenting on
+"set backup		" keep a backup file
+set viminfo='20,\"50	" read/write a .viminfo file, don't store more
+			" than 50 lines of registers
+set history=50		" keep 50 lines of command line history
+set ruler		" show the cursor position all the time
+
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+  augroup fedora
+  autocmd!
+  " In text files, always limit the width of text to 78 characters
+  autocmd BufRead *.txt set tw=78
+  autocmd BufRead *.rst set tw=78
+  " When editing a file, always jump to the last cursor position
+  autocmd BufReadPost *
+  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+  \   exe "normal! g'\"" |
+  \ endif
+  " don't write swapfile on most commonly used directories for NFS mounts or USB sticks
+  autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
+  " start with spec file template
+  autocmd BufNewFile *.spec 0r /usr/share/vim/vimfiles/template.spec
+  augroup END
+endif
+
+if has("cscope") && filereadable("/usr/bin/cscope")
+   set csprg=/usr/bin/cscope
+   set csto=0
+   set cst
+   set nocsverb
+   " add any database in current directory
+   if filereadable("cscope.out")
+      cs add cscope.out
+   " else add database pointed to by environment
+   elseif $CSCOPE_DB != ""
+      cs add $CSCOPE_DB
+   endif
+   set csverb
+endif
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+  set incsearch
+  highlight Normal guibg=#000030 guifg=#dddddd
+  set background=dark
+  " bernie: Show matching parenthesis when writing
+  set showmatch
+  " bernie: add bottom horizontal scroll bar
+  set guioptions+=b
+  " aleph: remove useless luser toolbar
+  set guioptions-=T
+  " aleph: mark spacing errors in C/Java sources
+  let c_space_errors=1
+  let java_space_errors=1
+endif
+
+" bernie: enable loading filetype specific plugins and intendation mode
+filetype plugin indent on
+
+if &term=="xterm"
+     set t_Co=8
+     set t_Sb=[4%dm
+     set t_Sf=[3%dm
+endif
+
+" Don't wake up system with blinking cursor:
+" http://www.linuxpowertop.org/known.php
+let &guicursor = &guicursor . ",a:blinkon0"
+
+" bernie: insensitive search
+set ignorecase
+" aleph: if pattern contains uppercase chars, the search is case _sensitive_
+set smartcase
+
+" piro: smaller font
+set guifont=Monospace\ 8
+
+" bernie: horizontal and vertical scrolling
+set nowrap
+set sidescroll=1
+set sidescrolloff=8
+set scrolloff=3
+set listchars+=extends:>,precedes:<
+
+" bernie: indentation
+" set smartindent
+" piro: trying if cindent avoids the hash to first column problem
+" http://stackoverflow.com/questions/354097/
+set cindent
+
+" bernie: write on :n, :r, etc.
+set autowrite
+
+" bernie: mouse everywhere!
+if has("mouse")
+	set mouse=a
+endif
+
+" aleph: per non rompere le p*** a chi sta attorno ogni volta che si sbaglia tasto
+set visualbell
+" aleph: riduce al minimo la dimensione dei buffer non attivi
+set winminheight=0
+" aleph: dopo split e close gli altri buffer non si ridimensionano
+set noequalalways
+
+" bernie: status line
+set statusline=%<%f%h%m%r%=%b\ 0x%B\ \ %l,%c%V\ %P
+
+" aleph: mark spacing errors in C/Java sources
+autocmd FileType c,cpp  set tabstop=4|set shiftwidth=4|set sts=4|let c_space_errors=1
+autocmd FileType java   set tabstop=4|set shiftwidth=4|let java_space_errors=1
+autocmd FileType python set tabstop=4|set shiftwidth=4|set sts=4|set expandtab
+
+" piro: 2 space indentation for html
+autocmd FileType html,htmldjango set tabstop=2|set shiftwidth=2|set sts=2
+
+" piro: limit text width to rst files
+autocmd FileType rst set tw=78
+
+" piro: treat arduino projects as C++ files.
+autocmd BufRead *.pde set filetype=cpp
+
+" piro: tmpl files are django for me
+autocmd BufRead,BufNewFile *.tmpl set filetype=htmldjango
+
+" note: you can use
+"    vim: set filetype=rst:
+" somewnere in a file to set its filetype
+
+" piro: 4 char indent, no tab
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set sts=4
+
+" piro: display whitespaces errors (at eol, before tab)
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+:match ExtraWhitespace /\s\+$\| \+\ze\t/
+
+" piro: delete trailing spaces
+:command Notrail %s/\s\+$//
+
