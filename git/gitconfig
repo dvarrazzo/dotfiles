@@ -1,0 +1,21 @@
+[user]
+	name = Daniele Varrazzo
+	email = daniele.varrazzo@gmail.com
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    cp = cherry-pick
+
+[format]
+    pretty = oneline
+
+
