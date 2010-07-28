@@ -1,7 +1,7 @@
 [extensions]
 hgext.mq =
 hgext.record =
-hgext.hgshelve =
+hgext.hgshelve = /home/piro/etc/hg/hgshelve.py
 hgext.graphlog =
 fetch =
 color =
