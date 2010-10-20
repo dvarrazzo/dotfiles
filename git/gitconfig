@@ -18,4 +18,5 @@
 [format]
     pretty = oneline
 
-
+[core]
+	excludesfile = ~/.gitignore

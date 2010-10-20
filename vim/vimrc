@@ -144,7 +144,7 @@ autocmd BufRead,BufNewFile *.tmpl set filetype=htmldjango
 
 " note: you can use
 "    vim: set filetype=rst:
-" somewnere in a file to set its filetype
+" somewhere in a file to set its filetype
 
 " piro: 4 char indent, no tab
 set tabstop=4
