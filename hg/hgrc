@@ -11,3 +11,4 @@ git=1
 
 [ui]
 username = Daniele Varrazzo <daniele.varrazzo@gmail.com>
+ignore = /home/piro/etc/hg/hgignore

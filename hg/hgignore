@@ -1,0 +1,7 @@
+~$
+.svn
+\.sw[op]$
+\.pyc$
+\.orig$
+\.rej$
+
