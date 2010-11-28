@@ -1,5 +1,6 @@
 *.bak
 *.orig
+*.rej
 *.swo
 *.swp
 *.pyc
