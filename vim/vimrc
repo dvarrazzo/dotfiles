@@ -173,6 +173,9 @@ highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 :nnoremap <C-h> B
 :vnoremap <C-h> gE
 
+" I've clobbered the C-l for redraw :-\
+nnoremap <leader>r :redraw!<CR>
+
 " piro: move around the splits with ,j etc.
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
