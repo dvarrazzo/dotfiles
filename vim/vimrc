@@ -160,3 +160,7 @@ highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 :command ShowTrail /\s\+$
 :command NoTrail %s/\s\+$//
 
+" piro: scrolling on dope
+:nnoremap <C-j> 3j
+:nnoremap <C-k> 3k
+
