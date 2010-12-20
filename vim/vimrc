@@ -168,6 +168,20 @@ highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 :vnoremap <C-j> 3j
 :nnoremap <C-k> 3k
 :vnoremap <C-k> 3k
+:nnoremap <C-l> W
+:vnoremap <C-l> E
+:nnoremap <C-h> B
+:vnoremap <C-h> gE
+
+" piro: move around the splits with ,j etc.
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>h <C-w>h
+nnoremap <leader>l <C-w>l
+
+" open new splits and move there
+nnoremap <leader>v <C-w>v<C-w>l
+nnoremap <leader>s <C-w>s<C-w>l
 
 " piro: allow unsaved buffers to be put in background
 set hidden
