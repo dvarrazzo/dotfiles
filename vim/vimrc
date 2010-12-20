@@ -162,7 +162,9 @@ highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 
 " piro: scrolling on dope
 :nnoremap <C-j> 3j
+:vnoremap <C-j> 3j
 :nnoremap <C-k> 3k
+:vnoremap <C-k> 3k
 
 " piro: allow unsaved buffers to be put in background
 set hidden
