@@ -152,6 +152,9 @@ set shiftwidth=4
 set expandtab
 set sts=4
 
+" piro: leader in coma
+let mapleader = ","
+
 " piro: display whitespaces errors (at eol, before tab)
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 :match ExtraWhitespace /\s\+$\| \+\ze\t/
