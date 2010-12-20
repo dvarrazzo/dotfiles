@@ -65,7 +65,7 @@ if &t_Co > 2 || has("gui_running")
   " bernie: Show matching parenthesis when writing
   set showmatch
   " bernie: add bottom horizontal scroll bar
-  set guioptions+=b
+  " set guioptions+=b
   " aleph: remove useless luser toolbar
   set guioptions-=T
   " aleph: mark spacing errors in C/Java sources
