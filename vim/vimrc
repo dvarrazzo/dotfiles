@@ -156,6 +156,7 @@ set sts=4
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 :match ExtraWhitespace /\s\+$\| \+\ze\t/
 
-" piro: delete trailing spaces
-:command Notrail %s/\s\+$//
+" piro: show/delete trailing spaces
+:command ShowTrail /\s\+$
+:command NoTrail %s/\s\+$//
 
