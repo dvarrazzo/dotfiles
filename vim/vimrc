@@ -169,3 +169,8 @@ highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 " piro: allow unsaved buffers to be put in background
 set hidden
 
+" piro: no, I don't want your fucking help!
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
