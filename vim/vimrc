@@ -7,6 +7,8 @@
 " author: Stefano Fedrigo <aleph@develer.com>
 "
 
+" note: to reload, use ':so %'
+
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=ucs-bom,utf-8,latin1
 endif
@@ -160,8 +162,8 @@ highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 :match ExtraWhitespace /\s\+$\| \+\ze\t/
 
 " piro: show/delete trailing spaces
-:command ShowTrail /\s\+$
-:command NoTrail %s/\s\+$//
+:command! ShowTrail /\s\+$
+:command! NoTrail %s/\s\+$//
 
 " piro: scrolling on dope
 :nnoremap <C-j> 3j
