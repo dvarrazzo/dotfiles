@@ -1,0 +1,15 @@
+/*
+ * Link this file as chrome/userContent.css in your profile.
+ */
+
+/* Fixed-width font in firefox */
+
+@-moz-document domain(mail.google.com)
+{
+    .ii {
+        font-family: monospace !important;
+        font-size: 100% !important;
+    }
+}
+
+
