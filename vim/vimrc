@@ -204,3 +204,27 @@ imap <silent> <PageUp> <C-O>1000<C-U>
 imap <silent> <PageDown> <C-O>1000<C-D>
 set nostartofline
 
+" piro: ctrl+shift+pages to rearrange tabs
+" http://stackoverflow.com/questions/2106138/rearrange-tabs-with-the-mouse-in-gvim
+function! TabLeft()
+   let tab_number = tabpagenr() - 1
+   if tab_number == 0
+      execute "tabm" tabpagenr('$') - 1
+   else
+      execute "tabm" tab_number - 1
+   endif
+endfunction
+
+function! TabRight()
+   let tab_number = tabpagenr() - 1
+   let last_tab_number = tabpagenr('$') - 1
+   if tab_number == last_tab_number
+      execute "tabm" 0
+   else
+      execute "tabm" tab_number + 1
+   endif
+endfunction
+
+map <silent><C-S-PageUp> :execute TabLeft()<CR>
+map <silent><C-S-PageDown> :execute TabRight()<CR>
+
