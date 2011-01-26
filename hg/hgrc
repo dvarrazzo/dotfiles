@@ -5,6 +5,7 @@ hgext.hgshelve = /home/piro/etc/hg/hgshelve.py
 hgext.graphlog =
 fetch =
 color =
+hgk =
 
 [diff]
 git=1
@@ -12,3 +13,6 @@ git=1
 [ui]
 username = Daniele Varrazzo <daniele.varrazzo@gmail.com>
 ignore = /home/piro/etc/hg/hgignore
+
+[hgk]
+path=/home/piro/etc/hg/hgk
