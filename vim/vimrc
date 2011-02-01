@@ -228,3 +228,6 @@ endfunction
 map <silent><C-S-PageUp> :execute TabLeft()<CR>
 map <silent><C-S-PageDown> :execute TabRight()<CR>
 
+" inject a Python breakpoint
+nnoremap <leader>b Oimport pdb; pdb.set_trace()<CR>
+
