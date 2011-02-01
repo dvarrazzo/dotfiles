@@ -6,6 +6,7 @@ hgext.graphlog =
 fetch =
 color =
 hgk =
+histedit = /home/piro/etc/hg/hg_histedit.py
 
 [diff]
 git=1
