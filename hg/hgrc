@@ -8,6 +8,7 @@ color =
 hgk =
 histedit = /home/piro/etc/hg/hg_histedit.py
 rebase =
+autopager = /home/piro/etc/hg/autopager.py
 
 [diff]
 git=1
@@ -18,3 +19,7 @@ ignore = /home/piro/etc/hg/hgignore
 
 [hgk]
 path=/home/piro/etc/hg/hgk
+
+[autopager]
+pager = less -R
+
