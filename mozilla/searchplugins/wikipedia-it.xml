@@ -1,0 +1,12 @@
+<SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/" xmlns:os="http://a9.com/-/spec/opensearch/1.1/">
+<os:ShortName>Wikipedia (IT)</os:ShortName>
+<os:Description>Wikipedia, l'enciclopedia libera</os:Description>
+<os:InputEncoding>ISO-8859-1</os:InputEncoding>
+<os:Image width="16" height="16">data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAADG0lEQVR42gEQA+/8Afz9/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALm6uVdYV0hHSLm6ufz9/KmoqUhHSHp7etjZ2Pz9/Hp7eldYV9jZ2NjZ2GlqaVdYVwJDQ0MtKy3g4eAAAAAAAABTVVMAAACura4AAADt6+0KCApBQEEkJCQRDxEAAABBQEECAAAAVFZU8fDxsLCw7evtAAAAUFFQ8fDx0c/R39/f5eflZGVkAAAAAAAAAAAAZGVkAgAAACQkJD5APrCusN/f3wAAAEBBQC8vL3+Af7y8vEA+QAAAAAAAANDS0EA+QAAAAAIAAAAAAABiYmIAAAC8vLwAAAAkJCRQUVDc2tzT1dNTVVMAAADt6+3LycsQEhAAAAACAAAAAAAAQ0NDLy8vxMTE3NzcAAAAQEFAODg48e/xAAAAAAAA7/Hv9vj2Q0NDAAAAAgAAAAAAAAAAADw8PLy7vNHP0QAAAAAAAAAAAODh4L29vQAAAMC/wB4dHgAAAAAAAAIAAAAAAAAAAAB4engkJiSusK7t6+3Rz9EtMC0UEhSwsLAAAADs6+xRUFEAAAAAAAADfn9+AAAAAAAAAAAA8vHyz83P6OroGBcYT1BP8PLwt7a3BgYG9vb2RkhGAAAAAAAAAgAAAAAAAAAAAAAAACUlJezu7K6trgAAACQkJD8/PwAAAJCQkERERAAAAAAAAAAAAAD8/fz8/fz8/fz8/fz8/fxIR0hIR0jY2dj8/fz8/fxpamkoKCj8/fz8/fz8/fz8/fwB/P38AAAAAAAAAAAAAAAAvb29Dw0PNDY0AAAAAAAA3Nzc4eHhQ0NDAAAAAAAAAAAAAfz9/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwM4AvPlzfYAAAAAElFTkSuQmCC</os:Image>
+<UpdateInterval>15</UpdateInterval>
+<UpdateUrl>http://www.mozillaitalia.org/sherlock/wikipedia_it.src</UpdateUrl>
+<IconUpdateUrl>http://www.mozillaitalia.org/sherlock/wikipedia_it.png</IconUpdateUrl>
+<SearchForm>http://it.wikipedia.org/</SearchForm>
+<os:Url type="text/html" method="GET" template="http://it.wikipedia.org/w/wiki.phtml?search={searchTerms}&amp;go=Go&amp;sourceid=Mozilla-search&amp;offset=0&amp;offset=0">
+</os:Url>
+</SearchPlugin>

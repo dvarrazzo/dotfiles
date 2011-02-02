@@ -1,0 +1,9 @@
+<SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/" xmlns:os="http://a9.com/-/spec/opensearch/1.1/">
+<os:ShortName>Subscene</os:ShortName>
+<os:Description>Subtitles search</os:Description>
+<os:InputEncoding>ISO-8859-1</os:InputEncoding>
+<os:Image width="16" height="16">data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAHIUExURSElCTk8IiwvEyQnCSIlCSQmCR8iCRogCB4jCSAlCCImCS0wFhwhCh0iB0A4DBsgCCAjByMnDWdNEPuvGxQbCBgfB11UHhUcCCUnDCwvFWxdJT4/IRwgB1pDB2FXExQdBhEaB8aDCy0xGlRFDS8zGxAYA0I+FhodB/+1KRwhCC4xFS8yFmFHBxohCZJxG8+SDSMmCpN1G9GcFmtMDD40DiktDy4uCiolCBgfBtGRHKuDGP+1HHNjGBMdCYZwKZBtEoppGE1HFeOtJM2eKiswGohVDtaOHoFfC5NuMbWNImBXFT0/KJ5jBiIlCCwwFRcbCCspChshCxsfCI9vFkA3ClI6Bh8jB9uTEFVPJTA0FhMcBx4kCU9BDC45GkY+Em5gJ1JLJmtdJ6GEHs+jPDozEDMvCDM0DaVtByEkCSgqEiouFuqiFpF0KDAyFOanGKB2GIVnE5RiDUpAHa2CICEkB19YNRkfBxgdCCAjCK6FG0NMNktACCwpCl1OEsqRFCwwGZRnFl1OD72OJW9eHC8zES0wFB8iBzk7HhweBT48IzI0F9OaFyMkB5d2K8mYHDs7HCEmCWBPJGNRDqx+FGNDAtSgNy4xFiMmCd/6OBMAAAD2SURBVHjaYmCcBgJ+ne2t9Src06YxMjBNB4GwoomqUoky06czMWiBBThTPFqa+DimT5/G4CLAzFIxnSEgp7dBlAskUGVaIphbztuV7JYKVAAUkC5l46/1ShObOiWKefr0tmkMmQkRFjVGSXr5HYEGvmX93gzcGXZqCsbWTgVscv48zfFKDNN444ol5AuFbUKCHSvteyQZprGKO1hpVvsIeTrnuQcxTGOYNp2Bs25yo6y+hmWoCNd0kAAru0l2t6Giqzk783SwwPTpujHhfTrq0dOnwwSm2yqns0yYDhGAeI5nkhkDmMHEAPa+dlZsJDgYpjECBBgAykdeD+sHEioAAAAASUVORK5CYII=</os:Image>
+<SearchForm>http://subscene.com/search.aspx</SearchForm>
+<os:Url type="text/html" method="GET" template="http://subscene.com/filmsearch.aspx?q={searchTerms}">
+</os:Url>
+</SearchPlugin>

@@ -1,0 +1,11 @@
+<SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/" xmlns:os="http://a9.com/-/spec/opensearch/1.1/">
+<os:ShortName>The Free Dictionary</os:ShortName>
+<os:Description>English, Medical, Legal, and Computer Dictionaries, Thesaurus, Encyclopedia, a Literature Reference Library, and a Search Engine all in one!</os:Description>
+<os:InputEncoding>ISO-8859-1</os:InputEncoding>
+<os:Image width="16" height="16">data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAB3RJTUUH1AQQFzIlX/8wBQAAABd0RVh0U29mdHdhcmUAR0xEUE5HIHZlciAzLjRxhaThAAAACHRwTkdHTEQzAAAAAEqAKR8AAAAEZ0FNQQAAsY8L/GEFAAAAMFBMVEUAAACAAAAAgACAgAAAAICAAIAAgICAgIDAwMD/AAAA/wD//wAAAP//AP8A//////97H7HEAAAARElEQVR4nH2NIQ7AMAwDDTvU5w6W7rnHAt00U4emGtinWFakgzqSM1s3dlsw8Ci4iReCqOr6qn1RrljwCNKKKlPw+3ICE8kg/2gkhKYAAAAASUVORK5CYII=</os:Image>
+<UpdateInterval>7</UpdateInterval>
+<UpdateUrl>http://mycroft.mozdev.org/update.php/id2/freedict.src</UpdateUrl>
+<IconUpdateUrl>http://mycroft.mozdev.org/update.php/id2/freedict.png</IconUpdateUrl>
+<os:Url type="text/html" method="GET" template="http://www.thefreedictionary.com/dict.asp?Word={searchTerms}">
+</os:Url>
+</SearchPlugin>

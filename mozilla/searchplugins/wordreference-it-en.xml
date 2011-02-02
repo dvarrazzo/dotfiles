@@ -1,0 +1,12 @@
+<SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/" xmlns:os="http://a9.com/-/spec/opensearch/1.1/">
+<os:ShortName>WR Italian-English</os:ShortName>
+<os:Description>Italian to English Dictionary</os:Description>
+<os:InputEncoding>ISO-8859-1</os:InputEncoding>
+<os:Image width="16" height="16">data:image/x-icon;base64,R0lGODlhEAAQAOYAAP///zqgADuhADGbACuZBsMAAAoSbzihANM5AC6dAZqjyAEkgpSewtpfZcQAA+BXWjeiANzu+Pni48MAAfVnYt9tccIAAAUphMQABNtbYPXJyvzu7skfAPdzbjFSnQ4gdgALbffa28QABckOF5eev9QmDKRrhdpOUwwgdA4hddvBzP///tXe7Y2xW980NOaHi//69xA4j88eJdY4AQATcNUwAOBjZ/zb2shnThw6igsfdNdCRyc4h9IzAMYGDN4wMZ+v1Pl0bfv19n+xZjmiAHqArP78/DGhEv7//4WCrMpuUNVqWelraVx3r+BxduxgXvbW170DAxYyhMkQGRMyitpFS9thZo6mT4ioUv7w7tEuNux3dNdeY9pXXcKPneZoaPvb2z+mDPje3//f3MZmTM9rT9PV46GnxqSoxqesy4S9aA8leDhUmfK/wd1ISyA+jcEAACmbBpifwuNbW8sYIc0dAAgacvS1tfa5ugAIaTVVns81AMUABfn3+v/39uF6fiH5BAAAAAAALAAAAAAQABAAAAfHgGEQgwlHAIeHJTUzMzgHj0QJcYiHdT0IZEkBmwIDBJQAHHtKXi6bAZ2flBxlXD8vp6mgS3NubQCxnpRGY3cSK0K5qgBiNn9/ThUVwochUyIYfA4OGMxQdCMOBRMF28ISWj4yJxldDVYZuWobDXA7YDBZGhobsVgqLF8WD2YRSDcPHpy6YoINgw4FnpDQo6APniqbWhShsuCgBQpnLhhoEsHPgSEeFoC4oCBIAQppYuShwQPIkBx2UqCQImdLFCZo3uhYY+BDIAA7</os:Image>
+<UpdateInterval>7</UpdateInterval>
+<UpdateUrl>http://mycroft.mozdev.org/update.php/id2/WordRefIT_EN.src</UpdateUrl>
+<IconUpdateUrl>http://mycroft.mozdev.org/update.php/id2/WordRefIT_EN.gif</IconUpdateUrl>
+<SearchForm>http://www.wordreference.com</SearchForm>
+<os:Url type="text/html" method="GET" template="http://www.wordreference.com/it/en/translation.asp?iten={searchTerms}&amp;sourceid=Mozilla-search">
+</os:Url>
+</SearchPlugin>

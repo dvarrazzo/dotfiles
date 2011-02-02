@@ -1,0 +1,10 @@
+<SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/" xmlns:os="http://a9.com/-/spec/opensearch/1.1/">
+<os:ShortName>TinyURL</os:ShortName>
+<os:Description>Making long URLs usable</os:Description>
+<os:InputEncoding>ISO-8859-1</os:InputEncoding>
+<os:Image width="16" height="16">data:image/gif;base64,R0lGODlhEAAQAIAAAP///wAAmSH5BAAAAAAALAAAAAAQABAAQAIpjI9pcAy/Egsu0obrRdNVrYRYpE3iSUHlZXasi8byxpJc1krQ5plzUAAAOw==</os:Image>
+<os:Url type="text/html" method="POST" template="http://tinyurl.com/create.php" enctype="application/x-www-form-urlencoded">
+  <os:Param name="url" value="{searchTerms}"/>
+  <os:Param name="submit" value="Make TinyURL!"/>
+</os:Url>
+</SearchPlugin>

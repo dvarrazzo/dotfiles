@@ -1,0 +1,12 @@
+<SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/" xmlns:os="http://a9.com/-/spec/opensearch/1.1/">
+<os:ShortName>WR English-Italian</os:ShortName>
+<os:Description>English to Spanish Dictionary</os:Description>
+<os:InputEncoding>ISO-8859-1</os:InputEncoding>
+<os:Image width="16" height="16">data:image/x-icon;base64,R0lGODlhEAAQAOYAAP///9A7AM81AMkfACuZBsMAAcMAADGbABcretI6APd0btY3AOyrr8IAAMQABDqhAPvu7TaiAM3f8dtgZdE9A/729cQABQEefvVoYgAObttZXpueVuBzd/O7veNeYIydyPfR0puhXI9ndu5iXxAjd6esy+BwdCtHktwtLPanpuymqfLz97mmvczT5MweABcnePPIyqeqxxopf//6+CRCkuJkZ+lqaeN0dwARbuFZWtpXXfnf4PvX1thHTJGbwJuiwpmixqSoyNA3A87K287i8M0kKuHw+s4uNhwyf9w5O9Q7A/38/NWQi+BscNZcY8QAA+hxb+B6fup9e8rP4uBGSQMRcAYpgwcyixA2jvPBwvb2+vvNzd9rcIixatIbAFVopV93rJuvZr/T6ihMmSE7iOVsbi2eAL4NDed0doNid+RRUfr//8EAAPfp6nyvbMkMFtZVW42XwKTHidUxAMgfABsvfcUABSedBt1JT5aewwAbe8UGCrl4dpyiwxUidqN+gyH5BAAAAAAALAAAAAAQABAAAAfLgGAkfkgIZH1SZ1AxJwh1L2lGHzI4GVZACgYYJVgZeiJKKUtEX1UXeQoNGEFXF38UAUVwWytxND6pIz9jfLABLFR4PGsSUzYNOS1MQgHNEhAdWTMAEE5sPRUDAs0BaBxRN00mXEd7DADa3BYOdutPDm/n6NvNBgX3Bvby89weGjoaJkyAAaAgv2ZD2lSAAEKOwYLpmokBsKNGCAIPDwbQoiLJhgMYH0YMUAZFmAcgM9KhF0BNlwcoQxp0ISCBTTcRcpq5k9HLnAVAAwEAOw==</os:Image>
+<UpdateInterval>7</UpdateInterval>
+<UpdateUrl>http://mycroft.mozdev.org/update.php/id2/WordRefEN_IT.src</UpdateUrl>
+<IconUpdateUrl>http://mycroft.mozdev.org/update.php/id2/WordRefEN_IT.gif</IconUpdateUrl>
+<SearchForm>http://www.wordreference.com</SearchForm>
+<os:Url type="text/html" method="GET" template="http://www.wordreference.com/it/translation.asp?enit={searchTerms}&amp;sourceid=Mozilla-search">
+</os:Url>
+</SearchPlugin>
