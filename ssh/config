@@ -1,0 +1,4 @@
+Host *
+    GSSAPIAuthentication no
+    GSSAPIDelegateCredentials no
+    ServerAliveInterval 300
