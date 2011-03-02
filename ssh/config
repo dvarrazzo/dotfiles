@@ -2,3 +2,5 @@ Host *
     GSSAPIAuthentication no
     GSSAPIDelegateCredentials no
     ServerAliveInterval 300
+    HashKnownHosts no
+
