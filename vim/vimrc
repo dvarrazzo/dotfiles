@@ -101,7 +101,10 @@ set nowrap
 set sidescroll=1
 set sidescrolloff=8
 set scrolloff=3
-set listchars+=extends:>,precedes:<
+
+" piro: prettier unwanted whitespace
+" to get the middle dot use C-k .M
+set listchars=tab:>-,trail:·,precedes:<,extends:>
 
 " bernie: indentation
 " set smartindent
