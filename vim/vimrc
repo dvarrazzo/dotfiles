@@ -238,3 +238,16 @@ nnoremap <leader>b Oimport pdb; pdb.set_trace()<ESC>^
 " w!! if you forget to sudo before saving
 cmap w!! w !sudo tee % >/dev/null
 
+" at Gambit tabs are ok
+let hostname = substitute(system('hostname'), '\n$', '', '')
+if hostname == 'risotto'
+
+    set noexpandtab
+    autocmd FileType python set tabstop=4|set shiftwidth=4|set sts=4|set noexpandtab
+
+    " External projects on which spaces should be used anyway
+    autocmd BufRead /home/piro/etc/* set expandtab
+    autocmd BufRead /home/piro/src/psycopg2/* set expandtab
+
+endif
+
