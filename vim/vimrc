@@ -104,7 +104,8 @@ set scrolloff=3
 
 " piro: prettier unwanted whitespace
 " to get the middle dot use C-k .M
-set listchars=tab:>-,trail:·,precedes:<,extends:>
+set listchars=tab:\|·,trail:·,precedes:<,extends:>
+hi SpecialKey term=NONE cterm=NONE
 
 " bernie: indentation
 " set smartindent
