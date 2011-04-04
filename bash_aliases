@@ -1,4 +1,6 @@
 export PAGER="/usr/bin/less -R"
+alias less='less -R'
+export LESSCOLOR=always
 
 alias ll='ls -l'
 alias grep='grep --color=auto -I'

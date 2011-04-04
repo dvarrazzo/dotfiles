@@ -1,0 +1,121 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+# from: http://lunaryorn.de/downloads/lessfilter.html
+#
+# Copyright (c) 2009 Sebastian Wiesner <lunaryorn@googlemail.com>
+
+# This program is free software. It comes without any warranty, to
+# the extent permitted by applicable law. You can redistribute it
+# and/or modify it under the terms of the Do What The Fuck You Want
+# To Public License, Version 2, as published by Sam Hocevar. See
+# http://sam.zoy.org/wtfpl/COPYING for more details.
+
+"""
+    .lessfilter
+    ===========
+
+    ``.lessfilter`` script for pygments.
+
+    If saved as ``~/.lessfilter`` and made executable (using ``chmod u+x
+    ~/.lessfilter``), this script will highlight all supported files through
+    pygments.
+
+    In contrast to using ``pygmentize`` as ``$LESSCOLORIZER``, using this
+    script will also highlight files, which are not caught by
+    ``lesspipe.sh`` (for instance FORTRAN files or gnuplot scripts) and it
+    will try to guess the appropriate lexer for any given file, thus even
+    highlighting files without extension.
+
+    ``$LESSCOLOR`` must be ``2`` or ``always``, otherwise this script won't
+    do anything.
+
+    The appearance of the output can be configured using two environment
+    variables:
+
+    - ``$LESS_PYGMENTS_BG``: set this to ``light`` or ``dark`` according to
+      the background of your terminal.  Defaults to ``light``.  If set to
+      ``dark``, brighter colors will be used for better readability on
+      terminals with dark backgrounds.
+
+    - ``$LESS_PYGMENTS_256``: set this to any of ``1``, ``yes``, ``on`` or
+      ``true`` to use the ``Terminal256Formatter``, which provides a more
+      colorful output on terminals, which support 256 colors.  Any recent
+      terminal emulator should do so, but default is ``no`` for safety. Set
+      to any of ``0``, ``no``, ``off`` or ``false`` to disable.
+
+    This script logs to ``~/.lessfilter.log``.  Check this file, if things
+    don't work as expected.
+"""
+
+from __future__ import with_statement
+
+import os
+import sys
+import logging
+
+from codecs import getwriter
+from pygments import highlight
+from pygments.util import get_bool_opt, get_choice_opt, ClassNotFound
+from pygments.lexers import guess_lexer_for_filename, guess_lexer
+from pygments.formatters import TerminalFormatter, Terminal256Formatter
+
+
+def main():
+    encoding = sys.getfilesystemencoding()
+
+    filename = sys.argv[1]
+    logging.info('called for %s', filename)
+
+    lesscolor = os.environ.get('LESSCOLOR', '0')
+    if lesscolor not in ('always', '2'):
+        logging.info('$LESSCOLOR not always, fall back to lesspipe')
+        sys.exit(1)
+
+    with open(filename) as stream:
+        logging.info('using input encoding %s', encoding)
+        code = stream.read().decode(encoding)
+
+    try:
+        logging.info('guessing lexer for %s from filename',
+                     filename)
+        lexer = guess_lexer_for_filename(filename, code)
+    except ClassNotFound:
+        try:
+            logging.info('guessing lexer for %s from contents',
+                         filename)
+            lexer = guess_lexer(code)
+        except ClassNotFound:
+            # no lexer found, die
+            logging.info('no lexer found, fall back to lesspipe')
+            sys.exit(1)
+    logging.info('using lexer %s for %s', lexer.name, filename)
+
+    # if the terminal supports 256 colors ...
+    if get_bool_opt(os.environ, 'LESS_PYGMENTS_256', False):
+        formatter = Terminal256Formatter()
+    else:
+        # it doesn't, so use the normal lexer
+        background = get_choice_opt(
+            os.environ, 'LESS_PYGMENTS_BG', ['light', 'dark'], 'light')
+        logging.info('using %s background', background)
+        formatter = TerminalFormatter(bg=background)
+    logging.info('using formatter %s', formatter.name)
+
+    encoding = sys.stdout.encoding or encoding
+    logging.info('using output encoding %s', encoding)
+    highlight(code, lexer, formatter, getwriter(encoding)(sys.stdout))
+    sys.exit(0)
+
+
+if __name__ == '__main__':
+    try:
+        logging.basicConfig(
+            filename=os.path.expanduser('~/.lessfilter.log'),
+            format='%(asctime)s %(levelname)-5.5s %(message)s',
+            datefmt='%Y-%M-%dT%H:%M:%M',
+            level=logging.DEBUG)
+        main()
+    except Exception:
+        logging.exception('error occured!')
+        sys.exit(1)
+
