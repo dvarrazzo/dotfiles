@@ -251,3 +251,8 @@ if hostname == 'risotto'
 
 endif
 
+" piro: grep the current work dir with ,#
+set grepprg=grep\ -nIr\ --exclude-dir\ _darcs\ $*\ /dev/null
+nnoremap <leader># :grep <cword> .<CR><CR>:cw<CR>
+
+
