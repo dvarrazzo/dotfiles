@@ -1,6 +1,7 @@
 export PAGER="/usr/bin/less -R"
 alias less='less -R'
 export LESSCOLOR=always
+export EDITOR=vim
 
 alias ll='ls -l'
 alias grep='grep --color=auto -I'
