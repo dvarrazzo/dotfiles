@@ -257,4 +257,7 @@ endif
 set grepprg=grep\ -nIr\ --exclude-dir\ _darcs\ $*\ /dev/null
 nnoremap <leader># :grep <cword> .<CR><CR>:cw<CR>
 
+" piro: convert placeholders from psycopg to psql style and back
+:command! PHFromPy %s/%(\([^)]*\))s/:\1/g
+:command! PHToPy %s/\([^:]\):\([a-z0-9_][a-z0-9_]*\)/\1%(\2)s/g
 
