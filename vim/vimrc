@@ -108,6 +108,9 @@ set scrolloff=3
 set listchars=tab:\|·,trail:·,precedes:<,extends:>
 hi SpecialKey term=NONE cterm=NONE
 
+" piro: and a more readable folded color
+hi Folded guifg=Blue
+
 " bernie: indentation
 " set smartindent
 " piro: trying if cindent avoids the hash to first column problem
