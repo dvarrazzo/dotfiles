@@ -246,6 +246,11 @@ nnoremap <leader>b Oimport pdb; pdb.set_trace()<ESC>^
 " w!! if you forget to sudo before saving
 cmap w!! w !sudo tee % >/dev/null
 
+" disable creation of the yankring history file
+" (doesn't work, the sucker)
+let g:yankring_persist = 0
+let g:yankring_share_between_instances = 0
+
 " at Gambit tabs are ok
 let hostname = substitute(system('hostname'), '\n$', '', '')
 if hostname == 'risotto'
