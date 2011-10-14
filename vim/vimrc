@@ -162,6 +162,9 @@ set shiftwidth=4
 set expandtab
 set sts=4
 
+" piro: as a test, 78 columns everywhere
+set tw=78
+
 " piro: leader in coma
 let mapleader = ","
 
