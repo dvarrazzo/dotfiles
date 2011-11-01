@@ -272,7 +272,12 @@ nnoremap <leader># :grep <cword> .<CR><CR>:cw<CR>
 :command! PHFromPy %s/%(\([^)]*\))s/:\1/g
 :command! PHToPy %s/\([^:]\):\([a-z0-9_][a-z0-9_]*\)/\1%(\2)s/g
 
-" piro: use the global clipboard (don't need "+ anymore)
-:set clipboard=unnamed,autoselect
-" note: the default was: "autoselect,exclude:cons\\\|linux" but with it
-" "+unnamed" doesn't work. I've found no docs for the other options.
+""" piro: use the global clipboard (don't need "+ anymore)
+""set clipboard=unnamed,autoselect
+""" note: the default was: "autoselect,exclude:cons\\\|linux" but with it
+""" "+unnamed" doesn't work. I've found no docs for the other options.
+
+" yankring doesn't work with the above: for the moment let's use a shortcut
+" for "+y
+:vnoremap <leader>y "*y
+
