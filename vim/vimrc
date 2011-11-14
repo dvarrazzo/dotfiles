@@ -253,6 +253,7 @@ if hostname == 'risotto'
     " External projects on which spaces should be used anyway
     autocmd BufRead /home/piro/etc/* set expandtab
     autocmd BufRead /home/piro/src/psycopg2/* set expandtab
+    autocmd BufRead /home/piro/src/py-setproctitle/* set expandtab
 
 endif
 
