@@ -269,3 +269,7 @@ nnoremap <leader># :grep <cword> .<CR><CR>:cw<CR>
 :set clipboard=unnamed,autoselect
 " note: the default was: "autoselect,exclude:cons\\\|linux" but with it
 " "+unnamed" doesn't work. I've found no docs for the other options.
+
+" open my log file
+:command! TODO tabe scp://piro@quimby//home/piro/todo.txt
+
