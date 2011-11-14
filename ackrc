@@ -1,1 +1,2 @@
 --type-set=django=.tmpl
+--type-set=restructuredtext=.rst
