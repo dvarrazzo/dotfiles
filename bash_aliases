@@ -11,3 +11,4 @@ alias ack='ack-grep'
 
 # date order
 alias gitk='gitk -d'
+alias indent='sed -e "s/^\(.*\)/    \1/"'
