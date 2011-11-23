@@ -11,3 +11,4 @@ ln -s etc/less/lessfilter .lessfilter
 ln -s etc/tmux.conf .tmux.conf
 ln -s etc/vim .vim
 ln -s etc/vim/vimrc .vimrc
+ln -s etc/darcs .darcs
