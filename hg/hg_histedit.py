@@ -2,6 +2,7 @@
 
 Inspired by git rebase --interactive.
 """
+from inspect import getargspec
 try:
     import cPickle as pickle
 except ImportError:
@@ -20,16 +21,53 @@ from mercurial import url
 from mercurial import discovery
 from mercurial.i18n import _
 
-# Remove this hack and use cmdutil.updatedir when we're 1.7-only
 def _revsingle(repo, parent):
     return repo[parent]
 _revsingle = getattr(cmdutil, 'revsingle', _revsingle)
 
-# Remove this hack and use cmdutil.updatedir when we're 1.7-only
-if getattr(cmdutil, 'updatedir', None):
-    from mercurial.cmdutil import updatedir
+if getattr(cmdutil, 'bailifchanged', None):
+    from mercurial.cmdutil import bailifchanged
 else:
-    from mercurial.patch import updatedir
+    from mercurial.cmdutil import bail_if_changed as bailifchanged
+
+# hg < 1.7
+updatedir = getattr(patch, 'updatedir', None)
+if updatedir is None:
+    # hg >= 1.7
+    updatedir = getattr(cmdutil, 'updatedir', None)
+if updatedir is None:
+    # hg >= 1.9
+    from mercurial.scmutil import updatedir
+
+
+try:
+    hidepassword = util.hidepassword
+except AttributeError:
+    hidepassword = url.hidepassword
+
+# Different signatures to patch.patch, and different cleanup requirements
+if 'cwd' in getargspec(patch.patch)[0]:
+    # mercurial < 1.9:
+    #  - patch.patch takes cwd
+    #  - use cmdutil.updatedir to cleanup
+    def applypatch(ui, repo, patchname, strip=1, files=None, eolmode='strict',
+                    similarity=0):
+        # in mercurial < 1.9, patch.patch expects files to be a dictionary that
+        # will be filled with filenames that have been changed, and requires
+        # that this be run through updatedir
+        if files is None:
+            files = set()
+        filedict = {}
+        try:
+            retval = patch.patch(patchname, ui, strip=strip, cwd=repo.root,
+                                 files=filedict, eolmode=eolmode)
+        finally:
+            updatedir(ui, repo, filedict)
+        files.update(filedict.keys())
+        return retval
+else:
+    # mercurial > 1.9
+    applypatch = patch.patch
 
 # almost entirely stolen from the git-rebase--interactive.sh source
 editcomment = """
@@ -41,6 +79,7 @@ editcomment = """
 #  e, edit = use commit, but stop for amending
 #  f, fold = use commit, but fold into previous commit
 #  d, drop = remove commit from history
+#  m, mess = edit message without changing commit content
 #
 """
 
@@ -81,15 +120,14 @@ def pick(ui, repo, ctx, ha, opts):
         fp.write(chunk)
     fp.close()
     try:
-        files = {}
+        files = set()
         try:
-            patch.patch(patchfile, ui, cwd=repo.root, files=files, eolmode=None)
+            applypatch(ui, repo, patchfile, files=files, eolmode=None)
             if not files:
                 ui.warn(_('%s: empty changeset')
                              % node.hex(ha))
                 return ctx, [], [], []
         finally:
-            files = updatedir(ui, repo, files)
             os.unlink(patchfile)
     except Exception, inst:
         raise util.Abort(_('Fix up the change and run '
@@ -114,11 +152,10 @@ def edit(ui, repo, ctx, ha, opts):
         fp.write(chunk)
     fp.close()
     try:
-        files = {}
+        files = set()
         try:
-            patch.patch(patchfile, ui, cwd=repo.root, files=files, eolmode=None)
+            applypatch(ui, repo, patchfile, files=files, eolmode=None)
         finally:
-            files = updatedir(ui, repo, files)
             os.unlink(patchfile)
     except Exception, inst:
         pass
@@ -141,15 +178,14 @@ def fold(ui, repo, ctx, ha, opts):
         fp.write(chunk)
     fp.close()
     try:
-        files = {}
+        files = set()
         try:
-            patch.patch(patchfile, ui, cwd=repo.root, files=files, eolmode=None)
+            applypatch(ui, repo, patchfile, files=files, eolmode=None)
             if not files:
                 ui.warn(_('%s: empty changeset')
                              % node.hex(ha))
                 return ctx, [], [], []
         finally:
-            files = updatedir(ui, repo, files)
             os.unlink(patchfile)
     except Exception, inst:
         raise util.Abort(_('Fix up the change and run '
@@ -172,23 +208,58 @@ def finishfold(ui, repo, ctx, oldctx, newnode, opts, internalchanges):
     for chunk in gen:
         fp.write(chunk)
     fp.close()
-    files = {}
+    files = set()
     try:
-        patch.patch(patchfile, ui, cwd=repo.root, files=files, eolmode=None)
+        applypatch(ui, repo, patchfile, files=files, eolmode=None)
     finally:
-        files = updatedir(ui, repo, files)
         os.unlink(patchfile)
     newmessage = '\n***\n'.join(
         [ctx.description(), ] +
         [repo[r].description() for r in internalchanges] +
         [oldctx.description(), ])
-    newmessage = ui.edit(newmessage, ui.username())
-    n = repo.commit(text=newmessage, user=ui.username(), date=max(ctx.date(), oldctx.date()),
+    # If the changesets are from the same author, keep it.
+    if ctx.user() == oldctx.user():
+        username = ctx.user()
+    else:
+        username = ui.username()
+    newmessage = ui.edit(newmessage, username)
+    n = repo.commit(text=newmessage, user=username, date=max(ctx.date(), oldctx.date()),
                     extra=oldctx.extra())
     return repo[n], [n, ], [oldctx.node(), ctx.node() ], [newnode, ] # xxx
 
 def drop(ui, repo, ctx, ha, opts):
     return ctx, [], [repo[ha].node(), ], []
+
+
+def message(ui, repo, ctx, ha, opts):
+    oldctx = repo[ha]
+    hg.update(repo, ctx.node())
+    fd, patchfile = tempfile.mkstemp(prefix='hg-histedit-')
+    fp = os.fdopen(fd, 'w')
+    diffopts = patch.diffopts(ui, opts)
+    diffopts.git = True
+    diffopts.ignorews = False
+    diffopts.ignorewsamount = False
+    diffopts.ignoreblanklines = False
+    gen = patch.diff(repo, oldctx.parents()[0].node(), ha, opts=diffopts)
+    for chunk in gen:
+        fp.write(chunk)
+    fp.close()
+    try:
+        files = set()
+        try:
+            applypatch(ui, repo, patchfile, files=files, eolmode=None)
+        finally:
+            os.unlink(patchfile)
+    except Exception, inst:
+        raise util.Abort(_('Fix up the change and run '
+                           'hg histedit --continue'))
+    message = oldctx.description()
+    message = ui.edit(message, ui.username())
+    new = repo.commit(text=message, user=oldctx.user(), date=oldctx.date(),
+                      extra=oldctx.extra())
+    newctx = repo[new]
+    return newctx.parents()[0], [new], [oldctx.node()], []
 
 
 actiontable = {'p': pick,
@@ -199,6 +270,8 @@ actiontable = {'p': pick,
                'fold': fold,
                'd': drop,
                'drop': drop,
+               'm': message,
+               'mess': message,
                }
 def histedit(ui, repo, *parent, **opts):
     """hg histedit <parent>
@@ -219,10 +292,16 @@ def histedit(ui, repo, *parent, **opts):
         dest = ui.expandpath(parent or 'default-push', parent or 'default')
         dest, revs = hg.parseurl(dest, None)[:2]
         if isinstance(revs, tuple):
-            # python >= 1.6
+            # hg >= 1.6
             revs, checkout = hg.addbranchrevs(repo, repo, revs, None)
             other = hg.repository(hg.remoteui(repo, opts), dest)
-            findoutgoing = discovery.findoutgoing
+            # hg >= 1.9
+            findoutgoing = getattr(discovery, 'findoutgoing', None)
+            if findoutgoing is None:
+                def findoutgoing(repo, other, force=False):
+                    common, outheads = discovery.findcommonoutgoing(
+                        repo, other, [], force=force)
+                    return repo.changelog.findmissing(common, outheads)[0:1]
         else:
             other = hg.repository(ui, dest)
             def findoutgoing(repo, other, force=False):
@@ -231,7 +310,7 @@ def histedit(ui, repo, *parent, **opts):
         if revs:
             revs = [repo.lookup(rev) for rev in revs]
 
-        ui.status(_('comparing with %s\n') % url.hidepassword(dest))
+        ui.status(_('comparing with %s\n') % hidepassword(dest))
         parent = findoutgoing(repo, other, force=opts.get('force'))
     else:
         if opts.get('force'):
@@ -260,7 +339,7 @@ def histedit(ui, repo, *parent, **opts):
         m, a, r, d = repo.status()[:4]
         oldctx = repo[currentnode]
         message = oldctx.description()
-        if action in ('e', 'edit', ):
+        if action in ('e', 'edit', 'm', 'mess'):
             message = ui.edit(message, ui.username())
         elif action in ('f', 'fold', ):
             message = 'fold-temp-revision %s' % currentnode
@@ -269,14 +348,7 @@ def histedit(ui, repo, *parent, **opts):
             new = repo.commit(text=message, user=oldctx.user(), date=oldctx.date(),
                               extra=oldctx.extra())
 
-        if action in ('e', 'edit', 'p', 'pick', ):
-            if new != oldctx.node():
-                replaced.append(oldctx.node())
-            if new:
-                if new != oldctx.node():
-                    created.append(new)
-                parentctx = repo[new]
-        else: # fold
+        if action in ('f', 'fold'):
             if new:
                 tmpnodes.append(new)
             else:
@@ -288,6 +360,13 @@ def histedit(ui, repo, *parent, **opts):
             replaced.extend(replaced_)
             created.extend(created_)
             tmpnodes.extend(tmpnodes_)
+        elif action not in ('d', 'drop'):
+            if new != oldctx.node():
+                replaced.append(oldctx.node())
+            if new:
+                if new != oldctx.node():
+                    created.append(new)
+                parentctx = repo[new]
 
     elif opts.get('abort', False):
         if len(parent) != 0:
@@ -309,7 +388,7 @@ def histedit(ui, repo, *parent, **opts):
         os.unlink(os.path.join(repo.path, 'histedit-state'))
         return
     else:
-        cmdutil.bail_if_changed(repo)
+        bailifchanged(repo)
         if os.path.exists(os.path.join(repo.path, 'histedit-state')):
             raise util.Abort('history edit already in progress, try '
                              '--continue or --abort')
@@ -430,7 +509,7 @@ cmdtable = {
         (histedit,
          [('', 'commands', '', 'Read history edits from the specified file.'),
           ('c', 'continue', False, 'continue an edit already in progress', ),
-          ('k', 'keep', False, 'strip old nodes after edit is complete', ),
+          ('k', 'keep', False, 'don\'t strip old nodes after edit is complete', ),
           ('', 'abort', False, 'abort an edit in progress', ),
           ('o', 'outgoing', False, 'changesets not found in destination'),
           ('f', 'force', False, 'force outgoing even for unrelated repositories'),

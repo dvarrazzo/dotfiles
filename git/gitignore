@@ -6,3 +6,4 @@
 *.pyc
 *.pyd
 *.o
+.gdb_history
