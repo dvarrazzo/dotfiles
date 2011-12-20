@@ -75,6 +75,25 @@ mymainmenu = awful.menu({ items = { { "My apps", piromenu },
 
 mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
                                      menu = mymainmenu })
+
+
+home = os.getenv("HOME")
+
+function icon(name)
+    local path = home .. '/.config/awesome/icons/'
+    return path .. name
+end
+
+places = awful.widget.launcher({
+    image = icon('home.png'),
+    menu = awful.menu({ items = {
+        { "Home",       "nautilus /home/piro/",             icon('folder_home.png') },
+        { "Downloads",  "nautilus /home/piro/Downloads/",   icon('folder_download.png') },
+        { "Music",      "nautilus /home/piro/Music/",       icon('folder_music.png') },
+        { "Video",      "nautilus /home/piro/Video/",       icon('folder_video.png') },
+    }}),
+})
+
 -- }}}
 
 -- {{{ Wibox
@@ -154,6 +173,13 @@ for s = 1, screen.count() do
     mywibox[s].widgets = {
         {
             mylauncher,
+            places,
+            awful.widget.launcher({
+                image = icon('chromium-browser.png'),
+                command = 'chromium-browser' }),
+            awful.widget.launcher({
+                image = icon('synaptic.png'),
+                command = 'gksudo synaptic' }),
             mytaglist[s],
             mypromptbox[s],
             layout = awful.widget.layout.horizontal.leftright
