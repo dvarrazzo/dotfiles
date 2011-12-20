@@ -153,9 +153,10 @@ local function update()
 
     battery_status = lib.markup.fg.color(color, state) .. " " .. awful.util.escape(tostring(bat.charge)) .. "%"
 
-    if bat.time then
-        battery_status = battery_status .. " " .. awful.util.escape(bat.time)
-    end
+    -- piro - no time in widget
+    -- if bat.time then
+    --     battery_status = battery_status .. " " .. awful.util.escape(bat.time)
+    -- end
 
     widget.text = battery_status
 end
