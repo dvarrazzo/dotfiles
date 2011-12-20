@@ -194,11 +194,12 @@ end
 -- }}}
 
 -- {{{ Mouse bindings
-root.buttons(awful.util.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
-))
+-- Disabled because sometimes the menu appears, grabs the mouse and doesn't release it
+-- root.buttons(awful.util.table.join(
+--     awful.button({ }, 3, function () mymainmenu:toggle() end),
+--     awful.button({ }, 4, awful.tag.viewnext),
+--     awful.button({ }, 5, awful.tag.viewprev)
+-- ))
 -- }}}
 
 -- {{{ Key bindings
