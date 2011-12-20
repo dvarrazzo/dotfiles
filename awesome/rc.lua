@@ -55,6 +55,14 @@ end
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
+
+home = os.getenv("HOME")
+
+function icon(name)
+    local path = home .. '/.config/awesome/icons/'
+    return path .. name
+end
+
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua" },
@@ -63,7 +71,9 @@ myawesomemenu = {
 }
 
 piromenu = {
-    { "GNOME Config", "gnome-control-center" },
+    { "Chromium", "chromium-browser", icon('chromium-browser.png') },
+    { "GNOME Config", "gnome-control-center", icon("gnome-control-centre.png") },
+    { "Synaptic", "gksudo synaptic", icon('synaptic.png') },
 }
 
 mymainmenu = awful.menu({ items = { { "My apps", piromenu },
@@ -75,14 +85,6 @@ mymainmenu = awful.menu({ items = { { "My apps", piromenu },
 
 mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
                                      menu = mymainmenu })
-
-
-home = os.getenv("HOME")
-
-function icon(name)
-    local path = home .. '/.config/awesome/icons/'
-    return path .. name
-end
 
 places = awful.widget.launcher({
     image = icon('home.png'),
@@ -174,12 +176,8 @@ for s = 1, screen.count() do
         {
             mylauncher,
             places,
-            awful.widget.launcher({
-                image = icon('chromium-browser.png'),
-                command = 'chromium-browser' }),
-            awful.widget.launcher({
-                image = icon('synaptic.png'),
-                command = 'gksudo synaptic' }),
+            -- Launcher example
+            -- awful.widget.launcher({ image = icon('chromium-browser.png'), command = 'chromium-browser' }),
             mytaglist[s],
             mypromptbox[s],
             layout = awful.widget.layout.horizontal.leftright
