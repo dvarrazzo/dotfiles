@@ -7,6 +7,11 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
+-- extra widgets
+require('obvious.volume_alsa')
+require('obvious.battery')
+require("obvious.temp_info")
+
 -- Load Debian menu entries
 require("debian.menu")
 
@@ -105,6 +110,10 @@ mytextclock = awful.widget.textclock({ align = "right" })
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
+mybatt = obvious.battery()
+myvolume = obvious.volume_alsa()
+mytemp = obvious.temp_info()
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -184,7 +193,10 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
+        myvolume,
         s == screen.count() and mysystray or nil,
+        mybatt,
+        mytemp,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
