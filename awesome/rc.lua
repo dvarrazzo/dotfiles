@@ -97,7 +97,7 @@ places = awful.widget.launcher({
         { "Home",       "nautilus /home/piro/",             icon('folder_home.png') },
         { "Downloads",  "nautilus /home/piro/Downloads/",   icon('folder_download.png') },
         { "Music",      "nautilus /home/piro/Music/",       icon('folder_music.png') },
-        { "Video",      "nautilus /home/piro/Video/",       icon('folder_video.png') },
+        { "Videos",     "nautilus /home/piro/Videos/",      icon('folder_video.png') },
     }}),
 })
 
