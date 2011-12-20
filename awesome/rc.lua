@@ -62,7 +62,12 @@ myawesomemenu = {
    { "quit", awesome.quit }
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
+piromenu = {
+    { "GNOME Config", "gnome-control-center" },
+}
+
+mymainmenu = awful.menu({ items = { { "My apps", piromenu },
+                                    { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "Debian", debian.menu.Debian_menu.Debian },
                                     { "open terminal", terminal }
                                   }
