@@ -1,3 +1,5 @@
+SendEnv PGAPPNAME
+
 Host *
     GSSAPIAuthentication no
     GSSAPIDelegateCredentials no
