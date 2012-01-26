@@ -23,6 +23,11 @@ set ruler		" show the cursor position all the time
 set noswapfile      " piro: che palle che mi fate!
 set nobackup
 
+if version >= 703
+    set relativenumber
+    set columns=84
+endif
+
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
   augroup fedora
