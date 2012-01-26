@@ -81,12 +81,16 @@ piromenu = {
     { "Synaptic", "gksudo synaptic", icon('synaptic.png') },
 }
 
-mymainmenu = awful.menu({ items = { { "My apps", piromenu },
-                                    { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Debian", debian.menu.Debian_menu.Debian },
-                                    { "open terminal", terminal }
-                                  }
-                        })
+mymainmenu = awful.menu({
+    items = awful.util.table.join(
+        piromenu,
+        {
+            { "awesome", myawesomemenu, beautiful.awesome_icon },
+            { "Debian", debian.menu.Debian_menu.Debian },
+            { "open terminal", terminal }
+        }
+    )
+})
 
 mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
                                      menu = mymainmenu })
