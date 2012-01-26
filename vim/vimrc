@@ -276,8 +276,8 @@ if hostname == 'risotto'
     autocmd BufRead /home/piro/src/pgxnclient/* set expandtab
     autocmd BufRead /home/piro/src/py-setproctitle/* set expandtab
 
-	" piro: here on risotto the 'visual bell' is slow.
-	set novisualbell
+    " piro: here on risotto the 'visual bell' is slow.
+    set novisualbell
 
 endif
 
