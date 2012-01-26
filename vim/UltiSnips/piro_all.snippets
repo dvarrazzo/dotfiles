@@ -1,0 +1,18 @@
+snippet c) "Copyright" !b
+Copyright (C) `!v strftime("%Y")` Daniele Varrazzo <daniele.varrazzo@gmail.com>
+endsnippet
+
+snippet === "reST title" !b
+`!p
+snip.rv = ''`${1:content}`!p
+snip += "=" * len(t[1])`
+$0
+endsnippet
+
+snippet --- "reST subtitle" !b
+`!p
+snip.rv = ''`${1:content}`!p
+snip += "-" * len(t[1])`
+$0
+endsnippet
+
