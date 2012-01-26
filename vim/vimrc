@@ -99,6 +99,9 @@ set ignorecase
 " aleph: if pattern contains uppercase chars, the search is case _sensitive_
 set smartcase
 
+" from bernie: search highlighted text
+:vmap // y/<C-R>"<CR>
+
 " piro: smaller font
 set guifont=Monospace\ 8
 
