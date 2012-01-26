@@ -7,6 +7,11 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
+-- extra widgets
+require('obvious.volume_alsa')
+require('obvious.battery')
+require("obvious.temp_info")
+
 -- Load Debian menu entries
 require("debian.menu")
 
@@ -92,7 +97,7 @@ places = awful.widget.launcher({
         { "Home",       "nautilus /home/piro/",             icon('folder_home.png') },
         { "Downloads",  "nautilus /home/piro/Downloads/",   icon('folder_download.png') },
         { "Music",      "nautilus /home/piro/Music/",       icon('folder_music.png') },
-        { "Video",      "nautilus /home/piro/Video/",       icon('folder_video.png') },
+        { "Videos",     "nautilus /home/piro/Videos/",      icon('folder_video.png') },
     }}),
 })
 
@@ -104,6 +109,10 @@ mytextclock = awful.widget.textclock({ align = "right" })
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
+
+mybatt = obvious.battery()
+myvolume = obvious.volume_alsa()
+mytemp = obvious.temp_info()
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -184,7 +193,10 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
+        myvolume,
         s == screen.count() and mysystray or nil,
+        mybatt,
+        mytemp,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }

@@ -4,3 +4,4 @@
 \.orig$
 \.rej$
 vim/\.netrwhist
+awesome/obvious/\.git
