@@ -162,6 +162,9 @@ set shiftwidth=4
 set expandtab
 set sts=4
 
+" piro: as a test, 78 columns everywhere
+set tw=78
+
 " piro: leader in coma
 let mapleader = ","
 
@@ -243,6 +246,11 @@ nnoremap <leader>b Oimport pdb; pdb.set_trace()<ESC>^
 " w!! if you forget to sudo before saving
 cmap w!! w !sudo tee % >/dev/null
 
+" disable creation of the yankring history file
+" (doesn't work, the sucker)
+let g:yankring_persist = 0
+let g:yankring_share_between_instances = 0
+
 " at Gambit tabs are ok
 let hostname = substitute(system('hostname'), '\n$', '', '')
 if hostname == 'risotto'
@@ -266,10 +274,14 @@ nnoremap <leader># :grep <cword> .<CR><CR>:cw<CR>
 :command! PHFromPy %s/%(\([^)]*\))s/:\1/g
 :command! PHToPy %s/\([^:]\):\([a-z0-9_][a-z0-9_]*\)/\1%(\2)s/g
 
-" piro: use the global clipboard (don't need "+ anymore)
-:set clipboard=unnamed,autoselect
-" note: the default was: "autoselect,exclude:cons\\\|linux" but with it
-" "+unnamed" doesn't work. I've found no docs for the other options.
+""" piro: use the global clipboard (don't need "+ anymore)
+"":set clipboard=unnamed,autoselect
+""" note: the default was: "autoselect,exclude:cons\\\|linux" but with it
+""" "+unnamed" doesn't work. I've found no docs for the other options.
+
+" yankring doesn't work with the above: for the moment let's use a shortcut
+" for "+y
+:vnoremap <leader>y "*y
 
 " open my log file
 :command! TODO tabe scp://piro@quimby//home/piro/todo.txt
