@@ -25,7 +25,6 @@ set nobackup
 
 if version >= 703
     set relativenumber
-    set columns=84
 endif
 
 " Only do this part when compiled with support for autocommands
