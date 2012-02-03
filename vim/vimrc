@@ -297,6 +297,8 @@ nnoremap <leader># :grep <cword> .<CR><CR>:cw<CR>
 " yankring doesn't work with the above: for the moment let's use a shortcut
 " for "+y
 :vnoremap <leader>y "*y
+:nnoremap <leader>p "*p
+:nnoremap <leader>P "*P
 
 " open my log file
 :command! TODO tabe scp://piro@quimby//home/piro/todo.txt
