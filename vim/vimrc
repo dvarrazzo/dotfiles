@@ -307,3 +307,6 @@ nnoremap <leader># :grep <cword> .<CR><CR>:cw<CR>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+set colorcolumn=80
+
