@@ -303,7 +303,7 @@ nnoremap <leader># :grep <cword> .<CR><CR>:cw<CR>
 " open my log file
 :command! TODO tabe scp://piro@quimby//home/piro/todo.txt
 
-let g:UltiSnipsSnippetDirectories=["snippets", "UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
 
 " Use just tab to move across UltiSnips placeholders
 let g:UltiSnipsExpandTrigger="<tab>"
