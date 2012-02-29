@@ -15,6 +15,10 @@ require("obvious.temp_info")
 -- Load Debian menu entries
 require("debian.menu")
 
+-- Don't know which one to choose:
+-- require("calendar2")     -- naughty based
+require("cal")              -- awful based
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/usr/share/awesome/themes/default/theme.lua")
@@ -110,6 +114,8 @@ places = awful.widget.launcher({
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
+-- calendar2.addCalendarToWidget(mytextclock)
+cal.register(mytextclock)
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
