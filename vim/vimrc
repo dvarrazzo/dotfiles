@@ -23,9 +23,10 @@ set ruler		" show the cursor position all the time
 set noswapfile      " piro: che palle che mi fate!
 set nobackup
 
-if version >= 703
-    set relativenumber
-endif
+" Not using it, and taking some space I actually want
+" if version >= 703
+"     set relativenumber
+" endif
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
