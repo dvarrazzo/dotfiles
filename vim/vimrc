@@ -307,5 +307,7 @@ nnoremap <leader># :grep <cword> .<CR><CR>:cw<CR>
 " look for my snippets too
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
 
-set colorcolumn=80
+if version >= 703
+    set colorcolumn=80
+endif
 
