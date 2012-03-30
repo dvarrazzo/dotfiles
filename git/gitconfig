@@ -1,11 +1,11 @@
 [user]
-	name = Daniele Varrazzo
-	email = daniele.varrazzo@gmail.com
+    name = Daniele Varrazzo
+    email = daniele.varrazzo@gmail.com
 
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+    diff = auto
+    status = auto
+    branch = auto
 
 [alias]
     st = status
@@ -19,8 +19,8 @@
     pretty = oneline
 
 [core]
-	excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore
 
 [gui]
-	fontui = -family Ubuntu -size 8 -weight normal -slant roman -underline 0 -overstrike 0
-	fontdiff = -family \"Liberation Mono\" -size 8 -weight normal -slant roman -underline 0 -overstrike 0
+    fontui = -family Ubuntu -size 8 -weight normal -slant roman -underline 0 -overstrike 0
+    fontdiff = -family \"Liberation Mono\" -size 8 -weight normal -slant roman -underline 0 -overstrike 0
