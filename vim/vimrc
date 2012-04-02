@@ -154,9 +154,6 @@ autocmd FileType html,htmldjango set tabstop=2|set shiftwidth=2|set sts=2
 " piro: limit text width to rst files
 autocmd FileType rst set tw=78
 
-" piro: treat arduino projects as C++ files.
-autocmd BufRead *.pde set filetype=cpp
-
 " piro: tmpl files are django for me
 autocmd BufRead,BufNewFile *.tmpl set filetype=htmldjango
 
