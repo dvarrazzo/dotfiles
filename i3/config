@@ -87,6 +87,8 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+Page_Up workspace prev
+bindsym $mod+Page_Down workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+exclam move workspace 1
