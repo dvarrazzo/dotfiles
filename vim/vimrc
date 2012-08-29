@@ -302,7 +302,7 @@ nnoremap <leader># :grep <cword> .<CR><CR>:cw<CR>
 :nnoremap <leader>P "*P
 
 " open my log file
-:command! TODO tabe scp://piro@quimby//home/piro/todo.txt
+:command! TODO tabe scp://piro@bart//home/piro/todo.txt
 
 " look for my snippets too
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
