@@ -173,6 +173,9 @@ set tw=78
 " piro: leader in coma
 let mapleader = ","
 
+" piro: ~ takes a movement command
+set tildeop
+
 " piro: display whitespaces errors (at eol, before tab)
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 :match ExtraWhitespace /\s\+$\| \+\ze\t/
