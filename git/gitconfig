@@ -12,9 +12,8 @@
     co = checkout
     df = diff
     cp = cherry-pick
-
-[format]
-    pretty = oneline
+    l1 = log --oneline
+    lo = log --oneline
 
 [core]
     excludesfile = ~/.gitignore
