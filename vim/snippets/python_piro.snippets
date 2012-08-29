@@ -12,3 +12,58 @@ if __name__ == '__main__':
     sys.exit(main())
 
 endsnippet
+
+snippet main "Fancy exception handling for scripts" !b
+class ScriptError(Exception):
+	"""Controlled exception raised by the script."""
+
+if __name__ == '__main__':
+	try:
+		sys.exit(main())
+
+	except ScriptError, e:
+		logger.error("%s", e)
+		sys.exit(1)
+
+	except Exception, e:
+		logger.error("Unexpected error: %s - %s",
+			e.__class__.__name__, e, exc_info=True)
+		sys.exit(1)
+
+	except KeyboardInterrupt:
+		logger.info("user interrupt")
+		sys.exit(1)
+endsnippet
+
+snippet log "Logging boilerplate" !b
+import logging
+logger = logging.getLogger()
+logging.basicConfig(
+	level=logging.INFO,
+	format='%(levelname)s %(message)s')
+endsnippet
+
+snippet opt "Python option parsing" !b
+def parse_cmdline():
+	from optparse import OptionParser
+	parser = OptionParser(usage="%prog [options]",
+		description=__doc__)
+	parser.add_option('--opt', metavar="OPT",
+		default='XXX',
+		help="some option [default: %default]")
+
+	opt, args = parser.parse_args()
+	opt.args = args
+
+	return opt
+endsnippet
+
+snippet logopt "Options to add logging levels to option scripts" !b
+	parser.add_option('--quiet', dest='loglevel', default=logging.INFO,
+		action='store_const', const=logging.WARNING,
+		help="show less information")
+	parser.add_option('--verbose', dest='loglevel', default=logging.INFO,
+		action='store_const', const=logging.DEBUG,
+		help="show more information")
+endsnippet
+
