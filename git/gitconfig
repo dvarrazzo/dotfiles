@@ -3,9 +3,7 @@
     email = daniele.varrazzo@gmail.com
 
 [color]
-    diff = auto
-    status = auto
-    branch = auto
+    ui = auto
 
 [alias]
     st = status
