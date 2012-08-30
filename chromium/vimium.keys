@@ -1,0 +1,16 @@
+# flip prev and next tab
+unmap J
+unmap K
+map J nextTab
+map K previousTab
+
+# h/j to move through the history
+unmap h
+unmap l
+unmap H
+unmap L
+map h goBack
+map l goForward
+map H scrollLeft
+map L scrollRight
+
