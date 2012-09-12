@@ -76,6 +76,8 @@ if &t_Co > 2 || has("gui_running")
   " set guioptions+=b
   " aleph: remove useless luser toolbar
   set guioptions-=T
+  " piro: no scroll bars
+  set guioptions-=r
   " aleph: mark spacing errors in C/Java sources
   let c_space_errors=1
   let java_space_errors=1
