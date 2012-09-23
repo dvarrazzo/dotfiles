@@ -266,8 +266,8 @@ globalkeys = awful.util.table.join(
     -- Try and press it by mistake again...
     awful.key({ modkey, "Shift", "Mod1" }, "q", awesome.quit),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.025)   end),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.025)   end),
+    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.01)    end),
+    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.01)    end),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
     awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
