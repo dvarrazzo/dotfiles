@@ -13,6 +13,16 @@ insert into keywords (short_name, keyword, favicon_url, url)
 	values ('wordreference-enit', 'ei', 'http://www.wordreference.com/favicon.ico', 'http://www.wordreference.com/enit/{searchTerms}');
 insert into keywords (short_name, keyword, favicon_url, url)
 	values ('wordreference-iten', 'ie', 'http://www.wordreference.com/favicon.ico', 'http://www.wordreference.com/iten/{searchTerms}');
+insert into keywords (short_name, keyword, favicon_url, url)
+	values ('torrentz', 'ie', 'http://torrentz.eu/favicon.ico', 'http://torrentz.eu/search?q={searchTerms}');
+insert into keywords (short_name, keyword, favicon_url, url)
+	values ('Google Translate', 'tx', 'http://www.google.co.uk/favicon.ico', 'http://translate.google.com/?source=osdd#auto|auto|{searchTerms}');
+insert into keywords (short_name, keyword, favicon_url, url)
+	values ('LyricWiki', 'ly', 'http://images.wikia.com/lyricwiki/images/6/64/Favicon.ico', 'http://lyrics.wikia.com/Special:Search?search={searchTerms}');
+insert into keywords (short_name, keyword, favicon_url, url)
+	values ('Urban dictionary', 'u', '', 'http://www.urbandictionary.com/define.php?term={searchTerms}');
+insert into keywords (short_name, keyword, favicon_url, url)
+	values ('Google Maps', 'm', '', 'https://maps.google.co.uk/maps?q={searchTerms}&ie=UTF-8');
 
 commit;
 
