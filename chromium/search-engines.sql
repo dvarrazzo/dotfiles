@@ -23,6 +23,8 @@ insert into keywords (short_name, keyword, favicon_url, url)
 	values ('Urban dictionary', 'u', '', 'http://www.urbandictionary.com/define.php?term={searchTerms}');
 insert into keywords (short_name, keyword, favicon_url, url)
 	values ('Google Maps', 'm', '', 'https://maps.google.co.uk/maps?q={searchTerms}&ie=UTF-8');
+insert into keywords (short_name, keyword, favicon_url, url)
+	values ('Yahoo', 'y', '', 'http://search.yahoo.com/search?p={searchTerms}');
 
 commit;
 
