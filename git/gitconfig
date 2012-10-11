@@ -14,6 +14,7 @@
     cp = cherry-pick
     l1 = log --oneline
     lo = log --oneline
+    loog = log --pretty=fuller
 
 [core]
     excludesfile = ~/.gitignore
