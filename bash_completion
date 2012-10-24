@@ -1,3 +1,5 @@
+#!/bin/bash
+
 _vm_start()
 {
     local cur
@@ -19,3 +21,30 @@ _vm_start()
 
 complete -o default -o nospace -F _vm_start vm-start vm-stop
 
+_vboxmanage()
+{
+    local cur prev
+
+    cur=${COMP_WORDS[COMP_CWORD]}
+    case $COMP_CWORD in
+        1)
+            cmds=$(VBoxManage -q | egrep "VBoxManage [a-z]" | cut -d ' ' -f 2 | sort | uniq)
+            COMPREPLY=( $( compgen -W "${cmds}" -- $cur ) )
+            ;;
+        2)
+            prev=${COMP_WORDS[COMP_CWORD-1]}
+            case $prev in
+                startvm)
+                    vms=$(VBoxManage -q list vms | awk -F\" '{ print $2 }')
+                    COMPREPLY=( $( compgen -W "${vms}" -- $cur ) )
+                    ;;
+                controlvm)
+                    vms=$(VBoxManage -q list runningvms | awk -F\" '{ print $2 }')
+                    COMPREPLY=( $( compgen -W "${vms}" -- $cur ) )
+                    ;;
+            esac
+            ;;
+    esac
+}
+
+complete -o default -o nospace -F _vboxmanage VBoxManage vboxmanage
