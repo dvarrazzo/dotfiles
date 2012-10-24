@@ -1,0 +1,21 @@
+_vm_start()
+{
+    local cur
+    if [ $COMP_CWORD == 1 ]; then
+        cur=${COMP_WORDS[COMP_CWORD]}
+
+        case "$1" in
+            "vm-start")
+                vms=$(VBoxManage -q list vms | awk -F\" '{ print $2 }')
+                ;;
+            "vm-stop")
+                vms=$(VBoxManage -q list runningvms | awk -F\" '{ print $2 }')
+                ;;
+        esac
+
+        COMPREPLY=( $( compgen -W "${vms}" -- $cur ) )
+    fi
+}
+
+complete -o default -o nospace -F _vm_start vm-start vm-stop
+
