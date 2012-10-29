@@ -218,6 +218,9 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
+" no ex mode (type visual to go back to sanity)
+:nnoremap Q <Nop>
+
 " piro: fix broken Page Up/Down
 " http://vimrc-dissection.blogspot.com/2009/02/fixing-pageup-and-pagedown.html
 map <silent> <PageUp> 1000<C-U>
