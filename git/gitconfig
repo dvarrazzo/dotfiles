@@ -12,6 +12,7 @@
     co = checkout
     df = diff
     cp = cherry-pick
+    sm = submodule
     l1 = log --oneline
     lo = log --oneline
     loog = log --pretty=fuller
