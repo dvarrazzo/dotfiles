@@ -3,6 +3,7 @@
 # Create all the links to config files I may want on a new system
 
 ln -s etc/bash_aliases .bash_aliases
+ln -s etc/bash_completion .bash_completion
 ln -s etc/ackrc .ackrc
 ln -s etc/git/gitconfig .gitconfig
 ln -s etc/git/gitignore .gitignore
