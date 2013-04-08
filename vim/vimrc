@@ -256,6 +256,11 @@ endfunction
 map <silent><C-S-PageUp> :execute TabLeft()<CR>
 map <silent><C-S-PageDown> :execute TabRight()<CR>
 
+" piro: autocomplete files works like on bash, not on windows.
+" Don't autocomplete the first occurrenct but stop at the common prefix
+set wildmenu
+set wildmode=list:longest
+
 " inject a Python breakpoint
 nnoremap <leader>b Oimport pdb; pdb.set_trace()<ESC>^
 
