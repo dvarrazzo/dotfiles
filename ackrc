@@ -1,4 +1,4 @@
-# --follow
+--follow
 --type-set=django=.tmpl
 --type-set=restructuredtext=.rst
 --type-set=json=.json
