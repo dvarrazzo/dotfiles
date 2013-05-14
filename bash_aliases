@@ -9,7 +9,5 @@ alias grep='grep --color=auto -I'
 alias egrep='egrep --color=auto -I'
 alias rvim='gvim --remote-silent'
 alias ack='ack-grep'
-
-# date order
-alias gitk='gitk -d'
+alias gk="gitk --all -d &"
 alias indent='sed -e "s/^\(.*\)/    \1/"'
