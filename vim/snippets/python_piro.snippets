@@ -6,10 +6,10 @@ snippet script "Python script boilerplate" !b
 import sys
 
 def main():
-    pass
+	pass
 
 if __name__ == '__main__':
-    sys.exit(main())
+	sys.exit(main())
 
 endsnippet
 
@@ -25,9 +25,8 @@ if __name__ == '__main__':
 		logger.error("%s", e)
 		sys.exit(1)
 
-	except Exception, e:
-		logger.error("Unexpected error: %s - %s",
-			e.__class__.__name__, e, exc_info=True)
+	except Exception:
+		logger.exception("unexpected error")
 		sys.exit(1)
 
 	except KeyboardInterrupt:
