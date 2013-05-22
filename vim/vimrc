@@ -81,6 +81,7 @@ if &t_Co > 2 || has("gui_running")
   " aleph: mark spacing errors in C/Java sources
   let c_space_errors=1
   let java_space_errors=1
+  let python_space_errors_highlight=1
 endif
 
 " bernie: enable loading filetype specific plugins and intendation mode
