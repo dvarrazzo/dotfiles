@@ -122,6 +122,9 @@ imap <silent> <PageUp> <C-O>1000<C-U>
 imap <silent> <PageDown> <C-O>1000<C-D>
 set nostartofline
 
+" Search in history for common prefix with Ctrl-p
+cnoremap <C-p> <Up>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Syntax
