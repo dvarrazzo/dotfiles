@@ -164,9 +164,14 @@ set cindent
 autocmd BufRead,BufNewFile *.tmpl set filetype=htmldjango
 
 " Display whitespaces errors (at eol, before tab)
-highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-match ExtraWhitespace /\s\+$\| \+\ze\t/
+syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+" This must be before colorscheme or it could be wiped off
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+autocmd ColorScheme * hi ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+" ... and must be added to every syntax
 autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+" This would be more dramatic!
+" highlight link ExtraWhitespace Error
 
 " What is that?
 hi SpecialKey term=NONE cterm=NONE
