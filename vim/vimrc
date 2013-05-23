@@ -173,9 +173,6 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 " This would be more dramatic!
 " highlight link ExtraWhitespace Error
 
-" What is that?
-hi SpecialKey term=NONE cterm=NONE
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Load/Save
