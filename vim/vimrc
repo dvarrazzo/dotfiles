@@ -275,8 +275,11 @@ set ignorecase          " insensitive search
 set smartcase           " if pattern contains uppercase chars,
                         " the search is case _sensitive_
 
-" search highlighted text
+" search highlighted text with //
 vmap // y/<C-R>"<CR>
+
+" remove search highlight with ,/
+nmap <silent> <leader>/ :nohlsearch<CR>
 
 if has("cscope") && filereadable("/usr/bin/cscope")
    set csprg=/usr/bin/cscope
