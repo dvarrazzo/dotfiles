@@ -269,7 +269,6 @@ map <silent><C-S-PageDown> :execute TabRight()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set hlsearch            " Highlight when searching
-highlight Normal guibg=#000030 guifg=#dddddd
 set incsearch           " Incremental search
 set ignorecase          " insensitive search
 set smartcase           " if pattern contains uppercase chars,
