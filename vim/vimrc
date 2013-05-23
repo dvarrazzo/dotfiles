@@ -206,12 +206,6 @@ endif
 "   set relativenumber  " show offset from current line
 " endif
 
-if &term=="xterm"
-    set t_Co=8
-    set t_Sb=[4%dm
-    set t_Sf=[3%dm
-endif
-
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
 let &guicursor = &guicursor . ",a:blinkon0"
@@ -225,8 +219,8 @@ if has("mouse")
     set mouse=a
 endif
 
-" More readable folded color
-hi Folded guifg=Blue
+" More readable folded color (on default color scheme)
+" hi Folded guifg=Blue
 
 set visualbell          " Don't ring a bell on error
 set winminheight=0      " Can squash unactive buffers to 0 lines
