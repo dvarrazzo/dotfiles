@@ -144,8 +144,8 @@ cnoremap <C-p> <Up>
 
 syntax on               " go for Vim syntax highlight
 
-filetype plugin on		" enable loading filetype plugins
-filetype indent on		" enable loading filetype intendation mode
+filetype plugin on      " enable loading filetype plugins
+filetype indent on      " enable loading filetype intendation mode
 
 " mark spacing errors in C/Java/Python sources
 let c_space_errors=1
@@ -202,9 +202,9 @@ colorscheme desert256
 set background=dark
 set guifont=Monospace\ 8 " smaller font
 set statusline=%<%f%h%m%r\ %y%=[%b\ 0x%B]\ \ [%l,%c%V]\ %P
-set laststatus=2		" Always show the status line
+set laststatus=2        " Always show the status line
 " set ruler             " Show the cursor position all the time
-						" Superseded by laststatus=2
+                        " Superseded by laststatus=2
 
 " set guioptions+=b     " bernie: Add bottom horizontal scroll bar
 set guioptions-=T       " aleph: Remove useless luser toolbar
@@ -327,6 +327,7 @@ if hostname == 'risotto'
     set noexpandtab     " Use tabs... sigh
 
     " External projects on which spaces should be used anyway
+    autocmd BufRead /home/piro/.vimrc set expandtab
     autocmd BufRead /home/piro/etc/* set expandtab
     autocmd BufRead /home/piro/src/psycopg2/* set expandtab
     autocmd BufRead /home/piro/src/pgxnclient/* set expandtab
