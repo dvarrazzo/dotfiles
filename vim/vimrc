@@ -1,207 +1,99 @@
 " Copyright 2004, 2005, 2008 Develer S.r.l. (http://www.develer.com/)
+" Copyright (C) 2008-2013 Daniele Varrazzo
 " All rights reserved.
-"
-" version: $Id: vimrc 23935 2009-03-02 00:05:59Z bernie $
-" author: Bernie Innocenti <bernie@codewiz.org>
-" author: Simone Zinanni <s.zinanni@develer.com>
-" author: Stefano Fedrigo <aleph@develer.com>
-"
 
 " note: to reload, use ':so %'
 
-if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
-   set fileencodings=ucs-bom,utf-8,latin1
-endif
 
-set nocompatible	" Use Vim defaults (much better!)
-set bs=indent,eol,start		" allow backspacing over everything in insert mode
-"set ai			" always set autoindenting on
-set viminfo='20,\"50	" read/write a .viminfo file, don't store more
-			" than 50 lines of registers
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set noswapfile      " piro: che palle che mi fate!
-set nobackup
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Not using it, and taking some space I actually want
-" if version >= 703
-"     set relativenumber
-" endif
+set nocompatible        " Use Vim defaults (much better!)
+set viminfo='20,\"50    " Read/write a .viminfo file, don't store more
+                        " than 50 lines of registers
+set history=50          " Keep 50 lines of command line history
+set hidden              " Allow unsaved buffers to be put in background
 
-" Only do this part when compiled with support for autocommands
-if has("autocmd")
-  augroup fedora
-  autocmd!
-  " In text files, always limit the width of text to 78 characters
-  autocmd BufRead *.txt set tw=78
-  autocmd BufRead *.rst set tw=78
-  " When editing a file, always jump to the last cursor position
-  autocmd BufReadPost *
-  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-  \   exe "normal! g'\"" |
-  \ endif
-  " don't write swapfile on most commonly used directories for NFS mounts or USB sticks
-  autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
-  " start with spec file template
-  autocmd BufNewFile *.spec 0r /usr/share/vim/vimfiles/template.spec
-  augroup END
-endif
+" Autocomplete files like on bash, not on windows.
+" Don't autocomplete the first occurrenct but stop at the common prefix
+set wildmenu
+set wildmode=list:longest
+set wildignore=*.o,*.pyc
 
-if has("cscope") && filereadable("/usr/bin/cscope")
-   set csprg=/usr/bin/cscope
-   set csto=0
-   set cst
-   set nocsverb
-   " add any database in current directory
-   if filereadable("cscope.out")
-      cs add cscope.out
-   " else add database pointed to by environment
-   elseif $CSCOPE_DB != ""
-      cs add $CSCOPE_DB
-   endif
-   set csverb
-endif
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-  set incsearch
-  highlight Normal guibg=#000030 guifg=#dddddd
-  set background=dark
-  " bernie: Show matching parenthesis when writing
-  set showmatch
-  " bernie: add bottom horizontal scroll bar
-  " set guioptions+=b
-  " aleph: remove useless luser toolbar
-  set guioptions-=T
-  " piro: no scroll bars
-  set guioptions-=r
-  " aleph: mark spacing errors in C/Java sources
-  let c_space_errors=1
-  let java_space_errors=1
-  let python_space_errors_highlight=1
-endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Editing
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" bernie: enable loading filetype specific plugins and intendation mode
-filetype plugin indent on
-
-if &term=="xterm"
-     set t_Co=8
-     set t_Sb=[4%dm
-     set t_Sf=[3%dm
-endif
-
-" Don't wake up system with blinking cursor:
-" http://www.linuxpowertop.org/known.php
-let &guicursor = &guicursor . ",a:blinkon0"
-
-" bernie: insensitive search
-set ignorecase
-" aleph: if pattern contains uppercase chars, the search is case _sensitive_
-set smartcase
-
-" from bernie: search highlighted text
-:vmap // y/<C-R>"<CR>
-
-" piro: smaller font
-set guifont=Monospace\ 8
-
-" bernie: horizontal and vertical scrolling
-set nowrap
-set sidescroll=1
-set sidescrolloff=8
-set scrolloff=3
-
-" piro: prettier unwanted whitespace
-" to get the middle dot use C-k .M
-set listchars=tab:\|·,trail:·,precedes:<,extends:>
-hi SpecialKey term=NONE cterm=NONE
-
-" piro: and a more readable folded color
-hi Folded guifg=Blue
-
-" bernie: indentation
-" set smartindent
-" piro: trying if cindent avoids the hash to first column problem
-" http://stackoverflow.com/questions/354097/
-set cindent
-
-" bernie: write on :n, :r, etc.
-set autowrite
-
-" bernie: mouse everywhere!
-if has("mouse")
-	set mouse=a
-endif
-
-" aleph: per non rompere le p*** a chi sta attorno ogni volta che si sbaglia tasto
-set visualbell
-" aleph: riduce al minimo la dimensione dei buffer non attivi
-set winminheight=0
-" aleph: dopo split e close gli altri buffer non si ridimensionano
-set noequalalways
-
-" bernie: status line
-set statusline=%<%f%h%m%r%=%b\ 0x%B\ \ %l,%c%V\ %P
-
-" aleph: mark spacing errors in C/Java sources
-autocmd FileType c,cpp  set tabstop=4|set shiftwidth=4|set sts=4|let c_space_errors=1
-autocmd FileType java   set tabstop=4|set shiftwidth=4|let java_space_errors=1
-autocmd FileType python set tabstop=4|set shiftwidth=4|set sts=4|set expandtab
-
-" piro: 2 space indentation for html
-autocmd FileType html,htmldjango set tabstop=2|set shiftwidth=2|set sts=2
-
-" piro: limit text width to rst files
-autocmd FileType rst set tw=78
-
-" piro: tmpl files are django for me
-autocmd BufRead,BufNewFile *.tmpl set filetype=htmldjango
-
-" note: you can use
-"    vim: set filetype=rst:
-" somewhere in a file to set its filetype
-
-" piro: 4 char indent, no tab
+set expandtab
 set tabstop=4
 set shiftwidth=4
-set expandtab
-set sts=4
+set softtabstop=4
 
-" piro: as a test, 78 columns everywhere
-set tw=78
+set wrap                " These guys will never learn the world stops at col 80
+set bs=indent,eol,start " Allow backspacing over everything in insert mode
 
-" piro: leader in coma
+set showmatch           " Show matching parenthesis when writing
+
+set sidescroll=1        " Scoll 1 char at time left/right
+set scrolloff=3         " How much to see around the cursor
+set sidescrolloff=3
+
+" In text files, always limit the width of text to 78 characters
+autocmd BufRead *.txt set tw=78
+autocmd BufRead *.rst set tw=78
+
+" 2 tabs indenting in html
+autocmd FileType html,htmldjango set ts=2|set sw=2|set sts=2
+
+" look for my snippets too
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
+
+" When sudoed, disable yankring, or it will chown the histfile to root,
+" creating errors at the next non-sudoed usage.
+" Note the hack: g:yankring_enabled doesn't stop the bastard to touch the file.
+if $USER == 'root'
+    let loaded_yankring = 120
+endif
+
+" Hide the yankring history file.
+let g:yankring_history_file = '.yankring_history'
+
+""" Use the global clipboard (don't need "+ anymore)
+"":set clipboard=unnamed,autoselect
+""" note: the default was: "autoselect,exclude:cons\\\|linux" but with it
+""" "+unnamed" doesn't work. I've found no docs for the other options.
+
+" yankring doesn't work with the above:
+" for the moment let's use a shortcut for "+y
+vnoremap <leader>y "+y
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Keybindings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" leader in coma
 let mapleader = ","
+set tildeop             " ~ takes a movement command
 
-" piro: ~ takes a movement command
-set tildeop
-
-" piro: display whitespaces errors (at eol, before tab)
-highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-:match ExtraWhitespace /\s\+$\| \+\ze\t/
-:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
-
-" piro: show/delete trailing spaces
-:command! ShowTrail /\s\+$
-:command! NoTrail %s/\s\+$//
-
-" piro: scrolling on dope
-:nnoremap <C-j> 3j
-:vnoremap <C-j> 3j
-:nnoremap <C-k> 3k
-:vnoremap <C-k> 3k
-:nnoremap <C-l> W
-:vnoremap <C-l> E
-:nnoremap <C-h> B
-:vnoremap <C-h> gE
+" scrolling on dope
+nnoremap <C-j> 3j
+vnoremap <C-j> 3j
+nnoremap <C-k> 3k
+vnoremap <C-k> 3k
+nnoremap <C-l> W
+vnoremap <C-l> E
+nnoremap <C-h> B
+vnoremap <C-h> gE
 
 " I've clobbered the C-l for redraw :-\
 nnoremap <leader>r :redraw!<CR>
 
-" piro: move around the splits with ,j etc.
+" move around the splits with ,j etc.
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>h <C-w>h
@@ -211,21 +103,18 @@ nnoremap <leader>l <C-w>l
 nnoremap <leader>v <C-w>v<C-w>l
 nnoremap <leader>s <C-w>s<C-w>l
 
-" piro: allow unsaved buffers to be put in background
-set hidden
-
-" piro: no, I don't want your fucking help!
+" no, I don't want your fucking help!
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
 " no ex mode (type visual to go back to sanity)
-:nnoremap Q <Nop>
+nnoremap Q <Nop>
 
 " Ctrl-V pastes from register in insert mode
 inoremap <C-v> <C-r>"
 
-" piro: fix broken Page Up/Down
+" fix broken Page Up/Down
 " http://vimrc-dissection.blogspot.com/2009/02/fixing-pageup-and-pagedown.html
 map <silent> <PageUp> 1000<C-U>
 map <silent> <PageDown> 1000<C-D>
@@ -233,7 +122,113 @@ imap <silent> <PageUp> <C-O>1000<C-U>
 imap <silent> <PageDown> <C-O>1000<C-D>
 set nostartofline
 
-" piro: ctrl+shift+pages to rearrange tabs
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Syntax
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" note: you can use
+"    vim: set filetype=rst:
+" somewhere in a file to set its filetype
+
+syntax on               " go for Vim syntax highlight
+
+filetype plugin on		" enable loading filetype plugins
+filetype indent on		" enable loading filetype intendation mode
+
+" mark spacing errors in C/Java/Python sources
+let c_space_errors=1
+let java_space_errors=1
+let python_space_errors_highlight=1
+
+" set ai                " always set autoindenting on (broken)
+
+" bernie: indentation
+" set smartindent
+" piro: trying if cindent avoids the hash to first column problem
+" http://stackoverflow.com/questions/354097/
+set cindent
+
+" tmpl files are django for me
+autocmd BufRead,BufNewFile *.tmpl set filetype=htmldjango
+
+" Display whitespaces errors (at eol, before tab)
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+match ExtraWhitespace /\s\+$\| \+\ze\t/
+autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+
+" What is that?
+hi SpecialKey term=NONE cterm=NONE
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Load/Save
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+   set fileencodings=ucs-bom,utf-8,latin1
+endif
+set nobackup            " don't create .bak files
+set noswapfile          " don't create .swp files
+
+" When editing a file, always jump to the last cursor position
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set background=dark
+set guifont=Monospace\ 8 " smaller font
+set statusline=%<%f%h%m%r\ %y%=[%b\ 0x%B]\ \ [%l,%c%V]\ %P
+set laststatus=2		" Always show the status line
+" set ruler             " Show the cursor position all the time
+						" Superseded by laststatus=2
+
+" set guioptions+=b     " bernie: Add bottom horizontal scroll bar
+set guioptions-=T       " aleph: Remove useless luser toolbar
+set guioptions-=r       " piro: No scroll bars
+
+if version >= 703
+    set colorcolumn=80  " Highlight Column of Hercules (don't go past there)
+endif
+
+" Not using it, and  taking some space I actually want
+" if version >= 703
+"   set relativenumber  " show offset from current line
+" endif
+
+if &term=="xterm"
+    set t_Co=8
+    set t_Sb=[4%dm
+    set t_Sf=[3%dm
+endif
+
+" Don't wake up system with blinking cursor:
+" http://www.linuxpowertop.org/known.php
+let &guicursor = &guicursor . ",a:blinkon0"
+
+" Prettier unwanted whitespace
+" Note: to get the middle dot use C-k .M
+set listchars=tab:\|·,trail:·,precedes:<,extends:>
+
+" Mouse everywhere!
+if has("mouse")
+    set mouse=a
+endif
+
+" More readable folded color
+hi Folded guifg=Blue
+
+set visualbell          " Don't ring a bell on error
+set winminheight=0      " Can squash unactive buffers to 0 lines
+set noequalalways       " Don't resize buffers after split/close
+
+" ctrl+shift+pages to rearrange tabs
 " http://stackoverflow.com/questions/2106138/rearrange-tabs-with-the-mouse-in-gvim
 function! TabLeft()
    let tab_number = tabpagenr() - 1
@@ -257,10 +252,40 @@ endfunction
 map <silent><C-S-PageUp> :execute TabLeft()<CR>
 map <silent><C-S-PageDown> :execute TabRight()<CR>
 
-" piro: autocomplete files works like on bash, not on windows.
-" Don't autocomplete the first occurrenct but stop at the common prefix
-set wildmenu
-set wildmode=list:longest
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Search
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set hlsearch            " Highlight when searching
+highlight Normal guibg=#000030 guifg=#dddddd
+set incsearch           " Incremental search
+set ignorecase          " insensitive search
+set smartcase           " if pattern contains uppercase chars,
+                        " the search is case _sensitive_
+
+" search highlighted text
+vmap // y/<C-R>"<CR>
+
+if has("cscope") && filereadable("/usr/bin/cscope")
+   set csprg=/usr/bin/cscope
+   set csto=0
+   set cst
+   set nocsverb
+   " add any database in current directory
+   if filereadable("cscope.out")
+      cs add cscope.out
+   " else add database pointed to by environment
+   elseif $CSCOPE_DB != ""
+      cs add $CSCOPE_DB
+   endif
+   set csverb
+endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Utility macros
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " inject a Python breakpoint
 nnoremap <leader>b Oimport pdb; pdb.set_trace()<ESC>^
@@ -268,22 +293,27 @@ nnoremap <leader>b Oimport pdb; pdb.set_trace()<ESC>^
 " w!! if you forget to sudo before saving
 cmap w!! w !sudo tee % >/dev/null
 
-" When sudoed, disable yankring, or it will chown the histfile to root,
-" creating errors at the next non-sudoed usage.
-" Note the hack: g:yankring_enabled doesn't stop the bastard to touch the file.
-if $USER == 'root'
-    :let loaded_yankring = 120
-endif
+" piro: show/delete trailing spaces
+command! ShowTrail /\s\+$
+command! NoTrail %s/\s\+$//
 
-" Hide the yankring history file.
-let g:yankring_history_file = '.yankring_history'
+" grep the current work dir with ,#
+set grepprg=grep\ -nIr\ --exclude-dir\ _darcs\ $*\ /dev/null
+nnoremap <leader># :grep <cword> .<CR><CR>:cw<CR>
 
-" at Gambit tabs are ok
+" convert placeholders from psycopg to psql style and back
+command! PHFromPy %s/%(\([^)]*\))s/:\1/g
+command! PHToPy %s/\([^:]\):\([a-z0-9_][a-z0-9_]*\)/\1%(\2)s/g
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Gambit configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let hostname = substitute(system('hostname'), '\n$', '', '')
 if hostname == 'risotto'
 
-    set noexpandtab
-    autocmd FileType python set tabstop=4|set shiftwidth=4|set sts=4|set noexpandtab
+    set noexpandtab     " Use tabs... sigh
 
     " External projects on which spaces should be used anyway
     autocmd BufRead /home/piro/etc/* set expandtab
@@ -291,37 +321,10 @@ if hostname == 'risotto'
     autocmd BufRead /home/piro/src/pgxnclient/* set expandtab
     autocmd BufRead /home/piro/src/setproctitle/* set expandtab
 
-    " piro: here on risotto the 'visual bell' is slow.
+    " here on risotto the 'visual bell' is slow.
     set novisualbell
 
+    " open my log file
+    command! TODO tabe scp://piro@bart//home/piro/todo.txt
+
 endif
-
-" piro: grep the current work dir with ,#
-set grepprg=grep\ -nIr\ --exclude-dir\ _darcs\ $*\ /dev/null
-nnoremap <leader># :grep <cword> .<CR><CR>:cw<CR>
-
-" piro: convert placeholders from psycopg to psql style and back
-:command! PHFromPy %s/%(\([^)]*\))s/:\1/g
-:command! PHToPy %s/\([^:]\):\([a-z0-9_][a-z0-9_]*\)/\1%(\2)s/g
-
-""" piro: use the global clipboard (don't need "+ anymore)
-"":set clipboard=unnamed,autoselect
-""" note: the default was: "autoselect,exclude:cons\\\|linux" but with it
-""" "+unnamed" doesn't work. I've found no docs for the other options.
-
-" yankring doesn't work with the above: for the moment let's use a shortcut
-" for "+y
-:vnoremap <leader>y "+y
-:nnoremap <leader>p "+p
-:nnoremap <leader>P "+P
-
-" open my log file
-:command! TODO tabe scp://piro@bart//home/piro/todo.txt
-
-" look for my snippets too
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
-
-if version >= 703
-    set colorcolumn=80
-endif
-
