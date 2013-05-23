@@ -81,11 +81,18 @@ set clipboard=unnamed,unnamedplus,autoselect,exclude:cons\\\|linux
 let mapleader = ","
 set tildeop             " ~ takes a movement command
 
+" go up/down one editor line, not one file line
+" (don't jump over long lines wrapped
+nnoremap j gj
+vnoremap j gj
+nnoremap k gk
+vnoremap k gk
+
 " scrolling on dope
-nnoremap <C-j> 3j
-vnoremap <C-j> 3j
-nnoremap <C-k> 3k
-vnoremap <C-k> 3k
+nnoremap <C-j> 3gj
+vnoremap <C-j> 3gj
+nnoremap <C-k> 3gk
+vnoremap <C-k> 3gk
 nnoremap <C-l> W
 vnoremap <C-l> E
 nnoremap <C-h> B
