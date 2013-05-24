@@ -15,12 +15,6 @@ set viminfo='20,\"50    " Read/write a .viminfo file, don't store more
 set history=50          " Keep 50 lines of command line history
 set hidden              " Allow unsaved buffers to be put in background
 
-" Autocomplete files like on bash, not on windows.
-" Don't autocomplete the first occurrenct but stop at the common prefix
-set wildmenu
-set wildmode=list:longest
-set wildignore=*.o,*.pyc
-
 " Enable UltiSnip plugin
 set runtimepath+=~/.vim/bundles/UltiSnips
 
@@ -39,19 +33,12 @@ set softtabstop=4
 
 set wrap                " These guys will never learn the world stops at col 80
 set bs=indent,eol,start " Allow backspacing over everything in insert mode
-
 set showmatch           " Show matching parenthesis when writing
+set tildeop             " ~ takes a movement command
 
 set sidescroll=1        " Scoll 1 char at time left/right
 set scrolloff=3         " How much to see around the cursor
 set sidescrolloff=3
-
-" In text files, always limit the width of text to 78 characters
-autocmd BufRead *.txt set tw=78
-autocmd BufRead *.rst set tw=78
-
-" 2 tabs indenting in *ml
-autocmd FileType html,htmldjango,xml set ts=2|set sw=2|set sts=2
 
 " When sudoed, disable yankring, or it will chown the histfile to root,
 " creating errors at the next non-sudoed usage.
@@ -75,7 +62,6 @@ set clipboard=unnamed,unnamedplus,autoselect,exclude:cons\\\|linux
 
 " leader in coma
 let mapleader = ","
-set tildeop             " ~ takes a movement command
 
 " go up/down one editor line, not one file line
 " (don't jump over long lines wrapped
@@ -153,15 +139,11 @@ let java_space_errors=1
 let python_space_errors_highlight=1
 
 " set ai                " always set autoindenting on (broken)
-
-" bernie: indentation
-" set smartindent
+" set smartindent       " bernie: indentation
 " piro: trying if cindent avoids the hash to first column problem
 " http://stackoverflow.com/questions/354097/
 set cindent
 
-" tmpl files are django for me
-autocmd BufRead,BufNewFile *.tmpl set filetype=htmldjango
 
 " Display whitespaces errors (at eol, before tab)
 syn match ExtraWhitespace /\s\+$\| \+\ze\t/
@@ -174,9 +156,26 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 " highlight link ExtraWhitespace Error
 
 
+" In text files, always limit the width of text to 78 characters
+autocmd BufRead *.txt set tw=78
+autocmd BufRead *.rst set tw=78
+
+" 2 tabs indenting in *ml
+autocmd FileType html,htmldjango,xml set ts=2|set sw=2|set sts=2
+
+" tmpl files are django for me
+autocmd BufRead,BufNewFile *.tmpl set filetype=htmldjango
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Load/Save
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Autocomplete files like on bash, not on windows.
+" Don't autocomplete the first occurrenct but stop at the common prefix
+set wildmenu
+set wildmode=list:longest
+set wildignore=*.o,*.pyc
 
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=ucs-bom,utf-8,latin1
