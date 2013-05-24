@@ -44,8 +44,8 @@ set sidescrolloff=3
 autocmd BufRead *.txt set tw=78
 autocmd BufRead *.rst set tw=78
 
-" 2 tabs indenting in html
-autocmd FileType html,htmldjango set ts=2|set sw=2|set sts=2
+" 2 tabs indenting in *ml
+autocmd FileType html,htmldjango,xml set ts=2|set sw=2|set sts=2
 
 " look for my snippets too
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
