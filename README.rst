@@ -8,14 +8,16 @@ Check this out into a ~/etc directory::
 
 After cloning you should update the submodules::
 
+    cd etc/
     git submodule init
     git submodule update
-    cd submods/pyflakes-vim/
+    cd vim/bundles/pyflakes-vim/
     git submodule init
     git submodule update
 
 Create symlinks to the config files::
 
+    cd ~
     ./etc/makelinks.sh
 
 Perfect.

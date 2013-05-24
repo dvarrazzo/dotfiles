@@ -22,10 +22,10 @@ set wildmode=list:longest
 set wildignore=*.o,*.pyc
 
 " Enable UltiSnip plugin
-set runtimepath+=~/etc/submods/ultisnip
+set runtimepath+=~/.vim/bundles/UltiSnips
 
 " Enable PyFlakes integration
-set runtimepath+=~/etc/submods/pyflakes-vim
+set runtimepath+=~/.vim/bundles/pyflakes-vim
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
