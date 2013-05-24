@@ -24,6 +24,9 @@ set wildignore=*.o,*.pyc
 " Enable UltiSnip plugin
 set runtimepath+=~/etc/submods/ultisnip
 
+" Enable PyFlakes integration
+set runtimepath+=~/etc/submods/pyflakes-vim
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Editing
