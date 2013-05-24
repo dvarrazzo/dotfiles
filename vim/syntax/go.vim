@@ -1,1 +1,0 @@
-../go/syntax/go.vim

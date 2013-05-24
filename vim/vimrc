@@ -142,8 +142,12 @@ cnoremap <C-p> <Up>
 "    vim: set filetype=rst:
 " somewhere in a file to set its filetype
 
-syntax on               " go for Vim syntax highlight
+" Disable filetype, otherwise the runtimepath modifications won't take effect
+filetype off
 
+set runtimepath+=/usr/lib/go/misc/vim/
+
+syntax on               " go for Vim syntax highlight
 filetype plugin on      " enable loading filetype plugins
 filetype indent on      " enable loading filetype intendation mode
 
