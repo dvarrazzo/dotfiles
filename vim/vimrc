@@ -48,7 +48,7 @@ autocmd BufRead *.rst set tw=78
 autocmd FileType html,htmldjango,xml set ts=2|set sw=2|set sts=2
 
 " look for my snippets too
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
+let g:UltiSnipsSnippetDirectories=["../submods/ultisnip/UltiSnips", "snippets"]
 
 " When sudoed, disable yankring, or it will chown the histfile to root,
 " creating errors at the next non-sudoed usage.
