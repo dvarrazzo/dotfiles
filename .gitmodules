@@ -1,3 +1,6 @@
 [submodule "submods/ultisnip"]
 	path = submods/ultisnip
 	url = git://github.com/vim-scripts/UltiSnips.git
+[submodule "submods/pyflakes-vim"]
+	path = submods/pyflakes-vim
+	url = git://github.com/kevinw/pyflakes-vim.git
