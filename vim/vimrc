@@ -21,6 +21,9 @@ set wildmenu
 set wildmode=list:longest
 set wildignore=*.o,*.pyc
 
+" Enable UltiSnip plugin
+set runtimepath+=~/etc/submods/ultisnip
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Editing
@@ -46,9 +49,6 @@ autocmd BufRead *.rst set tw=78
 
 " 2 tabs indenting in *ml
 autocmd FileType html,htmldjango,xml set ts=2|set sw=2|set sts=2
-
-" look for my snippets too
-let g:UltiSnipsSnippetDirectories=["../submods/ultisnip/UltiSnips", "snippets"]
 
 " When sudoed, disable yankring, or it will chown the histfile to root,
 " creating errors at the next non-sudoed usage.

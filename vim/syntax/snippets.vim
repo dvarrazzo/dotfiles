@@ -1,1 +1,0 @@
-../../submods/ultisnip/syntax/snippets.vim
