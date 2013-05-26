@@ -21,6 +21,9 @@ set runtimepath+=~/.vim/bundles/UltiSnips
 " Enable PyFlakes integration
 set runtimepath+=~/.vim/bundles/pyflakes-vim
 
+" Enable Tabular
+set runtimepath+=~/.vim/bundles/tabular
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Editing
