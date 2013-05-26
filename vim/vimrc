@@ -24,6 +24,9 @@ set runtimepath+=~/.vim/bundles/pyflakes-vim
 " Enable Tabular
 set runtimepath+=~/.vim/bundles/tabular
 
+" Enable NERDTree
+set runtimepath+=~/.vim/bundles/nerdtree
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Editing
