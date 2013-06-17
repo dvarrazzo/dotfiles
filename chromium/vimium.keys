@@ -14,3 +14,8 @@ map l goForward
 map H scrollLeft
 map L scrollRight
 
+# scroll with the left hand
+map a scrollUp
+map z scrollDown
+map q goBack
+map w goForward
