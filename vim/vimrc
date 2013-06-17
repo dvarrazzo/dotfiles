@@ -135,7 +135,8 @@ cnoremap <C-p> <Up>
 " Disable filetype, otherwise the runtimepath modifications won't take effect
 filetype off
 
-set runtimepath+=/usr/lib/go/misc/vim/
+" Ubuntu vim addons. Includes golang.
+set runtimepath+=/usr/share/vim/addons/
 
 syntax on               " go for Vim syntax highlight
 filetype plugin on      " enable loading filetype plugins
