@@ -7,6 +7,7 @@ ln -s etc/bash_completion .bash_completion
 ln -s etc/ackrc .ackrc
 ln -s etc/git/gitconfig .gitconfig
 ln -s etc/git/gitignore .gitignore
+ln -s etc/git/git_template .git_template
 ln -s etc/hg/hgrc .hgrc
 ln -s etc/less/lessfilter .lessfilter
 ln -s etc/psqlrc .psqlrc

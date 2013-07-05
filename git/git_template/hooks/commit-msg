@@ -1,0 +1,2 @@
+#!/bin/bash
+git diff --cached | grep -C2 NOCOMMIT && echo "Y U COMMIT!!1" && exit 1
