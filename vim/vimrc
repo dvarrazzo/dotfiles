@@ -164,16 +164,16 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 
 
 " In text files, always limit the width of text to 78 characters
-autocmd FileType text,rst set tw=78
+autocmd FileType text,rst setl tw=78
 
 " 2 tabs indenting in *ml
-autocmd FileType html,htmldjango,xml set ts=2|set sw=2|set sts=2
+autocmd FileType html,htmldjango,xml setl ts=2 | setl sw=2 | setl sts=2
 
 " tmpl files are django for me
-autocmd BufRead,BufNewFile *.tmpl set filetype=htmldjango
+autocmd BufRead,BufNewFile *.tmpl setl filetype=htmldjango
 
 " cindent in c-style files
-autocmd FileType c,cpp,java set cindent
+autocmd FileType c,cpp,java setl cindent
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -329,6 +329,7 @@ command! PHFromPy %s/%(\([^)]*\))s/:\1/g
 command! PHToPy %s/\([^:]\):\([a-z0-9_][a-z0-9_]*\)/\1%(\2)s/g
 
 " reset tabs to size 4 - sometimes it switches to 2 editing html. TODO why?
+" (maybe because of the set/setlocal issue with autocmd?)
 command! Quattro set ts=4 sw=4 sts=4
 
 
