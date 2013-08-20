@@ -164,8 +164,7 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 
 
 " In text files, always limit the width of text to 78 characters
-autocmd BufRead *.txt set tw=78
-autocmd BufRead *.rst set tw=78
+autocmd FileType text,rst set tw=78
 
 " 2 tabs indenting in *ml
 autocmd FileType html,htmldjango,xml set ts=2|set sw=2|set sts=2
