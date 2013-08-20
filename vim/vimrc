@@ -148,7 +148,8 @@ let python_space_errors_highlight=1
 " set smartindent       " bernie: indentation
 " piro: trying if cindent avoids the hash to first column problem
 " http://stackoverflow.com/questions/354097/
-set cindent
+" piro: disabling cindent globally too because it messes up with text files.
+" set cindent
 
 
 " Display whitespaces errors (at eol, before tab)
@@ -171,6 +172,9 @@ autocmd FileType html,htmldjango,xml set ts=2|set sw=2|set sts=2
 
 " tmpl files are django for me
 autocmd BufRead,BufNewFile *.tmpl set filetype=htmldjango
+
+" cindent in c-style files
+autocmd FileType c,cpp,java set cindent
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
