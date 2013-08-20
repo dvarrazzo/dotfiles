@@ -1,7 +1,7 @@
 export PAGER="/usr/bin/less -R"
 alias less='less -R'
+# export LESSCOLOR=always
 
-export LESSCOLOR=always
 export EDITOR=vim
 export PGAPPNAME=$USER@$(hostname)
 
