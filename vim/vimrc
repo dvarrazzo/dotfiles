@@ -181,7 +181,7 @@ autocmd FileType c,cpp,java setl cindent
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Autocomplete files like on bash, not on windows.
-" Don't autocomplete the first occurrenct but stop at the common prefix
+" Don't autocomplete the first occurrence but stop at the common prefix
 set wildmenu
 set wildmode=list:longest
 set wildignore=*.o,*.pyc
