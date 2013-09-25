@@ -27,6 +27,8 @@ set runtimepath+=~/.vim/bundles/tabular
 " Enable NERDTree
 set runtimepath+=~/.vim/bundles/nerdtree
 
+" note: closetag is enabled: use C-_ to close a tag.
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Editing
