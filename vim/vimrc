@@ -203,8 +203,9 @@ autocmd BufReadPost *
 " ...but not for git commit messages, please
 autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 
-" piro: use :O to open a file into an existing tab
+" piro: use :O to open a file into an existing tab. Also testing with ,o
 :command! -nargs=1 -complete=file O tab drop <args>
+:nmap <leader> o :tab drop
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
