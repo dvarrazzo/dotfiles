@@ -2,3 +2,5 @@
 \set appname `echo \'${PGAPPNAME:-$USER@$(hostname)}:psql\'`
 set application_name to :appname;
 \set QUIET 0
+\set VERBOSITY verbose
+\timing
