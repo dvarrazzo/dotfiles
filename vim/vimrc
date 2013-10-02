@@ -337,6 +337,11 @@ nnoremap <leader># :grep <cword> .<CR><CR>:cw<CR>
 command! PHFromPy %s/%(\([^)]*\))s/:\1/g
 command! PHToPy %s/\([^:]\):\([a-z0-9_][a-z0-9_]*\)/\1%(\2)s/g
 
+" create reST titles
+nmap <leader>= <ESC>yypVr=
+nmap <leader>- <ESC>yypVr-
+nmap <leader>^ <ESC>yypVr^
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gambit configuration
