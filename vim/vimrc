@@ -109,6 +109,9 @@ vnoremap <F1> <ESC>
 " no ex mode (type visual to go back to sanity)
 nnoremap Q <Nop>
 
+" toggle list/nolist
+nmap <leader><space> :set invlist<CR>
+
 " Ctrl-V pastes from register in insert mode
 inoremap <C-v> <C-r>"
 
