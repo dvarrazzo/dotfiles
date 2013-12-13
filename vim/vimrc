@@ -139,6 +139,9 @@ cnoremap <C-p> <Up>
 filetype off
 
 " Ubuntu vim addons. Includes golang.
+" NOTE: Watch what's in that dir! The editexisting extension was slowing down
+" gvim starting and generally doing what I don't want (I told you edit this
+" file: bloody edit it, don't tell me it's open somewhere in my 18 desks).
 set runtimepath+=/usr/share/vim/addons/
 
 syntax on               " go for Vim syntax highlight
