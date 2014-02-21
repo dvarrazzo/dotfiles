@@ -26,6 +26,9 @@ set runtimepath+=~/.vim/bundles/tabular
 
 " Enable NERDTree
 set runtimepath+=~/.vim/bundles/nerdtree
+"
+" Enable ack.vim
+set runtimepath+=~/.vim/bundles/ack
 
 " note: closetag is enabled: use C-_ to close a tag.
 
