@@ -222,6 +222,7 @@ autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 :command Wq wq
 :command W w
 :command Q q
+:command Qa qa
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
