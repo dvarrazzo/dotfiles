@@ -327,6 +327,12 @@ endif
 " ,f to ack around
 nmap <leader>f :LAck
 
+" Use The Silver Searcher if available
+if system("which ag") != ''
+    let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Utility macros
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
