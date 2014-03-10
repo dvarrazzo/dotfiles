@@ -50,6 +50,7 @@ set tildeop             " ~ takes a movement command
 set sidescroll=1        " Scoll 1 char at time left/right
 set scrolloff=3         " How much to see around the cursor
 set sidescrolloff=3
+set showcmd             " Show partial commands
 
 " When sudoed, disable yankring, or it will chown the histfile to root,
 " creating errors at the next non-sudoed usage.
