@@ -1,3 +1,7 @@
+-- Note: if awesome fails to configure properly it could be for very stupid
+-- reasons, e.g. an icon not found in the menu. Check the log at
+-- less /proc/$(pidof awesome)/fd/2
+
 -- Standard awesome library
 require("awful")
 require("awful.autofocus")
