@@ -84,12 +84,8 @@ myawesomemenu = {
 }
 
 piromenu = {
-    { "Chromium", "chromium-browser", icon('chromium-browser.png') },
-    { "Facebook",
-        "chromium-browser --user-data-dir=/home/piro/.config/chromium/profile-facebook",
-        icon('chromium-browser.png') },
-
-    { "Banshee", "banshee", "/usr/share/banshee/icons/hicolor/16x16/categories/radio.png" },
+    { "Chrome", "google-chrome", '/opt/google/chrome/product_logo_16.png' },
+    { "Clementine", "clementine", "/usr/share/pixmaps/clementine-16.xpm" },
     { "Pidgin", "pidgin", "/usr/share/icons/hicolor/16x16/apps/pidgin.png" },
     { "GNOME Config", "gnome-control-center", icon("gnome-control-centre.png") },
     { "Synaptic", "gksudo synaptic", icon('synaptic.png') },
