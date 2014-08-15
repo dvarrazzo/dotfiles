@@ -219,11 +219,11 @@ autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 :nmap <leader>o <ESC>:tab drop
 
 " common misspells on save/exit
-:command WQ wq
-:command Wq wq
-:command W w
-:command Q q
-:command Qa qa
+:command! WQ wq
+:command! Wq wq
+:command! W w
+:command! Q q
+:command! Qa qa
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
