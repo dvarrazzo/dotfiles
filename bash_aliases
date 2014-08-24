@@ -8,6 +8,9 @@ export PGAPPNAME=$USER@$(hostname)
 # Avoid "WARNING **: Unable to create Ubuntu Menu Proxy" starting gvim
 export UBUNTU_MENUPROXY=
 
+# NAAAAAHHH... CDPATH!
+CDPATH=".:~/dev:~:~/dev/fs"
+
 alias ll='ls -l'
 alias grep='grep --color=auto -I'
 alias egrep='egrep --color=auto -I'
