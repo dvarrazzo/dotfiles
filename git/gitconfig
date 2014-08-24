@@ -6,17 +6,20 @@
     ui = auto
 
 [alias]
-    st = status
-    ci = commit
-    cam = commit --amend
+    ap = add -p
     br = branch
+    ca = commit --amend
+    ci = commit
     co = checkout
-    df = diff
     cp = cherry-pick
-    sm = submodule
+    df = diff
     l1 = log --oneline
     lo = log --oneline
     loog = log --pretty=fuller
+    rc = rebase --continue
+    ri = rebase --interactive
+    sm = submodule
+    st = status
 
 [core]
     excludesfile = ~/.gitignore
