@@ -13,3 +13,6 @@
 [submodule "vim/bundles/ack"]
 	path = vim/bundles/ack
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "vim/bundles/ansible-yaml"]
+	path = vim/bundles/ansible-yaml
+	url = https://github.com/chase/vim-ansible-yaml.git

@@ -30,6 +30,9 @@ set runtimepath+=~/.vim/bundles/nerdtree
 " Enable ack.vim
 set runtimepath+=~/.vim/bundles/ack
 
+" Ansible
+set runtimepath+=~/.vim/bundles/ansible-yaml
+
 " note: closetag is enabled: use C-_ to close a tag.
 
 
