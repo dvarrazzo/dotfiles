@@ -101,6 +101,10 @@ nnoremap <leader>k <C-w>k
 nnoremap <leader>h <C-w>h
 nnoremap <leader>l <C-w>l
 
+" move splits up and down
+nnoremap <leader>J <C-w>x<C-w>j
+nnoremap <leader>K <C-w>k<C-w>x
+
 " open new splits and move there
 nnoremap <leader>v <C-w>v<C-w>l
 nnoremap <leader>s <C-w>s<C-w>l
@@ -224,6 +228,20 @@ autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 :command! W w
 :command! Q q
 :command! Qa qa
+
+" nerdtree
+let NERDTreeRespectWildIgnore=1
+let NERDTreeWinSize=21
+nmap <leader>n :NERDTreeToggle<CR>
+nmap <leader>N :NERDTreeMirror<CR>
+
+" cheatsheet:
+" C: change dir
+" i: open in new split
+" t: open in new tab
+" T: open in new tab but stay here
+" u: up one dir
+" q: close
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
