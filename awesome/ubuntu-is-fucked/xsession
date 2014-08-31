@@ -1,0 +1,3 @@
+gnome-session &
+eval `gnome-keyring-daemon`
+exec /usr/bin/awesome

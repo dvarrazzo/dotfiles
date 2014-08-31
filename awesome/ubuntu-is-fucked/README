@@ -1,0 +1,3 @@
+Copy xsession.desktop in /usr/share/xsessions
+and xsession as ~/.xsession
+to have the choice of running awesome with the gnome environment
