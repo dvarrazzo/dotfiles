@@ -13,17 +13,32 @@ moron thinks `it is confusing`__.
 - Copy ``xsession.desktop`` as ``/usr/share/xsessions``
 - Copy and ``xsession`` as ``~/.xsession``
 
-to have the choice of running awesome with the gnome environment
+to have the choice of running Awesome with the Gnome keyring or the Gnome
+environment. Except that...
+
+
+``gnome-session`` is no more
+----------------------------
+
+In 12.04 I could use ``gnome-session &`` in ``~/.xsession`` and it would have
+run the entire desktop environment using Awesome as WM. This is no more
+possible: if you try in 14.04 the desktop will steal your notifications (i.e.
+no application icons).
+
+So in 14.04 you get the shit appearence of the basic gtk2-or-whatever theme,
+Windows-3.11-style. Welcome back to fucking 1993, and no Nirvana around either.
+
+To check if the notification area is fucked run ``appind.py``.
 
 
 Keyboard fucked up in Ubuntu 14.04
 ----------------------------------
 
-No en-uk keyboard, no alt-gr composite, '`' must be pressed twice... WTF?
+No en-uk keyboard, no alt-gr composite, ````` must be pressed twice...  WTF?
 iBus?
 
 Disable iBus by running ``gnome-language-selector`` (keyboard input method
-system: none)
+system: none).
 
 
 The fucking drums are back
@@ -31,4 +46,4 @@ The fucking drums are back
 
 I'm so happy. ::
 
-    sudo mv /usr/share/sounds/ubuntu/stereo/system-ready.ogg{,.fuckoff}
+    sudo mv -vi /usr/share/sounds/ubuntu/stereo/system-ready.ogg{,.fuckoff}
