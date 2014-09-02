@@ -403,10 +403,11 @@ command! BDH call DeleteHiddenBuffers()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Gambit configuration
+" Local configurations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let hostname = substitute(system('hostname'), '\n$', '', '')
+
 if hostname == 'risotto'
 
     set noexpandtab     " Use tabs... sigh
@@ -423,5 +424,11 @@ if hostname == 'risotto'
 
     " open my log file
     command! TODO tabe scp://piro@bart//home/piro/todo.txt
+
+endif
+
+if hostname == 'akela'
+
+    set guifont=Monospace\ 10 " a bit bigger...
 
 endif
