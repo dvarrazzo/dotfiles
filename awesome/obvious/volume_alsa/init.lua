@@ -87,7 +87,7 @@ function mute(cardid, channel)
 end
 
 function mixer(term, cardid)
-    awful.util.spawn(term .. " -e 'alsamixer -c " .. cardid .. "'")
+    awful.util.spawn("gnome-control-center sound")
 end
 
 local function create(_, cardid, channel)
