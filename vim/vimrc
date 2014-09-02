@@ -31,7 +31,9 @@ set runtimepath+=~/.vim/bundles/nerdtree
 set runtimepath+=~/.vim/bundles/ack
 
 " Ansible
-set runtimepath+=~/.vim/bundles/ansible-yaml
+if v:version > 703
+    set runtimepath+=~/.vim/bundles/ansible-yaml
+endif
 
 " note: closetag is enabled: use C-_ to close a tag.
 
