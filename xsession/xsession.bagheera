@@ -1,12 +1,19 @@
 #!/bin/bash
 
-nm-applet &
-gnome-settings-daemon &
-indicator-weather &
-indicator-cpufreq &
-indicator-multiload &
-bluetooth-applet &
-caffeine &
+FAIL=/usr/share/icons/gnome/32x32/status/computer-fail.png
+
+function run {
+    ("$1" || notify-send --urgency critical --icon "$FAIL" \
+        "applet $1 failed to start" "see ~/.xsession") &
+}
+
+run nm-applet
+run gnome-settings-daemon
+run indicator-weather
+run indicator-cpufreq
+run indicator-multiload
+run bluetooth-applet
+run caffeine
 
 eval `gnome-keyring-daemon`
 exec /usr/bin/awesome
