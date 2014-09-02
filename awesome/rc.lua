@@ -117,11 +117,13 @@ function icon(name)
     return path .. name
 end
 
-myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
+systemmenu = {
+    { "Restart Awesome", awesome.restart, beautiful.awesome_icon },
+    { "End Session", awesome.quit, icon("ubuntu.png") },
+    { "Reboot", "gksudo -m 'Restart the system?' 'shutdown -r now'",
+        icon("restart.png") },
+    { "Shutdown", "gksudo -m 'Shut down the system?' 'shutdown -h now'",
+        icon("shutdown.png") }
 }
 
 piromenu = {
