@@ -5,8 +5,7 @@
 " note: to reload, use ':so %'
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" General
+" General {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set nocompatible        " Use Vim defaults (much better!)
@@ -37,9 +36,9 @@ endif
 
 " note: closetag is enabled: use C-_ to close a tag.
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Editing
+" Editing {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set expandtab
@@ -72,9 +71,9 @@ set clipboard=unnamed,unnamedplus,autoselect,exclude:cons\\\|linux
 " note: appending after "exclude:" with "+unnamed" doesn't work.
 " default was "autoselect,exclude:cons\\\|linux"
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Keybindings
+" Keybindings {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " leader in coma
@@ -139,9 +138,9 @@ set nostartofline
 " Search in history for common prefix with Ctrl-p
 cnoremap <C-p> <Up>
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Syntax
+" Syntax {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " note: you can use
@@ -200,9 +199,9 @@ autocmd BufRead,BufNewFile *.tmpl setl filetype=htmldjango
 " cindent in c-style files
 autocmd FileType c,cpp,java setl cindent
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Load/Save
+" Load/Save {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Autocomplete files like on bash, not on windows.
@@ -251,10 +250,10 @@ nmap <leader>N :NERDTreeMirror<CR>
 " u: up one dir
 " q: close
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Interface {{{
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " If you need to limit that on some ancient console
 " use 'if &term=="xterm"' or something else
@@ -295,6 +294,16 @@ if has("mouse")
     set mouse=a
 endif
 
+set foldmethod=marker  " explicit markers {{{ and }}}
+
+" Fold cheatsheet:
+" zf: create a new fold (movement or selection)
+" za: toggle a fold
+" zR: open all folds
+" zM: close all folds
+" zj: move down one fold
+" zk: move up one fold
+
 " More readable folded color (on default color scheme)
 " hi Folded guifg=Blue
 
@@ -327,9 +336,9 @@ endfunction
 map <silent><C-S-PageUp> :execute TabLeft()<CR>
 map <silent><C-S-PageDown> :execute TabRight()<CR>
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Search
+" Search {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set hlsearch            " Highlight when searching
@@ -367,9 +376,9 @@ if system("which ag") != ''
     let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Utility macros
+" Utility macros {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " inject a Python breakpoint
@@ -407,9 +416,9 @@ endfunction
 
 command! BDH call DeleteHiddenBuffers()
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Local configurations
+" Local configurations {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let hostname = substitute(system('hostname'), '\n$', '', '')
@@ -435,3 +444,5 @@ if hostname == 'akela'
     set guifont=Monospace\ 10 " a bit bigger...
 
 endif
+
+"}}}
