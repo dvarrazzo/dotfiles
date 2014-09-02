@@ -429,6 +429,6 @@ endif
 
 if hostname == 'akela'
 
-    set guifont=Monospace\ 9 " smaller font
+    set guifont=Monospace\ 10 " a bit bigger...
 
 endif
