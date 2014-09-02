@@ -4,7 +4,7 @@ How To Unfuck Ubuntu
 Missing "default" session
 -------------------------
 
-The user defined session (a.k.a. ``~/.session`` is used to run the VM of your
+The user defined session (a.k.a. ``~/.session`` is used to run the WM of your
 choice together with other programs. In Ubuntu this is disable because some
 moron thinks `it is confusing`__.
 
