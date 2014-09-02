@@ -1,0 +1,13 @@
+# Don't use it on ubuntu 14.04: it will steal your notifications
+# gnome-session &
+
+nm-applet &
+(sleep 3 && /opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator) &
+(sleep 6 && /opt/extras.ubuntu.com/calendar-indicator/bin/calendar-indicator) &
+(sleep 9 && google-tasks-indicator) &
+(sleep 12 && indicator-cpufreq) &
+(sleep 15 && indicator-multiload) &
+
+eval `gnome-keyring-daemon`
+
+exec /usr/bin/awesome
