@@ -11,6 +11,8 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
+home = os.getenv("HOME")
+
 -- extra widgets
 require('obvious.volume_alsa')
 require('obvious.battery')
@@ -25,7 +27,7 @@ require("cal")              -- awful based
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+beautiful.init(home .. "/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 -- terminal = "x-terminal-emulator"
@@ -72,8 +74,6 @@ end
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
-
-home = os.getenv("HOME")
 
 function icon(name)
     local path = home .. '/.config/awesome/icons/'
