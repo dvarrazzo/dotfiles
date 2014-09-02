@@ -80,11 +80,13 @@ function icon(name)
     return path .. name
 end
 
-myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua" },
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
+systemmenu = {
+    { "Restart Awesome", awesome.restart, beautiful.awesome_icon },
+    { "End Session", awesome.quit, icon("ubuntu.png") },
+    { "Reboot", "gksudo -m 'Restart the system?' 'shutdown -r now'",
+        icon("restart.png") },
+    { "Shutdown", "gksudo -m 'Shut down the system?' 'shutdown -h now'",
+        icon("shutdown.png") }
 }
 
 piromenu = {
@@ -100,9 +102,8 @@ mymainmenu = awful.menu({
     items = awful.util.table.join(
         piromenu,
         {
-            { "awesome", myawesomemenu, beautiful.awesome_icon },
-            { "Debian", debian.menu.Debian_menu.Debian },
-            { "open terminal", terminal }
+            { "System", systemmenu, icon("computer.png") },
+            { "Debian", debian.menu.Debian_menu.Debian }
         }
     )
 })
