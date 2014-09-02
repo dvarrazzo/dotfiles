@@ -90,6 +90,7 @@ myawesomemenu = {
 piromenu = {
     { "Chrome", "google-chrome", '/opt/google/chrome/product_logo_16.png' },
     { "Clementine", "clementine", "/usr/share/pixmaps/clementine-16.xpm" },
+    { "Skype", "skype", "/usr/share/skype/avatars/Skype.png" },
     { "Pidgin", "pidgin", "/usr/share/icons/hicolor/16x16/apps/pidgin.png" },
     { "GNOME Config", "gnome-control-center", icon("gnome-control-centre.png") },
     { "Synaptic", "gksudo synaptic", icon('synaptic.png') },
