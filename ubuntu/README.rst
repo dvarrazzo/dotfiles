@@ -32,6 +32,9 @@ To check if the notification area is fucked run appind.py__.
 
 .. __: https://gist.github.com/dvarrazzo/8374db3b36059ff1fdf1
 
+You can restore some style using ``lxappearance``. For the functionalities
+we'll see.
+
 
 Keyboard fucked up in Ubuntu 14.04
 ----------------------------------
