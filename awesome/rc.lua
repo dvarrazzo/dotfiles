@@ -15,7 +15,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
-home = os.getenv("HOME")
+local home = os.getenv("HOME")
 
 -- extra widgets
 -- require('obvious.volume_alsa')
@@ -56,7 +56,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+beautiful.init(home .. "/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 -- terminal = "x-terminal-emulator"
