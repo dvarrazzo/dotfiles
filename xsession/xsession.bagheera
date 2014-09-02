@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# nm-applet &
+#gnome-settings-daemon &
+#indicator-weather &
+#indicator-cpufreq &
+
+# futile attempt to have the ssh agent
+# exec /usr/bin/ssh-agent /usr/bin/dbus-launch --exit-with-session /usr/bin/awesome &
+
+gnome-session &
+eval `gnome-keyring-daemon`
+exec /usr/bin/awesome
+#exec /usr/bin/i3
+
