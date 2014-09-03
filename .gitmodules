@@ -16,3 +16,6 @@
 [submodule "vim/bundles/ansible-yaml"]
 	path = vim/bundles/ansible-yaml
 	url = https://github.com/chase/vim-ansible-yaml.git
+[submodule "awesome/obvious"]
+	path = awesome/obvious
+	url = git@github.com:dvarrazzo/obvious.git
