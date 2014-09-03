@@ -18,7 +18,8 @@ local menubar = require("menubar")
 local home = os.getenv("HOME")
 
 -- extra widgets
--- require('obvious.volume_alsa')
+local obvious = require('obvious')
+obvious.volume_alsa = require('obvious.volume_alsa')
 -- require('obvious.battery')
 -- require("obvious.temp_info")
 
@@ -170,7 +171,7 @@ mytextclock = awful.widget.textclock()
 cal.register(mytextclock)
 
 -- mybatt = obvious.battery()
--- myvolume = obvious.volume_alsa()
+myvolume = obvious.volume_alsa()
 -- mytemp = obvious.temp_info()
 
 -- Create a wibox for each screen and add it
@@ -247,6 +248,7 @@ for s = 1, screen.count() do
     local left_layout = wibox.layout.fixed.horizontal()
     if s == 1 then left_layout:add(mylauncher) end
     left_layout:add(mytaglist[s])
+    left_layout:add(myvolume)
     left_layout:add(mypromptbox[s])
 
     -- Widgets that are aligned to the right
