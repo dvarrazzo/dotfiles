@@ -242,13 +242,14 @@ let NERDTreeWinSize=21
 nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>N :NERDTreeMirror<CR>
 
-" cheatsheet:
-" C: change dir
-" i: open in new split
-" t: open in new tab
-" T: open in new tab but stay here
-" u: up one dir
-" q: close
+:command! HN echo
+    \ "NERDTree cheatsheet: \n"
+    \ "C: change dir \n"
+    \ "i: open in new split \n"
+    \ "t: open in new tab \n"
+    \ "T: open in new tab but stay here \n"
+    \ "u: up one dir \n"
+    \ "q: close"
 
 "}}}
 
@@ -296,13 +297,14 @@ endif
 
 set foldmethod=marker  " explicit markers {{{ and }}}
 
-" Fold cheatsheet:
-" zf: create a new fold (movement or selection)
-" za: toggle a fold
-" zR: open all folds
-" zM: close all folds
-" zj: move down one fold
-" zk: move up one fold
+:command! HZ echo
+    \ "folding cheatsheet: \n"
+    \ "zf: create a new fold (movement or selection) \n"
+    \ "za: toggle a fold \n"
+    \ "zR: open all folds \n"
+    \ "zM: close all folds \n"
+    \ "zj: move down one fold \n"
+    \ "zk: move up one fold \n"
 
 " More readable folded color (on default color scheme)
 " hi Folded guifg=Blue
