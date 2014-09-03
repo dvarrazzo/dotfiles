@@ -249,6 +249,8 @@ nmap <leader>N :NERDTreeMirror<CR>
     \ "t: open in new tab \n"
     \ "T: open in new tab but stay here \n"
     \ "u: up one dir \n"
+    \ "ma: create a new file \n"
+    \ "R: refresh"
     \ "q: close"
 
 "}}}
