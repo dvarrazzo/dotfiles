@@ -408,7 +408,7 @@ nmap <leader>^ <ESC>yypVr^
 
 " Delete all the hidden buffers
 " from http://stackoverflow.com/questions/8450919/how-can-i-delete-all-hidden-buffers
-function DeleteHiddenBuffers()
+function! DeleteHiddenBuffers()
     let tpbl=[]
     call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
     for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
