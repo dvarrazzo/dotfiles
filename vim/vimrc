@@ -105,6 +105,13 @@ nnoremap <leader>k <C-w>k
 nnoremap <leader>h <C-w>h
 nnoremap <leader>l <C-w>l
 
+" move around the splits with Ctrl+Alt+j etc.
+nnoremap <C-A-j> <C-w>j
+nnoremap <C-A-k> <C-w>k
+nnoremap <C-A-h> <C-w>h
+nnoremap <C-A-l> <C-w>l
+" Note: you may want to change the lock screen combination to Mod4-L...
+
 " move splits up and down
 nnoremap <leader>J <C-w>x<C-w>j
 nnoremap <leader>K <C-w>k<C-w>x
@@ -244,13 +251,17 @@ nmap <leader>N :NERDTreeMirror<CR>
 
 :command! HN echo
     \ "NERDTree cheatsheet: \n"
-    \ "C: change dir \n"
-    \ "i: open in new split \n"
-    \ "t: open in new tab \n"
-    \ "T: open in new tab but stay here \n"
-    \ "u: up one dir \n"
-    \ "ma: create a new file \n"
+    \ "o: open file or dir \n"
+    \ "O: open all subdirs \n"
+    \ "X: close all subdirs \n"
+    \ "i: open file in new split \n"
+    \ "t: open file in new tab \n"
+    \ "ma: create a new file/dir \n"
     \ "R: refresh"
+    \ "F: show/hide files \n"
+    \ "cd: change current dir"
+    \ "C: change tree root dir \n"
+    \ "u: tree root up one dir \n"
     \ "q: close"
 
 "}}}
@@ -373,7 +384,7 @@ if has("cscope") && filereadable("/usr/bin/cscope")
 endif
 
 " ,f to ack around
-nmap <leader>f :LAck
+nmap <leader>f :LAck! 
 
 " Use The Silver Searcher if available
 if system("which ag") != ''
