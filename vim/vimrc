@@ -431,6 +431,9 @@ if hostname == 'risotto'
 
     set noexpandtab     " Use tabs... sigh
 
+    " ubuntu 14.04 forces tab to 8 chars and expands them
+    autocmd FileType python setl tabstop=4 | setl noexpandtab
+
     " External projects on which spaces should be used anyway
     autocmd BufRead /home/piro/.vimrc set expandtab
     autocmd BufRead /home/piro/etc/* set expandtab
@@ -440,6 +443,9 @@ if hostname == 'risotto'
 
     " open my log file
     command! TODO tabe scp://piro@bart//home/piro/todo.txt
+
+    " open a file on the live system
+    :nmap <leader>L <ESC>:tabe scp://piro@bart//home/duma/
 
 endif
 
