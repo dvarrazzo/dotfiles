@@ -244,13 +244,17 @@ nmap <leader>N :NERDTreeMirror<CR>
 
 :command! HN echo
     \ "NERDTree cheatsheet: \n"
-    \ "C: change dir \n"
-    \ "i: open in new split \n"
-    \ "t: open in new tab \n"
-    \ "T: open in new tab but stay here \n"
-    \ "u: up one dir \n"
-    \ "ma: create a new file \n"
+    \ "o: open file or dir \n"
+    \ "O: open all subdirs \n"
+    \ "X: close all subdirs \n"
+    \ "i: open file in new split \n"
+    \ "t: open file in new tab \n"
+    \ "ma: create a new file/dir \n"
     \ "R: refresh"
+    \ "F: show/hide files \n"
+    \ "cd: change current dir"
+    \ "C: change tree root dir \n"
+    \ "u: tree root up one dir \n"
     \ "q: close"
 
 "}}}
