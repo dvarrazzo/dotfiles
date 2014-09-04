@@ -272,11 +272,15 @@ nmap <leader>N :NERDTreeMirror<CR>
 " Interface {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" If you need to limit that on some ancient console
-" use 'if &term=="xterm"' or something else
-" use :echo &term to read the value
-set t_Co=256
-colorscheme desert256
+" Known terminals:
+" - gnome terminal: &term == "xterm"
+" - text shell: &term == "linux" (256 col not available)
+" - gvim: "builtin_gui". But when loading the .vimrc it is an empty string,
+"   so using has("gui_running") to check this case.
+if &term=="xterm" || has("gui_running")
+    set t_Co=256
+    colorscheme desert256
+endif
 
 set background=dark
 set guifont=Monospace\ 8 " smaller font
