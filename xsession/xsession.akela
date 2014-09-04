@@ -1,43 +1,32 @@
+#!/bin/bash
 # Don't use it on ubuntu 14.04: it will steal your notifications
 # gnome-session &
 
-FAIL=/usr/share/icons/gnome/32x32/status/computer-fail.png
+# this is sort of required for e.g. keyboard configuration and maybe
+# other stuff? screensaver?
+gnome-settings-daemon &
 
-(nm-applet \
-    || notify-send --urgency critical --icon "$FAIL" \
-        "network manager applet failed to start" \
-        "see ~/.xsession") &
+# run an applet as a process child of this script
+# after an optional delay
+function run {
+	APP=$1;
+	DELAY=$2;
+
+    (
+		if [ -n "$DELAY" ]; then sleep $DELAY; fi
+		exec "$APP"
+	) &
+}
+
+run nm-applet
+
+run indicator-cpufreq 2
+run indicator-multiload 4
 
 # sudo add-apt-repository ppa:atareao/atareao
-(sleep 3 \
-    && /opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator \
-    || notify-send --urgency critical --icon "$FAIL" \
-        "weather indicator failed to start" \
-        "see ~/.xsession") &
-
-(sleep 6 \
-    && /opt/extras.ubuntu.com/calendar-indicator/bin/calendar-indicator \
-    || notify-send --urgency critical --icon "$FAIL" \
-        "calendar indicator failed to start" \
-        "see ~/.xsession") &
-
-(sleep 9 \
-    && google-tasks-indicator \
-    || notify-send --urgency critical --icon "$FAIL" \
-        "tasks indicator failed to start" \
-        "see ~/.xsession") &
-
-(sleep 12 \
-    && indicator-cpufreq \
-    || notify-send --urgency critical --icon "$FAIL" \
-        "indicator-cpufreq failed to start" \
-        "see ~/.xsession") &
-
-(sleep 15 \
-    && indicator-multiload \
-    || notify-send --urgency critical --icon "$FAIL" \
-        "indicator-multiload failed to start" \
-        "see ~/.xsession") &
+run /opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator 6
+run /opt/extras.ubuntu.com/calendar-indicator/bin/calendar-indicator 8
+run google-tasks-indicator 10
 
 eval `gnome-keyring-daemon`
 
