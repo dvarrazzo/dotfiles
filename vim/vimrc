@@ -5,8 +5,7 @@
 " note: to reload, use ':so %'
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" General
+" General {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set nocompatible        " Use Vim defaults (much better!)
@@ -31,13 +30,15 @@ set runtimepath+=~/.vim/bundles/nerdtree
 set runtimepath+=~/.vim/bundles/ack
 
 " Ansible
-set runtimepath+=~/.vim/bundles/ansible-yaml
+if v:version > 703
+    set runtimepath+=~/.vim/bundles/ansible-yaml
+endif
 
 " note: closetag is enabled: use C-_ to close a tag.
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Editing
+" Editing {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set expandtab
@@ -70,9 +71,9 @@ set clipboard=unnamed,unnamedplus,autoselect,exclude:cons\\\|linux
 " note: appending after "exclude:" with "+unnamed" doesn't work.
 " default was "autoselect,exclude:cons\\\|linux"
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Keybindings
+" Keybindings {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " leader in coma
@@ -103,6 +104,13 @@ nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>h <C-w>h
 nnoremap <leader>l <C-w>l
+
+" move around the splits with Ctrl+Alt+j etc.
+nnoremap <C-A-j> <C-w>j
+nnoremap <C-A-k> <C-w>k
+nnoremap <C-A-h> <C-w>h
+nnoremap <C-A-l> <C-w>l
+" Note: you may want to change the lock screen combination to Mod4-L...
 
 " move splits up and down
 nnoremap <leader>J <C-w>x<C-w>j
@@ -137,9 +145,9 @@ set nostartofline
 " Search in history for common prefix with Ctrl-p
 cnoremap <C-p> <Up>
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Syntax
+" Syntax {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " note: you can use
@@ -189,15 +197,18 @@ autocmd FileType text,rst,markdown setl tw=78
 " 2 tabs indenting in *ml
 autocmd FileType html,htmldjango,xml setl ts=2 | setl sw=2 | setl sts=2
 
+" That's not Modula 2
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+
 " tmpl files are django for me
 autocmd BufRead,BufNewFile *.tmpl setl filetype=htmldjango
 
 " cindent in c-style files
 autocmd FileType c,cpp,java setl cindent
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Load/Save
+" Load/Save {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Autocomplete files like on bash, not on windows.
@@ -238,18 +249,25 @@ let NERDTreeWinSize=21
 nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>N :NERDTreeMirror<CR>
 
-" cheatsheet:
-" C: change dir
-" i: open in new split
-" t: open in new tab
-" T: open in new tab but stay here
-" u: up one dir
-" q: close
+:command! HN echo
+    \ "NERDTree cheatsheet: \n"
+    \ "o: open file or dir \n"
+    \ "O: open all subdirs \n"
+    \ "X: close all subdirs \n"
+    \ "i: open file in new split \n"
+    \ "t: open file in new tab \n"
+    \ "ma: create a new file/dir \n"
+    \ "R: refresh"
+    \ "F: show/hide files \n"
+    \ "cd: change current dir"
+    \ "C: change tree root dir \n"
+    \ "u: tree root up one dir \n"
+    \ "q: close"
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Interface {{{
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " If you need to limit that on some ancient console
 " use 'if &term=="xterm"' or something else
@@ -290,10 +308,22 @@ if has("mouse")
     set mouse=a
 endif
 
+set foldmethod=marker  " explicit markers {{{ and }}}
+
+:command! HZ echo
+    \ "folding cheatsheet: \n"
+    \ "zf: create a new fold (movement or selection) \n"
+    \ "za: toggle a fold \n"
+    \ "zR: open all folds \n"
+    \ "zM: close all folds \n"
+    \ "zj: move down one fold \n"
+    \ "zk: move up one fold \n"
+
 " More readable folded color (on default color scheme)
 " hi Folded guifg=Blue
 
-set visualbell          " Don't ring a bell on error
+" set visualbell        " Don't ring a bell on error
+set novisualbell        " Enough with flashes
 set winminheight=0      " Can squash unactive buffers to 0 lines
 set noequalalways       " Don't resize buffers after split/close
 
@@ -321,9 +351,9 @@ endfunction
 map <silent><C-S-PageUp> :execute TabLeft()<CR>
 map <silent><C-S-PageDown> :execute TabRight()<CR>
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Search
+" Search {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set hlsearch            " Highlight when searching
@@ -354,16 +384,16 @@ if has("cscope") && filereadable("/usr/bin/cscope")
 endif
 
 " ,f to ack around
-nmap <leader>f :LAck
+nmap <leader>f :LAck! 
 
 " Use The Silver Searcher if available
 if system("which ag") != ''
     let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Utility macros
+" Utility macros {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " inject a Python breakpoint
@@ -391,7 +421,7 @@ nmap <leader>^ <ESC>yypVr^
 
 " Delete all the hidden buffers
 " from http://stackoverflow.com/questions/8450919/how-can-i-delete-all-hidden-buffers
-function DeleteHiddenBuffers()
+function! DeleteHiddenBuffers()
     let tpbl=[]
     call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
     for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
@@ -401,9 +431,9 @@ endfunction
 
 command! BDH call DeleteHiddenBuffers()
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Local configurations
+" Local configurations {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let hostname = substitute(system('hostname'), '\n$', '', '')
@@ -412,6 +442,9 @@ if hostname == 'risotto'
 
     set noexpandtab     " Use tabs... sigh
 
+    " ubuntu 14.04 forces tab to 8 chars and expands them
+    autocmd FileType python setl tabstop=4 | setl noexpandtab
+
     " External projects on which spaces should be used anyway
     autocmd BufRead /home/piro/.vimrc set expandtab
     autocmd BufRead /home/piro/etc/* set expandtab
@@ -419,11 +452,11 @@ if hostname == 'risotto'
     autocmd BufRead /home/piro/src/pgxnclient/* set expandtab
     autocmd BufRead /home/piro/src/setproctitle/* set expandtab
 
-    " here on risotto the 'visual bell' is slow.
-    set novisualbell
-
     " open my log file
     command! TODO tabe scp://piro@bart//home/piro/todo.txt
+
+    " open a file on the live system
+    :nmap <leader>L <ESC>:tabe scp://piro@bart//home/duma/
 
 endif
 
@@ -432,3 +465,5 @@ if hostname == 'akela'
     set guifont=Monospace\ 10 " a bit bigger...
 
 endif
+
+"}}}

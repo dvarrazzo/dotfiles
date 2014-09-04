@@ -1,0 +1,16 @@
+snippet dir "Create a directory" b
+- name: create the $1 directory
+  file: name=$2 state=directory owner=$3
+    mode=755
+  tags: [ system ]
+endsnippet
+
+snippet depend "Create a dependency in meta" b
+dependencies:
+  - role: $1
+endsnippet
+
+snippet restart "Create a handler to restart a service" b
+- name: restart $1
+  service: name=$1 state=restarted
+endsnippet

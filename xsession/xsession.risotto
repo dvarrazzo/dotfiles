@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# this is useful
+# disabled as not needed if gnome-settings-daemon is used
+# xrandr --output DFP3 --rotate left --output DFP4 --rotate right --right-of DFP3
+# also tried to set it in /etc/gdm/Init/Default to rotate the login screen but
+# it doesn't work
+
+# this is sort of required for e.g. keyboard configuration and maybe
+# other stuff? screensaver?
+gnome-settings-daemon &
+
+# swap left and right mouse buttons
+# (go back in history with the left thumb)
+xmodmap -e "pointer = 1 2 3 4 5 6 7 9 8"
+
+function run {
+	APP=$1;
+	DELAY=$2;
+    FAIL_ICON=/usr/share/icons/gnome/32x32/status/computer-fail.png
+
+    (
+		if [ -n "$DELAY" ]; then
+			sleep $DELAY;
+		fi
+
+		"$APP" || notify-send --urgency critical --icon "$FAIL_ICON" \
+			"applet '$( basename $APP)' failed to start" "see ~/.xsession"
+	) &
+}
+
+run nm-applet
+run indicator-cpufreq
+run indicator-multiload
+run /opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator 5
+run /opt/extras.ubuntu.com/pomodoro-indicator/bin/pomodoro-indicator 8
+
+eval `gnome-keyring-daemon`
+
+exec awesome

@@ -18,7 +18,8 @@ local menubar = require("menubar")
 local home = os.getenv("HOME")
 
 -- extra widgets
--- require('obvious.volume_alsa')
+local obvious = require('obvious')
+obvious.volume_alsa = require('obvious.volume_alsa')
 -- require('obvious.battery')
 -- require("obvious.temp_info")
 
@@ -129,6 +130,7 @@ systemmenu = {
 piromenu = {
     { "Chrome", "google-chrome", '/opt/google/chrome/product_logo_16.png' },
     { "Clementine", "clementine", "/usr/share/pixmaps/clementine-16.xpm" },
+    { "Skype", "skype", "/usr/share/skype/avatars/Skype.png" },
     -- { "Pidgin", "pidgin", "/usr/share/icons/hicolor/16x16/apps/pidgin.png" },
     { "GNOME Config", "gnome-control-center", icon("gnome-control-centre.png") },
     { "Synaptic", "gksudo synaptic", icon('synaptic.png') },
@@ -169,7 +171,7 @@ mytextclock = awful.widget.textclock()
 cal.register(mytextclock)
 
 -- mybatt = obvious.battery()
--- myvolume = obvious.volume_alsa()
+myvolume = obvious.volume_alsa()
 -- mytemp = obvious.temp_info()
 
 -- Create a wibox for each screen and add it
@@ -244,14 +246,15 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
-    left_layout:add(mylauncher)
+    if s == 1 then left_layout:add(mylauncher) end
     left_layout:add(mytaglist[s])
+    left_layout:add(myvolume)
     left_layout:add(mypromptbox[s])
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(mytextclock)
+    if s == screen.count() then right_layout:add(wibox.widget.systray()) end
+    if s == screen.count() then right_layout:add(mytextclock) end
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
