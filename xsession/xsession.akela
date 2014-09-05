@@ -27,6 +27,7 @@ run indicator-multiload 4
 run /opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator 6
 run /opt/extras.ubuntu.com/calendar-indicator/bin/calendar-indicator 8
 run google-tasks-indicator 10
+run caffeine 12
 
 eval `gnome-keyring-daemon`
 
