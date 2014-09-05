@@ -1,0 +1,54 @@
+#!/bin/bash
+# Don't use it on ubuntu 14.04: it will steal your notifications
+# gnome-session &
+
+# this is sort of required for e.g. keyboard configuration and maybe
+# other stuff? screensaver?
+gnome-settings-daemon &
+
+# run an applet as a process child of this script
+# after an optional delay
+function run {
+    APP=$1;
+    DELAY=$2;
+
+    (
+        if [ -n "$DELAY" ]; then sleep $DELAY; fi
+        exec "$APP"
+    ) &
+}
+
+run nm-applet
+run indicator-cpufreq 2
+run indicator-multiload 4
+
+case $(hostname) in
+
+    akela)
+        # sudo add-apt-repository ppa:atareao/atareao
+        run /opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator 6
+        run /opt/extras.ubuntu.com/calendar-indicator/bin/calendar-indicator 8
+        run google-tasks-indicator 10
+        run caffeine 12
+        ;;
+
+    bagheera)
+        run bluetooth-applet 6
+        run indicator-weather 8
+        run caffeine 10
+        ;;
+
+    risotto)
+        # swap left and right mouse buttons
+        # (go back in history with the left thumb)
+        xmodmap -e "pointer = 1 2 3 4 5 6 7 9 8"
+
+        run /opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator 6
+        run /opt/extras.ubuntu.com/calendar-indicator/bin/calendar-indicator 8
+        run /opt/extras.ubuntu.com/pomodoro-indicator/bin/pomodoro-indicator 10
+        ;;
+esac
+
+eval `gnome-keyring-daemon`
+
+exec /usr/bin/awesome
