@@ -17,4 +17,5 @@ ln -s etc/vim .vim
 ln -s etc/vim/vimrc .vimrc
 mkdir -p .darcs
 ln -s ~/etc/darcs/defaults .darcs/
+ln -s etc/xsession/xsession .xsession
 
