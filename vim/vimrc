@@ -244,9 +244,10 @@ autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 :command! Qa qa
 
 " nerdtree
+let NERDTreeShowHidden=1
 let NERDTreeRespectWildIgnore=1
 let NERDTreeWinSize=21
-let NERDTreeIgnore=['\~$', '\.egg$[[dir]]', '\.egg-info$[[dir]]' ]
+let NERDTreeIgnore=['\~$', '\.egg$[[dir]]', '\.egg-info$[[dir]]' , '\.bak$']
 
 nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>N :NERDTreeMirror<CR>
