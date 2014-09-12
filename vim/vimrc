@@ -291,6 +291,7 @@ set laststatus=2        " Always show the status line
 " set guioptions+=b     " bernie: Add bottom horizontal scroll bar
 set guioptions-=T       " aleph: Remove useless luser toolbar
 set guioptions-=r       " piro: No scroll bars
+set guioptions-=L       " not even at left
 
 if version >= 703
     set colorcolumn=80  " Highlight Column of Hercules (don't go past there)
