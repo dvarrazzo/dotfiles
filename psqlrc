@@ -1,7 +1,7 @@
 \set QUIET 1
 \set appname `echo \'${PGAPPNAME:-$USER@$(hostname)}:psql\'`
 set application_name to :appname;
-\set QUIET 0
 \timing
 \set PROMPT1 '%[%033[33;1m%]%x%[%033[0m%]%[%033[1m%]%/%[%033[0m%]%R%# '
 \pset format wrapped
+\set QUIET 0
