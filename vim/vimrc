@@ -434,6 +434,7 @@ function! DeleteHiddenBuffers()
 endfunction
 
 command! BDH call DeleteHiddenBuffers()
+command! BDW :windo bd
 
 "}}}
 
