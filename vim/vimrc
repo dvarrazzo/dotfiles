@@ -461,7 +461,7 @@ if hostname == 'risotto'
     command! TODO tabe scp://piro@bart//home/piro/todo.txt
 
     " open a file on the live system
-    :nmap <leader>L <ESC>:tabe scp://piro@bart//home/duma/
+    :nmap <leader>L <ESC>:tabe scp://piro@thecode.gambit//home/duma/
 
 endif
 
