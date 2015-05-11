@@ -475,4 +475,10 @@ if hostname == 'akela'
 
 endif
 
+if hostname == 'makkuro'
+
+    set guifont=Monospace\ 9 " a bit bigger...
+
+endif
+
 "}}}
