@@ -128,7 +128,7 @@ systemmenu = {
 }
 
 piromenu = {
-    { "Chrome", "google-chrome-beta", icon('product_logo_16.png') },
+    { "Chrome", "google-chrome", icon('chrome.png') },
     { "Clementine", "clementine", "/usr/share/pixmaps/clementine-16.xpm" },
     { "Skype", "skype", "/usr/share/skype/avatars/Skype.png" },
     -- { "Pidgin", "pidgin", "/usr/share/icons/hicolor/16x16/apps/pidgin.png" },
