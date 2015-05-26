@@ -19,6 +19,7 @@ alias rvim='gvim --remote-silent'
 alias ack='ack-grep'
 alias gk="gitk --all -d &"
 alias indent='sed -e "s/^\(.*\)/    \1/"'
+alias d='docker'
 
 # edit the previous ag result with "e N"
 ag_and_vi() {
