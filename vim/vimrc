@@ -85,6 +85,13 @@ set clipboard=unnamed,unnamedplus,autoselect,exclude:cons\\\|linux
 " leader in coma
 let mapleader = ","
 
+" make Y effect to end of line instead of whole line
+" The function is required to avoid yankring to own the mapping.
+function! YRRunAfterMaps()
+    nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
+endfunction
+nnoremap Y y$
+
 " go up/down one editor line, not one file line
 " (don't jump over long lines wrapped
 nnoremap j gj
