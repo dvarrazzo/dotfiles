@@ -151,8 +151,10 @@ set nostartofline
 " Search in history for common prefix with Ctrl-p
 cnoremap <C-p> <Up>
 
-" expand snippets with c-j instead of tab as it conflicts with IndentTab
-let g:UltiSnipsExpandTrigger='<c-j>'
+" expand snippets with c-y instead of tab as it conflicts with IndentTab
+" c-j conflict with the fast move down
+let g:UltiSnipsExpandTrigger='<c-y>'
+let g:UltiSnipsJumpForwardTrigger='<c-y>'
 
 "}}}
 
