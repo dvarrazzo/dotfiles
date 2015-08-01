@@ -57,6 +57,19 @@ def parse_cmdline():
 	return opt
 endsnippet
 
+snippet arg "Python argparse parsing" !b
+def parse_cmdline():
+	from argparse import ArgumentParser
+	parser = ArgumentParser(description=__doc__)
+	parser.add_argument('--opt', metavar="OPT",
+		default='XXX',
+		help="some option [default: %(default)s]")
+
+	opt = parser.parse_args()
+
+	return opt
+endsnippet
+
 snippet logopt "Options to add logging levels to option scripts" !b
 	parser.add_option('--quiet', dest='loglevel', default=logging.INFO,
 		action='store_const', const=logging.WARNING,
