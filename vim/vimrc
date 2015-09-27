@@ -46,6 +46,12 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
+" Enable IndentTab for every file.
+" Note that this applies on ":tabe file", not on a naked ":tabe", that's
+" confusing and probably messes up setting filetype and stuff too, which
+" always seem to behave inconsistently.
+autocmd BufRead,BufNewFile * call IndentTab#Set(1,0)
+
 set wrap                " These guys will never learn the world stops at col 80
 set bs=indent,eol,start " Allow backspacing over everything in insert mode
 set showmatch           " Show matching parenthesis when writing
@@ -78,6 +84,13 @@ set clipboard=unnamed,unnamedplus,autoselect,exclude:cons\\\|linux
 
 " leader in coma
 let mapleader = ","
+
+" make Y effect to end of line instead of whole line
+" The function is required to avoid yankring to own the mapping.
+function! YRRunAfterMaps()
+    nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
+endfunction
+nnoremap Y y$
 
 " go up/down one editor line, not one file line
 " (don't jump over long lines wrapped
@@ -144,6 +157,11 @@ set nostartofline
 
 " Search in history for common prefix with Ctrl-p
 cnoremap <C-p> <Up>
+
+" expand snippets with c-y instead of tab as it conflicts with IndentTab
+" c-j conflict with the fast move down
+let g:UltiSnipsExpandTrigger='<c-y>'
+let g:UltiSnipsJumpForwardTrigger='<c-y>'
 
 "}}}
 
@@ -247,7 +265,7 @@ autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 let NERDTreeShowHidden=1
 let NERDTreeRespectWildIgnore=1
 let NERDTreeWinSize=21
-let NERDTreeIgnore=['\~$', '\.egg$[[dir]]', '\.egg-info$[[dir]]' , '\.bak$']
+let NERDTreeIgnore = ['\~$', '\.pyc$', '\.bak$', '\.egg$[[dir]]', '\.egg-info$[[dir]]' ]
 
 nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>N :NERDTreeMirror<CR>
@@ -438,6 +456,7 @@ function! DeleteHiddenBuffers()
 endfunction
 
 command! BDH call DeleteHiddenBuffers()
+command! BDW :windo bd
 
 "}}}
 
@@ -464,13 +483,19 @@ if hostname == 'risotto'
     command! TODO tabe scp://piro@bart//home/piro/todo.txt
 
     " open a file on the live system
-    :nmap <leader>L <ESC>:tabe scp://piro@bart//home/duma/
+    :nmap <leader>L <ESC>:tabe scp://piro@thecode.gambit//home/duma/
 
 endif
 
 if hostname == 'akela'
 
     set guifont=Monospace\ 10 " a bit bigger...
+
+endif
+
+if hostname == 'makkuro'
+
+    set guifont=Monospace\ 9 " a bit bigger...
 
 endif
 
