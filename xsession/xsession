@@ -33,9 +33,9 @@ case $(hostname) in
         ;;
 
     bagheera)
-        run bluetooth-applet 6
-        run indicator-weather 8
-        run caffeine 10
+        run blueman-applet 6
+        # run indicator-weather 8
+        run caffeine-indicator 10
         ;;
 
     risotto)
