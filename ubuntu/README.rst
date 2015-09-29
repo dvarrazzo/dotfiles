@@ -11,7 +11,7 @@ moron thinks `it is confusing`__.
 .. __: https://bugs.launchpad.net/ubuntu/+source/lightdm/+bug/818864
 
 - Copy ``xsession.desktop`` as ``/usr/share/xsessions``
-- Copy and ``xsession`` as ``~/.xsession``
+- Copy ``xsession`` as ``~/.xsession``
 
 to have the choice of running Awesome with the Gnome keyring or the Gnome
 environment. Except that...
