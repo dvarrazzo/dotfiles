@@ -27,6 +27,9 @@
 [init]
     templatedir = ~/.git_template
 
+[push]
+	default = simple
+
 [gui]
     fontui = -family Ubuntu -size 8 -weight normal -slant roman -underline 0 -overstrike 0
     fontdiff = -family \"Liberation Mono\" -size 8 -weight normal -slant roman -underline 0 -overstrike 0
