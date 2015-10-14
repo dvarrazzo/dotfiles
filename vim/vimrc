@@ -254,6 +254,9 @@ autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 :command! -nargs=1 -complete=file O tab drop <args>
 :nmap <leader>o <ESC>:tab drop
 
+" avoid "press ENTER to continue after remote file load/save
+let g:netrw_silent=1
+
 " common misspells on save/exit
 :command! WQ wq
 :command! Wq wq
