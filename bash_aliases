@@ -21,6 +21,11 @@ alias gk="gitk --all -d &"
 alias indent='sed -e "s/^\(.*\)/    \1/"'
 alias d='docker'
 
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
 # edit the previous ag result with "e N"
 ag_and_vi() {
     LINE=$1
