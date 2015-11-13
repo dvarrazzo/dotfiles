@@ -1,23 +1,13 @@
 A set of configuration files as I like 'em
 ==========================================
 
-Check this out into a ~/etc directory::
+Check this out into a ~/etc directory, with all its submodules::
 
     cd ~
-    git clone git@github.com:dvarrazzo/dotfiles.git etc
-
-After cloning you should update the submodules::
-
-    cd etc/
-    git submodule init
-    git submodule update
-    cd vim/bundles/pyflakes-vim/
-    git submodule init
-    git submodule update
+    git clone --recursive git@github.com:dvarrazzo/dotfiles.git etc
 
 Create symlinks to the config files::
 
-    cd ~
     ./etc/makelinks.sh
 
 Perfect.
