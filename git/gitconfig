@@ -15,9 +15,11 @@
     df = diff
     l1 = log --oneline
     lo = log --oneline
+    ln = log --name-only
     loog = log --pretty=fuller
     rc = rebase --continue
     ri = rebase --interactive
+    rv = remote -v
     sm = submodule
     st = status
 
