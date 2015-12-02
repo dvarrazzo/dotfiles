@@ -482,6 +482,8 @@ if hostname == 'risotto'
     autocmd BufRead /home/piro/src/psycopg2/* set expandtab
     autocmd BufRead /home/piro/src/pgxnclient/* set expandtab
     autocmd BufRead /home/piro/src/setproctitle/* set expandtab
+    autocmd BufRead /home/piro/src/pyrseas/* set expandtab
+    autocmd BufRead /home/piro/src/suponoff/* set expandtab
 
     " open my log file
     command! TODO tabe scp://piro@bart//home/piro/todo.txt
