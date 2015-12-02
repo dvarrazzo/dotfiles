@@ -10,7 +10,9 @@ export PG_REGRESS_DIFF_OPTS=-u
 export UBUNTU_MENUPROXY=
 
 # NAAAAAHHH... CDPATH!
-CDPATH=".:~/dev:~:~/dev/fs"
+# CDPATH=".:~/dev:~:~/dev/fs"
+# risotto
+CDPATH=".:~/src:~:~/fs"
 
 alias ll='ls -l'
 alias grep='grep --color=auto -I'
