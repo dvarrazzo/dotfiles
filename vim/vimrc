@@ -41,7 +41,7 @@ endif
 " Editing {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set expandtab
+set noexpandtab     " gambit setting
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
