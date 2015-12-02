@@ -4,6 +4,7 @@
 *.orig
 *.rej
 vim/.netrwhist
+vim/spell
 awesome/obvious/.git
 ubuntu/README.html
 vim/.VimballRecord
