@@ -1,6 +1,8 @@
 [user]
     name = Daniele Varrazzo
-    email = daniele.varrazzo@gmail.com
+    # email = daniele.varrazzo@gmail.com
+    # gambit here
+    email = piro@gambitresearch.com
 
 [color]
     ui = auto
