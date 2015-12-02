@@ -486,7 +486,7 @@ if hostname == 'risotto'
     autocmd BufRead /home/piro/src/suponoff/* set expandtab
 
     " open my log file
-    command! TODO tabe scp://piro@bart//home/piro/todo.txt
+    command! TODO tabe scp://piro@bart.smithersbet.com//home/piro/todo.txt
 
     " open a file on the live system
     :nmap <leader>L <ESC>:tabe scp://piro@thecode.gambit//home/duma/
