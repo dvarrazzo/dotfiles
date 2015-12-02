@@ -471,8 +471,6 @@ let hostname = substitute(system('hostname'), '\n$', '', '')
 
 if hostname == 'risotto'
 
-    set noexpandtab     " Use tabs... sigh
-
     " ubuntu 14.04 forces tab to 8 chars and expands them
     autocmd FileType python setl tabstop=4 | setl noexpandtab
 
