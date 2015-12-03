@@ -271,8 +271,8 @@ let NERDTreeWinSize=21
 let NERDTreeIgnore = ['\~$', '\.pyc$', '\.bak$', '^__pycache__$',
     \ '\.egg$[[dir]]', '\.egg-info$[[dir]]' ]
 
-nmap <leader>n :NERDTreeToggle<CR>
-nmap <leader>N :NERDTreeMirror<CR>
+nmap <leader>t :NERDTreeToggle<CR>
+nmap <leader>T :NERDTreeMirror<CR>
 
 :command! HN echo
     \ "NERDTree cheatsheet: \n"
@@ -395,8 +395,8 @@ set smartcase           " if pattern contains uppercase chars,
 " search highlighted text with //
 vmap // y/<C-R>"<CR>
 
-" remove search highlight with ,/
-nmap <silent> <leader>/ :nohlsearch<CR>
+" remove search highlight with ,?; also close the location list
+nmap <silent> <leader>? :nohlsearch<CR>:lclose<CR>
 
 if has("cscope") && filereadable("/usr/bin/cscope")
    set csprg=/usr/bin/cscope
@@ -413,13 +413,48 @@ if has("cscope") && filereadable("/usr/bin/cscope")
    set csverb
 endif
 
-" ,f to ack around
-nmap <leader>f :LAck! 
-
 " Use The Silver Searcher if available
 if system("which ag") != ''
-    let g:ackprg = 'ag --nogroup --nocolor --column'
+    let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+    set grepprg=ag\ --nogroup\ --nocolor\ --column\ --smart-case
+else
+    set grepprg=grep\ -nIr\ --exclude-dir\ .git\ $*\ /dev/null
 endif
+
+" ,/ to ack around
+nnoremap <leader>/ :call SuperSlash()<CR>
+
+function! SuperSlash()
+	let lackin = input(",/")
+	if lackin == ''
+		echo "nothing to search"
+		return
+	endif
+	execute 'LAck ' . lackin
+	let @/ = lackin
+	if len(getloclist(0)) != 0
+		lfirst
+		set hlsearch
+	else
+		echo "string '" . lackin . "' not found"
+		lclose
+	endif
+endfunction
+
+" ,* to grep the current word in the work dir
+nnoremap <leader>* :call SuperStar()<CR>
+
+function! SuperStar()
+	execute 'LAck \\b' . expand("<cword>") . '\\b'
+	lfirst
+	let @/ = '\<' . expand("<cword>") . '\>'
+	set hlsearch
+endfunction
+
+
+" ,n and ,N to scroll around results
+nnoremap <leader>n :lnfile<CR>
+nnoremap <leader>N :lpfile<CR>
 
 "}}}
 
@@ -435,10 +470,6 @@ cmap w!! w !sudo tee % >/dev/null
 " piro: show/delete trailing spaces
 command! ShowTrail /\s\+$
 command! NoTrail %s/\s\+$//
-
-" grep the current work dir with ,#
-set grepprg=grep\ -nIr\ --exclude-dir\ _darcs\ $*\ /dev/null
-nnoremap <leader># :grep <cword> .<CR><CR>:cw<CR>
 
 " convert placeholders from psycopg to psql style and back
 command! PHFromPy %s/%(\([^)]*\))s/:\1/g
