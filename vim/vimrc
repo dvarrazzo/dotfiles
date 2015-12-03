@@ -395,8 +395,8 @@ set smartcase           " if pattern contains uppercase chars,
 " search highlighted text with //
 vmap // y/<C-R>"<CR>
 
-" remove search highlight with ,?
-nmap <silent> <leader>? :nohlsearch<CR>
+" remove search highlight with ,?; also close the location list
+nmap <silent> <leader>? :nohlsearch<CR>:lclose<CR>
 
 if has("cscope") && filereadable("/usr/bin/cscope")
    set csprg=/usr/bin/cscope
@@ -415,17 +415,39 @@ endif
 
 " Use The Silver Searcher if available
 if system("which ag") != ''
-    let g:ackprg = 'ag --nogroup --nocolor --column'
-    set grepprg=ag\ --nogroup\ --nocolor\ --column
+    let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+    set grepprg=ag\ --nogroup\ --nocolor\ --column\ --smart-case
 else
     set grepprg=grep\ -nIr\ --exclude-dir\ .git\ $*\ /dev/null
 endif
 
 " ,/ to ack around
-nnoremap <leader>/ :LAck!<Space>
+nnoremap <leader>/ :call SuperSlash()<CR>
+
+function! SuperSlash()
+	let lackin = input(",/")
+	execute 'LAck ' . lackin
+	if len(getloclist(0)) != 0
+		lfirst
+		let @/ = lackin
+		set hlsearch
+	else
+		echo "string '" . lackin . "' not found"
+		lclose
+		set nohlsearch
+	endif
+endfunction
 
 " ,* to grep the current word in the work dir
-nnoremap <leader>* :LAck \\b<cword>\\b<CR><CR>:let @/='\<' . expand("<cword>") . '\>'<CR>:set hlsearch<CR>
+nnoremap <leader>* :call SuperStar()<CR>
+
+function! SuperStar()
+	execute 'LAck \\b' . expand("<cword>") . '\\b'
+	lfirst
+	let @/ = '\<' . expand("<cword>") . '\>'
+	set hlsearch
+endfunction
+
 
 " ,n and ,N to scroll around results
 nnoremap <leader>n :lnfile<CR>
