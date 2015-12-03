@@ -15,6 +15,7 @@
     df = diff
     l1 = log --oneline
     lo = log --oneline
+    lf = log --name-only
     ln = log --name-only
     loog = log --pretty=fuller
     rc = rebase --continue
