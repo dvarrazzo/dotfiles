@@ -422,14 +422,14 @@ else
 endif
 
 " ,/ to ack around
-nmap <leader>/ :LAck!<Space>
+nnoremap <leader>/ :LAck!<Space>
 
 " ,* to grep the current word in the work dir
-nnoremap <leader>* :LAck! <cword><CR>
+nnoremap <leader>* :LAck \\b<cword>\\b<CR><CR>:let @/='\<' . expand("<cword>") . '\>'<CR>:set hlsearch<CR>
 
 " ,n and ,N to scroll around results
-nmap <leader>n :lnext!<CR>
-nmap <leader>N :lprevious!<CR>
+nnoremap <leader>n :lnfile<CR>
+nnoremap <leader>N :lpfile<CR>
 
 "}}}
 
