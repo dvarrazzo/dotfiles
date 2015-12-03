@@ -271,8 +271,8 @@ let NERDTreeWinSize=21
 let NERDTreeIgnore = ['\~$', '\.pyc$', '\.bak$', '^__pycache__$',
     \ '\.egg$[[dir]]', '\.egg-info$[[dir]]' ]
 
-nmap <leader>n :NERDTreeToggle<CR>
-nmap <leader>N :NERDTreeMirror<CR>
+nmap <leader>t :NERDTreeToggle<CR>
+nmap <leader>T :NERDTreeMirror<CR>
 
 :command! HN echo
     \ "NERDTree cheatsheet: \n"
@@ -395,8 +395,8 @@ set smartcase           " if pattern contains uppercase chars,
 " search highlighted text with //
 vmap // y/<C-R>"<CR>
 
-" remove search highlight with ,/
-nmap <silent> <leader>/ :nohlsearch<CR>
+" remove search highlight with ,?
+nmap <silent> <leader>? :nohlsearch<CR>
 
 if has("cscope") && filereadable("/usr/bin/cscope")
    set csprg=/usr/bin/cscope
@@ -413,13 +413,23 @@ if has("cscope") && filereadable("/usr/bin/cscope")
    set csverb
 endif
 
-" ,f to ack around
-nmap <leader>f :LAck! 
-
 " Use The Silver Searcher if available
 if system("which ag") != ''
     let g:ackprg = 'ag --nogroup --nocolor --column'
+    set grepprg=ag\ --nogroup\ --nocolor\ --column
+else
+    set grepprg=grep\ -nIr\ --exclude-dir\ .git\ $*\ /dev/null
 endif
+
+" ,/ to ack around
+nmap <leader>/ :LAck!<Space>
+
+" ,* to grep the current word in the work dir
+nnoremap <leader>* :LAck! <cword><CR>
+
+" ,n and ,N to scroll around results
+nmap <leader>n :lnext!<CR>
+nmap <leader>N :lprevious!<CR>
 
 "}}}
 
@@ -435,10 +445,6 @@ cmap w!! w !sudo tee % >/dev/null
 " piro: show/delete trailing spaces
 command! ShowTrail /\s\+$
 command! NoTrail %s/\s\+$//
-
-" grep the current work dir with ,#
-set grepprg=grep\ -nIr\ --exclude-dir\ _darcs\ $*\ /dev/null
-nnoremap <leader># :grep <cword> .<CR><CR>:cw<CR>
 
 " convert placeholders from psycopg to psql style and back
 command! PHFromPy %s/%(\([^)]*\))s/:\1/g
