@@ -426,15 +426,18 @@ nnoremap <leader>/ :call SuperSlash()<CR>
 
 function! SuperSlash()
 	let lackin = input(",/")
+	if lackin == ''
+		echo "nothing to search"
+		return
+	endif
 	execute 'LAck ' . lackin
+	let @/ = lackin
 	if len(getloclist(0)) != 0
 		lfirst
-		let @/ = lackin
 		set hlsearch
 	else
 		echo "string '" . lackin . "' not found"
 		lclose
-		set nohlsearch
 	endif
 endfunction
 
