@@ -84,6 +84,8 @@ set clipboard=unnamed,unnamedplus,autoselect,exclude:cons\\\|linux
 
 " leader in coma
 let mapleader = ","
+" but keep the old one too
+nmap \ ,
 
 " make Y effect to end of line instead of whole line
 " The function is required to avoid yankring to own the mapping.
