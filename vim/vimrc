@@ -432,10 +432,9 @@ function! SuperSlash()
 		echo "nothing to search"
 		return
 	endif
-	execute 'LAck ' . lackin
+	execute 'LAck! ' . lackin
 	let @/ = lackin
 	if len(getloclist(0)) != 0
-		lfirst
 		set hlsearch
 	else
 		echo "string '" . lackin . "' not found"
@@ -447,8 +446,7 @@ endfunction
 nnoremap <leader>* :call SuperStar()<CR>
 
 function! SuperStar()
-	execute 'LAck \\b' . expand("<cword>") . '\\b'
-	lfirst
+	execute 'LAck! \\b' . expand("<cword>") . '\\b'
 	let @/ = '\<' . expand("<cword>") . '\>'
 	set hlsearch
 endfunction
