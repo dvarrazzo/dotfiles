@@ -286,6 +286,7 @@ nmap <leader>T :NERDTreeMirror<CR>
     \ "ma: create a new file/dir \n"
     \ "R: refresh"
     \ "F: show/hide files \n"
+    \ "I: show/hide hidden files \n"
     \ "cd: change current dir"
     \ "C: change tree root dir \n"
     \ "u: tree root up one dir \n"
