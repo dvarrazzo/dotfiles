@@ -40,6 +40,7 @@ endif
 let b:did_indent = 1
 
 setlocal noexpandtab  " gambit setting
+setlocal tabstop=4    " why should it ever be 8??? fucking tabs
 setlocal nolisp
 setlocal autoindent
 setlocal indentexpr=GetPythonIndent(v:lnum)
