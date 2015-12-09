@@ -34,6 +34,9 @@ if v:version > 703
     set runtimepath+=~/.vim/bundles/ansible-vim
 endif
 
+" Enable pgsql.vim
+set runtimepath+=~/.vim/bundles/pgsql
+
 " note: closetag is enabled: use C-_ to close a tag.
 
 "}}}
@@ -225,6 +228,9 @@ autocmd BufRead,BufNewFile *.tmpl setl filetype=htmldjango
 
 " cindent in c-style files
 autocmd FileType c,cpp,java setl cindent
+
+" postgresql syntax for .sql files
+autocmd BufRead,BufNewFile *.sql setl filetype=pgsql
 
 "}}}
 

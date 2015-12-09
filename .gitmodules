@@ -22,3 +22,6 @@
 [submodule "vim/bundles/ansible-vim"]
 	path = vim/bundles/ansible-vim
 	url = https://github.com/pearofducks/ansible-vim.git
+[submodule "vim/bundles/pgsql"]
+	path = vim/bundles/pgsql
+	url = https://github.com/dvarrazzo/pgsql.vim.git
