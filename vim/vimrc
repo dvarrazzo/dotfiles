@@ -405,7 +405,7 @@ set smartcase           " if pattern contains uppercase chars,
 vmap // y/<C-R>"<CR>
 
 " remove search highlight with ,?; also close the location list
-nmap <silent> <leader>? :nohlsearch<CR>:lclose<CR>
+nmap <silent> <leader>? :nohlsearch<CR>:cclose<CR>
 
 if has("cscope") && filereadable("/usr/bin/cscope")
    set csprg=/usr/bin/cscope
@@ -430,22 +430,25 @@ else
     set grepprg=grep\ -nIr\ --exclude-dir\ .git\ $*\ /dev/null
 endif
 
+" Don't let pyflake clear the quickfix list on buffer change
+let g:pyflakes_use_quickfix = 0
+
 " ,/ to ack around
 nnoremap <leader>/ :call SuperSlash()<CR>
 
 function! SuperSlash()
-	let lackin = input(",/")
-	if lackin == ''
+	let ackin = input(",/")
+	if ackin == ''
 		echo "nothing to search"
 		return
 	endif
-	execute 'LAck! ' . lackin
-	let @/ = lackin
-	if len(getloclist(0)) != 0
+	execute 'Ack! ' . ackin
+	let @/ = ackin
+	if len(getqflist()) != 0
 		set hlsearch
 	else
-		echo "string '" . lackin . "' not found"
-		lclose
+		echo "string '" . ackin . "' not found"
+		cclose
 	endif
 endfunction
 
@@ -453,15 +456,16 @@ endfunction
 nnoremap <leader>* :call SuperStar()<CR>
 
 function! SuperStar()
-	execute 'LAck! \\b' . expand("<cword>") . '\\b'
-	let @/ = '\<' . expand("<cword>") . '\>'
+	let s = expand("<cword>")
+	let @/ = '\<' . s . '\>'
+	execute 'Ack! \\b' . s . '\\b'
 	set hlsearch
 endfunction
 
 
 " ,n and ,N to scroll around results
-nnoremap <leader>n :lnfile<CR>
-nnoremap <leader>N :lpfile<CR>
+nnoremap <leader>n :cnfile<CR>
+nnoremap <leader>N :cpfile<CR>
 
 "}}}
 
