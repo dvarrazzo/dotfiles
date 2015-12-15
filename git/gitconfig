@@ -20,6 +20,7 @@
     lf = log --name-only
     ln = log --name-only
     loog = log --pretty=fuller
+    pus = push
     rc = rebase --continue
     ri = rebase --interactive
     rv = remote -v
