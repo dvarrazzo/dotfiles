@@ -504,6 +504,17 @@ endfunction
 command! BDH call DeleteHiddenBuffers()
 command! BDW :windo bd
 
+" vimscript cheatsheet
+command! HV echo
+    \ "VimScript cheatsheet \n"
+    \ "'@x' is the register x. Useful registers are: \n"
+    \ "  - \" - unnamed \n"
+    \ "  - / - last search \n"
+    \ "  - 0 - last yanked text \n"
+    \ "  - : - last command \n"
+    \ "'&ts' is the variable 'ts' \n"
+    \ "':@\"' execute the command in the selection \n"
+
 "}}}
 
 " Local configurations {{{
