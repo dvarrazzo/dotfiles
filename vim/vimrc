@@ -437,29 +437,29 @@ let g:pyflakes_use_quickfix = 0
 nnoremap <leader>/ :call SuperSlash()<CR>
 
 function! SuperSlash()
-	let ackin = input(",/")
-	if ackin == ''
-		echo "nothing to search"
-		return
-	endif
-	execute 'Ack! ' . ackin
-	let @/ = ackin
-	if len(getqflist()) != 0
-		set hlsearch
-	else
-		echo "string '" . ackin . "' not found"
-		cclose
-	endif
+    let ackin = input(",/")
+    if ackin == ''
+        echo "nothing to search"
+        return
+    endif
+    execute 'Ack! ' . ackin
+    let @/ = ackin
+    if len(getqflist()) != 0
+        set hlsearch
+    else
+        echo "string '" . ackin . "' not found"
+        cclose
+    endif
 endfunction
 
 " ,* to grep the current word in the work dir
 nnoremap <leader>* :call SuperStar()<CR>
 
 function! SuperStar()
-	let s = expand("<cword>")
-	let @/ = '\<' . s . '\>'
-	execute 'Ack! \\b' . s . '\\b'
-	set hlsearch
+    let s = expand("<cword>")
+    let @/ = '\<' . s . '\>'
+    execute 'Ack! \\b' . s . '\\b'
+    set hlsearch
 endfunction
 
 
@@ -557,3 +557,7 @@ if hostname == 'makkuro'
 endif
 
 "}}}
+
+
+
+" vim: set expandtab:
