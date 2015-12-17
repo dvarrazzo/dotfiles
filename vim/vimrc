@@ -230,7 +230,7 @@ autocmd BufRead,BufNewFile *.tmpl setl filetype=htmldjango
 autocmd FileType c,cpp,java setl cindent
 
 " postgresql syntax for .sql files
-autocmd BufRead,BufNewFile *.sql setl filetype=pgsql
+autocmd BufRead,BufNewFile *.sql setl filetype=pgsql | setl matchpairs-=<:>
 
 "}}}
 
