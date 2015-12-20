@@ -37,6 +37,9 @@ set runtimepath+=~/.vim/bundles/pgsql
 " Enable syntastic
 set runtimepath+=~/.vim/bundles/syntastic
 
+" Enable jedi-vim for python completion
+set runtimepath+=~/.vim/bundles/jedi-vim
+
 " note: closetag is enabled: use C-_ to close a tag.
 
 "}}}
