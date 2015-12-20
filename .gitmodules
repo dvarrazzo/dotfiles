@@ -1,9 +1,6 @@
 [submodule "vim/bundles/UltiSnips"]
 	path = vim/bundles/UltiSnips
 	url = git://github.com/vim-scripts/UltiSnips.git
-[submodule "vim/bundles/pyflakes-vim"]
-	path = vim/bundles/pyflakes-vim
-	url = git://github.com/kevinw/pyflakes-vim.git
 [submodule "vim/bundles/tabular"]
 	path = vim/bundles/tabular
 	url = git://github.com/godlygeek/tabular.git
@@ -25,3 +22,6 @@
 [submodule "vim/bundles/pgsql"]
 	path = vim/bundles/pgsql
 	url = https://github.com/dvarrazzo/pgsql.vim.git
+[submodule "vim/bundles/syntastic"]
+	path = vim/bundles/syntastic
+	url = https://github.com/scrooloose/syntastic.git
