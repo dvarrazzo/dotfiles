@@ -17,9 +17,6 @@ set hidden              " Allow unsaved buffers to be put in background
 " Enable UltiSnip plugin
 set runtimepath+=~/.vim/bundles/UltiSnips
 
-" Enable PyFlakes integration
-set runtimepath+=~/.vim/bundles/pyflakes-vim
-
 " Enable Tabular
 set runtimepath+=~/.vim/bundles/tabular
 
@@ -36,6 +33,9 @@ endif
 
 " Enable pgsql.vim
 set runtimepath+=~/.vim/bundles/pgsql
+
+" Enable syntastic
+set runtimepath+=~/.vim/bundles/syntastic
 
 " note: closetag is enabled: use C-_ to close a tag.
 
@@ -231,6 +231,20 @@ autocmd FileType c,cpp,java setl cindent
 
 " postgresql syntax for .sql files
 autocmd BufRead,BufNewFile *.sql setl filetype=pgsql | setl matchpairs-=<:>
+
+
+" Suggested configuration for Syntastic, with my edits
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Mostly to remember about this option...
+let g:syntastic_python_pylint_quiet_messages = {"regex":"too-few-public-methods"}
 
 "}}}
 
@@ -429,9 +443,6 @@ if system("which ag") != ''
 else
     set grepprg=grep\ -nIr\ --exclude-dir\ .git\ $*\ /dev/null
 endif
-
-" Don't let pyflake clear the quickfix list on buffer change
-let g:pyflakes_use_quickfix = 0
 
 " ,/ to ack around
 nnoremap <leader>/ :call SuperSlash()<CR>
