@@ -39,7 +39,7 @@ alias e=ag_and_vi
 
 # mkdir and cd together
 # http://linux.101hacks.com/cd-command/mkdir-and-cd-together/
-mcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 alias mcd=mkdircd
 
 
