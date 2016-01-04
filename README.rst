@@ -11,3 +11,6 @@ Create symlinks to the config files::
     ./etc/makelinks.sh
 
 Perfect.
+
+Use the url ``https://github.com/dvarrazzo/dotfiles.git`` if you don't have
+write permission, ``-b NAME`` to check out a different branch.
