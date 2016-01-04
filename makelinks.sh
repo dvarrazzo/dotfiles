@@ -18,4 +18,5 @@ ln -s etc/vim/vimrc .vimrc
 mkdir -p .darcs
 ln -s ~/etc/darcs/defaults .darcs/
 ln -s etc/xsession/xsession .xsession
-
+mkdir -p .config
+ln -s ~/etc/flake8 .config/
