@@ -7,5 +7,7 @@ ignore=W191,E128
 # W191: tabs (gambit only)
 # E128: continuation line under-indented for visual indent
 
+max-line-length = 120
+
 
 # vim: set filetype=dosini:
