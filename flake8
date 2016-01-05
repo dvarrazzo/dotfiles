@@ -4,5 +4,7 @@
 # - http://pep8.readthedocs.org/en/latest/intro.html#error-codes
 ignore=
 
+max-line-length = 120
+
 
 # vim: set filetype=dosini:
