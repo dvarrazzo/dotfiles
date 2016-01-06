@@ -535,6 +535,51 @@ endfunction
 nnoremap <leader>n :cnfile<CR>
 nnoremap <leader>N :cpfile<CR>
 
+" gn and gN go to previous and next entry in the loclist or quicklist
+" w.r.t. the cursor
+nnoremap gn :call GoNext(0)<CR>
+nnoremap gN :call GoNext(1)<CR>
+
+function! GetLocs()
+    let l = getloclist(0)
+    if len(l) == 0
+        let l = getqflist()
+        if len(l) == 0 | return [] | endif
+    endif
+
+    let rv = []
+    for loc in l | call add(rv, loc.lnum) | endfor
+
+    func! NumCmp(n1, n2)
+        return a:n1 - a:n2
+    endf
+    return sort(rv, "NumCmp")
+
+endfunction
+
+function! GoNext(rev)
+    let l = GetLocs()
+    if len(l) == 0 | echo "no list found" | return | endif
+
+    if a:rev
+        call reverse(l)
+        func! Cmp(n1, n2)
+            return a:n2 - a:n1
+        endf
+    else
+        func! Cmp(n1, n2)
+            return a:n1 - a:n2
+        endf
+    endif
+
+    for loc in l
+        if Cmp(loc, line(".")) > 0 | execute ":" . loc | return | endif
+    endfor
+    execute ":" . l[0]
+
+endfunction
+
+
 "}}}
 
 " Utility macros {{{
