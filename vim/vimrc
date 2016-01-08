@@ -303,6 +303,11 @@ function! F8BufEnter()
 endfunction
 
 
+" Don't clobber my ag shortcut
+let g:jedi#usages_command = "<leader>u"
+let g:jedi#smart_auto_mappings = 0
+
+
 "}}}
 
 " Load/Save {{{
