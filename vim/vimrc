@@ -254,7 +254,7 @@ let g:syntastic_python_pylint_quiet_messages = {"regex":"too-few-public-methods"
 " Silence the warning/error code under the cursor
 nnoremap fo :call F8IgnoreThis()<CR>
 nnoremap fi :call F8Unignore()<CR>
-autocmd BufEnter *.py call F8BufEnter()
+autocmd BufEnter *.py call F8UpdateIgnore()
 
 " Ignore the errors like the one under the cursor
 function! F8IgnoreThis()
@@ -268,8 +268,7 @@ function! F8IgnoreThis()
     if !exists('b:flake8_silenced') | let b:flake8_silenced = {} | endif
     let code = substitute(loc.text, '.*\[\(.*\)\]', '\1', '')
     let b:flake8_silenced[code] = loc.text
-    let g:syntastic_python_flake8_args =
-        \ '--ignore=' . join(keys(b:flake8_silenced),',')
+    call F8UpdateIgnore()
     execute "SyntasticCheck"
 endfunction
 
@@ -291,15 +290,18 @@ function! F8Unignore()
 
     let code = substitute(prompt[i], '.*\[\(.*\)\]', '\1', '')
     call remove(b:flake8_silenced, code)
-    let g:syntastic_python_flake8_args =
-        \ '--ignore=' . join(keys(b:flake8_silenced),',')
+    call F8UpdateIgnore()
     execute "SyntasticCheck"
 endfunction
 
-" Set the list of code to ignore in flake8 to what defined in the buffer
-function! F8BufEnter()
-    let g:syntastic_python_flake8_args = exists('b:flake8_silenced') ?
-        \ '--ignore=' . join(keys(b:flake8_silenced),',') : ''
+" Update the global syntastic var to reflect the buffer content
+function! F8UpdateIgnore()
+    if exists('b:flake8_silenced') && len(b:flake8_silenced) > 0
+        let g:syntastic_python_flake8_args =
+            \ '--ignore=' . join(keys(b:flake8_silenced),',')
+    else
+        let g:syntastic_python_flake8_args = ''
+    endif
 endfunction
 
 
