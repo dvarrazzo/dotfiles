@@ -41,6 +41,7 @@ set runtimepath+=~/.vim/bundles/syntastic
 set runtimepath+=~/.vim/bundles/jedi-vim
 
 " note: closetag is enabled: use C-_ to close a tag.
+" note: after adding a directory, run ':helptags path/to/doc' to add the help
 
 "}}}
 

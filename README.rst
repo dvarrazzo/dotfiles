@@ -10,6 +10,10 @@ Create symlinks to the config files::
 
     ./etc/makelinks.sh
 
+Generate vim help for all the plugins::
+
+    for d in $(ls -d  */doc/); do vim -c "helptags $d" -c q; done
+
 Perfect.
 
 Use the url ``https://github.com/dvarrazzo/dotfiles.git`` if you don't have
