@@ -14,6 +14,9 @@ set viminfo='20,\"50    " Read/write a .viminfo file, don't store more
 set history=50          " Keep 50 lines of command line history
 set hidden              " Allow unsaved buffers to be put in background
 
+" Unimpaired, testing some mappings
+set runtimepath+=~/.vim/bundles/vim-unimpaired
+
 " Enable UltiSnip plugin
 set runtimepath+=~/.vim/bundles/UltiSnips
 
@@ -39,6 +42,9 @@ set runtimepath+=~/.vim/bundles/syntastic
 
 " Enable jedi-vim for python completion
 set runtimepath+=~/.vim/bundles/jedi-vim
+
+" Integration with git
+set runtimepath+=~/.vim/bundles/vim-fugitive
 
 " note: closetag is enabled: use C-_ to close a tag.
 " note: after adding a directory, run ':helptags path/to/doc' to add the help
