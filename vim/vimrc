@@ -40,9 +40,6 @@ set runtimepath+=~/.vim/bundles/pgsql
 " Enable syntastic
 set runtimepath+=~/.vim/bundles/syntastic
 
-" Enable jedi-vim for python completion
-set runtimepath+=~/.vim/bundles/jedi-vim
-
 " Integration with git
 set runtimepath+=~/.vim/bundles/vim-fugitive
 
@@ -312,7 +309,7 @@ function! F8UpdateIgnore()
 endfunction
 
 
-" Don't clobber my ag shortcut
+" Jedi: don't clobber my ag shortcut
 let g:jedi#usages_command = "<leader>u"
 let g:jedi#smart_auto_mappings = 0
 
