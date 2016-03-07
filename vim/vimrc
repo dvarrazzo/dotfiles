@@ -239,6 +239,8 @@ autocmd FileType c,cpp,java setl cindent
 " postgresql syntax for .sql files
 autocmd BufRead,BufNewFile *.sql setl filetype=pgsql | setl matchpairs-=<:>
 
+" ansible inventories
+autocmd BufRead,BufNewFile *.inv setl filetype=ansible_hosts
 
 " Suggested configuration for Syntastic, with my edits
 set statusline+=%#warningmsg#
