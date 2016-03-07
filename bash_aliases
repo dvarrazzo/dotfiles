@@ -42,5 +42,8 @@ alias e=ag_and_vi
 mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 alias mcd=mkdircd
 
+# Generate a random password
+alias mkpass="cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1"
+
 
 # vim: set filetype=sh:
