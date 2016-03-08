@@ -327,6 +327,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
     awful.key({ modkey,           }, "e",     function () awful.util.spawn("nautilus")  end),
     awful.key({ modkey,           }, "v",     function () awful.util.spawn("gvim")      end),
+    awful.key({ modkey, "Shift", "Mod1" }, "l",
+                function () awful.util.spawn("gnome-screensaver-command -l")      end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
