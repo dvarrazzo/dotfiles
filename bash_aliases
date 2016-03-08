@@ -2,6 +2,7 @@ export PAGER="/usr/bin/less -R"
 alias less='less -R'
 # export LESSCOLOR=always
 
+export PATH=$HOME/etc/bin:$PATH
 export EDITOR=vim
 export PGAPPNAME=$USER@$(hostname)
 export PG_REGRESS_DIFF_OPTS=-u
