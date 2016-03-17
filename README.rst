@@ -18,3 +18,17 @@ Perfect.
 
 Use the url ``https://github.com/dvarrazzo/dotfiles.git`` if you don't have
 write permission, ``-b NAME`` to check out a different branch.
+
+
+System requirements
+-------------------
+
+I'd rather have them local but I don't seem to find a way to make them work
+correctly, so::
+
+    # for syntastic check on python files
+    sudo pip install flake8
+
+    # for syntastic check on js/react files
+    sudo npm install -g eslint eslint-config-standard eslint-plugin-promise \
+        eslint-plugin-react eslint-plugin-standard jsonlint

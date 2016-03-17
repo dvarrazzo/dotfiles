@@ -43,6 +43,11 @@ set runtimepath+=~/.vim/bundles/syntastic
 " Integration with git
 set runtimepath+=~/.vim/bundles/vim-fugitive
 
+" Javascript stuff
+set runtimepath+=~/.vim/bundles/vim-javascript
+set runtimepath+=~/.vim/bundles/vim-json
+set runtimepath+=~/.vim/bundles/vim-jsx
+
 " note: closetag is enabled: use C-_ to close a tag.
 " note: after adding a directory, run ':helptags path/to/doc' to add the help
 
@@ -226,6 +231,8 @@ autocmd FileType text,rst,markdown setl tw=78
 
 " 2 tabs indenting in *ml
 autocmd FileType html,htmldjango,xml setl ts=2 | setl sw=2 | setl sts=2
+autocmd FileType javascript setl ts=2 | setl sw=2 | setl sts=2
+let g:vim_json_syntax_conceal = 0
 
 " That's not Modula 2
 autocmd BufRead,BufNewFile *.md set filetype=markdown
@@ -252,6 +259,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_javascript_checkers = ['eslint']
 
 " Mostly to remember about this option...
 let g:syntastic_python_pylint_quiet_messages = {"regex":"too-few-public-methods"}
