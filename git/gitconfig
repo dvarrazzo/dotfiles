@@ -12,6 +12,7 @@
     ci = commit
     co = checkout
     cp = cherry-pick
+    dc = diff --cached
     df = diff
     l1 = log --oneline
     lo = log --oneline
@@ -20,6 +21,7 @@
     loog = log --pretty=fuller
     pus = push
     rc = rebase --continue
+    rh = reset HEAD
     ri = rebase --interactive
     rv = remote -v
     sm = submodule
