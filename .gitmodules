@@ -31,3 +31,12 @@
 [submodule "vim/bundles/vim-unimpaired"]
 	path = vim/bundles/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "vim/bundles/vim-javascript"]
+	path = vim/bundles/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim/bundles/vim-jsx"]
+	path = vim/bundles/vim-jsx
+	url = https://github.com/mxw/vim-jsx.git
+[submodule "vim/bundles/vim-json"]
+	path = vim/bundles/vim-json
+	url = https://github.com/elzr/vim-json.git
