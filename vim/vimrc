@@ -485,6 +485,10 @@ map <silent><C-S-PageDown> :execute TabRight()<CR>
 nnoremap <silent>tl :execute TabRight()<cr>
 nnoremap <silent>th :execute TabLeft()<cr>
 
+" Shorter Taboo aliases
+nnoremap tn :TabooRename<space>
+nnoremap <silent>tr :TabooReset<cr>
+
 "}}}
 
 " Search {{{
