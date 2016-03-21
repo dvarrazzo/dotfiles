@@ -482,6 +482,10 @@ endfunction
 map <silent><C-S-PageUp> :execute TabLeft()<CR>
 map <silent><C-S-PageDown> :execute TabRight()<CR>
 
+" Make the above work in textual vim too
+nnoremap <silent>tl :execute TabRight()<cr>
+nnoremap <silent>th :execute TabLeft()<cr>
+
 "}}}
 
 " Search {{{
