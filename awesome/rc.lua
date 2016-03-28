@@ -121,6 +121,7 @@ end
 systemmenu = {
     { "Restart Awesome", awesome.restart, beautiful.awesome_icon },
     { "End Session", awesome.quit, icon("ubuntu.png") },
+    { "Switch Session", "dm-tool switch-to-greeter", icon("ubuntu.png") },
     { "Reboot", "gksudo -m 'Restart the system?' 'shutdown -r now'",
         icon("restart.png") },
     { "Shutdown", "gksudo -m 'Shut down the system?' 'shutdown -h now'",
