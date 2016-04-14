@@ -538,7 +538,15 @@ function! SuperSlash()
         echo "nothing to search"
         return
     endif
-    execute 'Ack! ' . ackin
+
+    " If running in NERDTree search the selected dir instead of the cwd
+    if exists("b:NERDTree") && b:NERDTree.isTabTree()
+        let dir = ' ' . g:NERDTreeDirNode.GetSelected().path.str()
+    else
+        let dir = ''
+    endif
+
+    execute 'Ack! ' . ackin . dir
     let @/ = ackin
     if len(getqflist()) != 0
         set hlsearch
