@@ -1,5 +1,5 @@
 #!/bin/bash
-# Don't use it on ubuntu 14.04: it will steal your notifications
+# Don't use it on ubuntu 14.04/16.04: it will steal your notifications
 # gnome-session &
 
 # this is sort of required for e.g. keyboard configuration and maybe
@@ -27,9 +27,7 @@ case $(hostname) in
     akela)
         # sudo add-apt-repository ppa:atareao/atareao
         run /opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator 6
-        run /opt/extras.ubuntu.com/calendar-indicator/bin/calendar-indicator 8
-        run google-tasks-indicator 10
-        run caffeine 12
+        run caffeine-indicator 8
         ;;
 
     bagheera)
