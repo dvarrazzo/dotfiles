@@ -15,6 +15,7 @@ ln -s etc/sqliterc .sqliterc
 ln -s etc/tmux.conf .tmux.conf
 ln -s etc/vim .vim
 ln -s etc/vim/vimrc .vimrc
+ln -s etc/gdbinit .gdbinit
 mkdir -p .darcs
 ln -s ~/etc/darcs/defaults .darcs/
 ln -s etc/xsession/xsession .xsession
