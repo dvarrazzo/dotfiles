@@ -318,6 +318,9 @@ globalkeys = awful.util.table.join(
     -- Try and press it by mistake again...
     awful.key({ modkey, "Shift", "Mod1" }, "q", awesome.quit),
 
+    -- Lock the screen
+    awful.key({ modkey, "Shift", "Mod1" }, "l", function () awful.util.spawn("gnome-screensaver-command -l")      end),
+
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.01)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.01)    end),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
