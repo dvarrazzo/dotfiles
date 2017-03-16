@@ -261,6 +261,17 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['eslint']
 
+let s:vimrcdir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+
+function! ChooseFlake8()
+    let buf = bufnr('')
+    if syntastic#util#parseShebang(buf)['exe']  =~# '\m\<python3'
+        let b:syntastic_python_flake8_exec = s:vimrcdir . '/../bin/flake8.3'
+    else
+        let b:syntastic_python_flake8_exec = s:vimrcdir . '/../bin/flake8.2'
+    endif
+endfunction
+
 " Mostly to remember about this option...
 let g:syntastic_python_pylint_quiet_messages = {"regex":"too-few-public-methods"}
 
