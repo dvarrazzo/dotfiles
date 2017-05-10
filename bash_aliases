@@ -32,7 +32,7 @@ ag_and_vi() {
     LINE=$1
     SEARCH=ag
     CMD=$(history 10 | egrep "\s*[0-9]+\s+${SEARCH}\s+" | tail -1 | sed -e 's/^\s*[0-9]\+\s\+\(.*\)$/\1/')
-    $(bash -c "${CMD}" | sed -n -e "${LINE}p" | sed -e 's/^\([^:]*\):\([0-9]\+\):\(.*\)$/vim \1 +\2/')
+    $(bash -c "${CMD}" | sed -n -e "${LINE}p" | sed -e "s/^\([^:]*\):\([0-9]\+\):\(.*\)$/${EDITOR} \1 +\2/")
 }
 alias e=ag_and_vi
 
