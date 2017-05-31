@@ -21,6 +21,7 @@ alias ack='ack-grep'
 alias gk="gitk --all -d &"
 alias indent='sed -e "s/^\(.*\)/    \1/"'
 alias d='docker'
+alias dr='docker run -it --rm'
 
 alias ..="cd .."
 alias ...="cd ../.."
