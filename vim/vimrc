@@ -643,8 +643,8 @@ command! ShowTrail /\s\+$
 command! NoTrail %s/\s\+$//
 
 " convert placeholders from psycopg to psql style and back
-command! PHFromPy %s/%(\([^)]*\))s/:\1/g
-command! PHToPy %s/\([^:]\):\([a-z0-9_][a-z0-9_]*\)/\1%(\2)s/g
+command! PHFromPy %s/%(\([^)]*\))s/:'\1'/g
+command! PHToPy %s/\([^:]\):'\([a-z0-9_][a-z0-9_]*\)'/\1%(\2)s/g
 
 " create reST titles
 nmap <leader>= <ESC>yypVr=
