@@ -11,6 +11,7 @@
     ap = add -p
     br = branch
     ca = commit --amend
+    can = commit --amend --no-edit
     ci = commit
     co = checkout
     cp = cherry-pick
