@@ -20,10 +20,12 @@
     lf = log --name-only
     ln = log --name-only
     loog = log --pretty=fuller
+    # Needed as git < 2.14 doesn't have pull --autostash
+    pr = -c rebase.autoStash=true pull --rebase
     pus = push
     rc = rebase --continue
     rh = reset HEAD
-    ri = rebase --interactive
+    ri = rebase --interactive --autostash
     rv = remote -v
     sm = submodule
     st = status
@@ -35,7 +37,7 @@
     templatedir = ~/.git_template
 
 [push]
-	default = simple
+    default = simple
 
 [gui]
     fontui = -family Ubuntu -size 8 -weight normal -slant roman -underline 0 -overstrike 0
