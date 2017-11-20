@@ -24,6 +24,8 @@ alias gk="gitk --all -d &"
 alias indent='sed -e "s/^\(.*\)/    \1/"'
 alias d='docker'
 alias dr='docker run -it --rm'
+alias dc='docker-compose'
+alias k='kubectl'
 
 alias ..="cd .."
 alias ...="cd ../.."
