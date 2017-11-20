@@ -232,6 +232,7 @@ autocmd FileType text,rst,markdown setl tw=78
 
 " 2 tabs indenting in *ml
 autocmd FileType html,htmldjango,xml,xhtml setl ts=2 | setl sw=2 | setl sts=2
+autocmd FileType yaml setl ts=2 | setl sw=2 | setl sts=2
 autocmd FileType javascript setl ts=2 | setl sw=2 | setl sts=2
 let g:vim_json_syntax_conceal = 0
 
