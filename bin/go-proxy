@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Run a socks proxy through an ssh shell and change the system proxy
+# At the end of the program reset the proxy to none.
+#
+# The system should be configured to open an ssh proxy by connecting
+# to the 'proxy' host. For instance the ~/.ssh/config may contain:
+#
+#   Host proxy
+#     hostname example.com
+#     User piro
+#     DynamicForward 8080
+#     IdentityFile ~/.ssh/id_rsa-proxy
+#
+# NOTE:
+#
+#    You can use the setting org.gnome.system.proxy ignore-hosts to ignore
+#    the proxy on some locations. for instance:
+#
+#    gsettings set org.gnome.system.proxy ignore-hosts \
+#        "['localhost', '127.0.0.0/8', '::1', 'nas', 'www.google.com']"
+
+set euo -pipefail
+
+die () {
+    echo $1 2>&1
+    exit 1
+}
+
+current_proxy=$(gsettings get org.gnome.system.proxy mode)
+if [ ! $current_proxy = "'none'" ]; then
+    die "$0: current proxy is $current_proxy: it should be 'none'"
+fi
+
+ssh -N proxy &
+child_pid=$!
+
+gsettings set org.gnome.system.proxy.socks host localhost
+gsettings set org.gnome.system.proxy.socks port 8080
+gsettings set org.gnome.system.proxy mode manual
+
+finish () {
+    echo "
+resetting proxy"
+    kill -SIGHUP $child_pid
+    gsettings set org.gnome.system.proxy mode none
+}
+
+trap finish EXIT
+
+echo System proxy configured. Press ctrl-c to stop the proxy.
+sleep infinity
