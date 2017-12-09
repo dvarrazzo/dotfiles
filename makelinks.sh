@@ -21,3 +21,5 @@ ln -s ~/etc/darcs/defaults .darcs/
 ln -s etc/xsession/xsession .xsession
 mkdir -p .config
 ln -s ~/etc/flake8 .config/
+mkdir -p .config/i3
+ln -s ~/etc/i3/config .config/i3/
