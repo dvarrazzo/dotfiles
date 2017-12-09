@@ -47,5 +47,19 @@ alias mcd=mkdircd
 # Generate a random password
 alias mkpass="cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1"
 
+# Set the terminal title. Reset to default if used with no argument.
+function title () {
+  if [[ -z "$ORIG_PS1" ]]; then
+    ORIG_PS1=$PS1
+  fi
+
+  if [[ -n "$1" ]]; then
+      TITLE="\[\e]2;$* (\w)\a\]"
+      PS1="${ORIG_PS1}${TITLE}"
+  else
+      PS1="${ORIG_PS1}"
+      unset ORIG_PS1
+  fi
+}
 
 # vim: set filetype=sh:
