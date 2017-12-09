@@ -2,6 +2,11 @@
 # Don't use it on ubuntu 14.04/16.04: it will steal your notifications
 # gnome-session &
 
+if [ "$(hostname)" = "makkuro" ]; then
+    eval `gnome-keyring-daemon`
+    exec /usr/bin/i3
+fi
+
 # this is sort of required for e.g. keyboard configuration and maybe
 # other stuff? screensaver?
 gnome-settings-daemon &
