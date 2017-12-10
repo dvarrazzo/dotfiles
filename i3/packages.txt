@@ -1,0 +1,12 @@
+# this i3 configuration requires the following packages:
+fonts-font-awesome
+gksudo
+i3
+i3blocks
+indicator-cpufreq
+lm-sensors
+pcmanfm
+synaptic
+
+# sudo add-apt-repository ppa:caffeine-developers/ppa
+sudo apt install caffeine
