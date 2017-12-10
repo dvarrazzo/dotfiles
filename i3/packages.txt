@@ -1,4 +1,5 @@
 # this i3 configuration requires the following packages:
+acpi
 fonts-font-awesome
 gksudo
 i3

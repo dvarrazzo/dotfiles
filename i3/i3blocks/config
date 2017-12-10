@@ -105,8 +105,10 @@ min_width=CPU: 100.00%
 #
 # The battery instance defaults to 0.
 [battery]
+command=~/.config/i3blocks/battery
+markup=pango
 #label=BAT
-label=⚡
+#label=⚡
 #instance=1
 interval=30
 

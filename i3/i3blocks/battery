@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# Battery blocklet for i3blocks
+
+BAT=0
+
+
+acpi=$(acpi -b | grep "Battery $BAT")
+# Examples of output of `acpi -b`:
+#   acpi="Battery 0: Discharging, 29%, 03:00:10 remaining"
+#   acpi="Battery 0: Unknown, 6%"
+#   acpi="Battery 0: Charging, 94%, 00:10:23 until charged"
+#   acpi="Battery 0: Full, 0%, rate information unavailable"
+
+state=$(echo "$acpi" | sed 's/[^:]\+: \([^,]\+\).*/\1/')
+pc=$(echo "$acpi" | sed 's/[^,]\+, \([^%]\+\).*/\1/')
+time=$(echo "$acpi" | egrep "[0-9]+:[0-9]+:[0-9]+" | sed 's/.* \([0-9]\+:[0-9]\+\+\).*/\1/')
+
+# Short cut: no battery, ac powered
+if (($pc == 0)) && [ "$state" = "Full" ]; then
+    exit 0
+fi
+
+# Battery icon
+if (($pc >= 95)); then
+    msg="&#xf240;"
+elif (($pc >= 75)); then
+    msg="&#xf241;"
+elif (($pc >= 50)); then
+    msg="&#xf242;"
+elif (($pc >= 25)); then
+    msg="&#xf243;"
+else
+    msg="&#xf244;"
+fi
+
+# Bolt icon
+if [ "$state" = "Charging" -o "$state" = "Full" ]; then
+    msg="$msg &#xf0e7;"
+fi
+
+# Percentage
+msg="$msg ${pc}%"
+
+# Color
+if [ "$state" = "Discharging" -o "$state" = "Unknown" ]; then
+    if (($pc < 15)); then
+        msg="<span color='#CC1616'>$msg</span>"
+    elif (($pc < 30)); then
+        msg="<span color='#CCCC16'>$msg</span>"
+    fi
+fi
+
+# Remaining time
+if [ -n "$time" ]; then
+    msg="$msg ($time)"
+fi
+
+echo $msg
