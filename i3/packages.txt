@@ -7,6 +7,7 @@ indicator-cpufreq
 lm-sensors
 pcmanfm
 synaptic
+zenity
 
 # sudo add-apt-repository ppa:caffeine-developers/ppa
 sudo apt install caffeine
