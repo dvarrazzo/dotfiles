@@ -1,7 +1,11 @@
 # this i3 configuration requires the following packages:
+# You can install them using:
+#
+#   cat packages.txt  | grep -v '^#' | xargs sudo apt install -y
+
 acpi
 fonts-font-awesome
-gksudo
+gksu
 i3
 i3blocks
 indicator-cpufreq
@@ -11,4 +15,7 @@ synaptic
 zenity
 
 # sudo add-apt-repository ppa:caffeine-developers/ppa
-sudo apt install caffeine
+caffeine
+
+# sudo add-apt-repository ppa:atareao/atareao
+my-weather-indicator
