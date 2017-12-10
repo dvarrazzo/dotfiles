@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Simple time blocklet for i3blocks
+# Display a calendar clicking on it
+
+case $BLOCK_BUTTON in
+  1) zenity --calendar --title "date" --text="" >/dev/null 2>&1 ;;
+  3) unity-control-center datetime ;;
+esac
+
+date '+%Y-%m-%d %H:%M'
