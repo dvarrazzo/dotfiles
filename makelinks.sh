@@ -23,3 +23,4 @@ mkdir -p .config
 ln -s ~/etc/flake8 .config/
 mkdir -p .config/i3
 ln -s ~/etc/i3/config .config/i3/
+ln -s ~/etc/i3/i3blocks/ .config/i3blocks

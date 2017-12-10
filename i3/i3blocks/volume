@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Simple volume blocklet for i3blocks
+# Supports volume change through scrolling, mute/unmute with left click,
+# displaying the alsa mixer with right click.
+#
+# Requires the entry:
+#   for_window [window_role="alsamixer"] floating enable
+# in i3 config (tried using i3-msg but it failed.
+#
+# Also requires:
+#   font pango:FontAwesome 9
+# in the bar { }
+
+MIXER=pulse
+SCONTROL=Master
+STEP=5%
+
+case $BLOCK_BUTTON in
+  1) amixer -q -D $MIXER sset $SCONTROL toggle ;;
+  3) gnome-terminal --role "alsamixer" -e "sh -c 'alsamixer && pkill -RTMIN+10 i3blocks'" ;;
+  4) amixer -q -D $MIXER sset $SCONTROL ${STEP}+ unmute ;;
+  5) amixer -q -D $MIXER sset $SCONTROL ${STEP}- unmute ;;
+esac
+
+# a string like "45%:on" with volume percentage and mute state
+vol=$(amixer -D $MIXER sget Master | egrep '\[on|off\]' | head -1 | \
+    awk -F"[][]" '{print $2 ":" $4}')
+
+case "$vol" in
+    *:on)
+        if (("${vol/\%*}" > 50)); then
+            icon="&#xf028;"
+        elif (("${vol/\%*}" > 5)); then
+            icon="&#xf027;"
+        else
+            icon="&#xf026;"
+        fi
+
+        echo "${icon}  ${vol/:*}"
+        ;;
+
+    *:off)
+        echo "&#xf026;  <span strikethrough='true' strikethrough_color='#aaa'>${vol/:*}</span>"
+        ;;
+esac
