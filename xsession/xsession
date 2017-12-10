@@ -2,10 +2,15 @@
 # Don't use it on ubuntu 14.04/16.04: it will steal your notifications
 # gnome-session &
 
-if [ "$(hostname)" = "makkuro" ]; then
+hostname=$(hostname)
+
+if [ "${hostname}" = "bagheera" -o "${hostname}" = "makkuro" ]; then
     eval `gnome-keyring-daemon`
+    # print message from i3 for debugging
+    # exec sh -c "/usr/bin/i3 -V > /tmp/i3-$(date '+%F-%k-%M-%S').log 2>&1"
     exec /usr/bin/i3
 fi
+
 
 # this is sort of required for e.g. keyboard configuration and maybe
 # other stuff? screensaver?
@@ -27,7 +32,7 @@ run nm-applet
 run indicator-cpufreq 2
 run indicator-multiload 4
 
-case $(hostname) in
+case ${hostname} in
 
     akela)
         # sudo add-apt-repository ppa:atareao/atareao
