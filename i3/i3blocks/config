@@ -28,23 +28,6 @@ command=/usr/share/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
-# Volume indicator
-#
-# The first parameter sets the step (and units to display)
-# The second parameter overrides the mixer selection
-# See the script for details.
-[volume]
-#command=/usr/share/i3blocks/volume 5% pulse
-command=~/.config/i3blocks/volume
-markup=pango
-#label=VOL
-#label=♪
-#label=&#xf026;
-instance=Master
-#instance=PCM
-interval=once
-signal=10
-
 # Memory usage
 #
 # The type defaults to "mem" if the instance is not specified.
@@ -118,8 +101,27 @@ interval=30
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 [temperature]
-label=TEMP
+markup=pango
+# label=&#xf2c7;    # requires font awesome 4.7
+label=T
 interval=10
+
+# Volume indicator
+#
+# The first parameter sets the step (and units to display)
+# The second parameter overrides the mixer selection
+# See the script for details.
+[volume]
+#command=/usr/share/i3blocks/volume 5% pulse
+command=~/.config/i3blocks/volume
+markup=pango
+#label=VOL
+#label=♪
+#label=&#xf026;
+instance=Master
+#instance=PCM
+interval=once
+signal=10
 
 # Date Time
 #
