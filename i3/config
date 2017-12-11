@@ -49,6 +49,10 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+# change focus of floating windows
+bindsym $mod+Tab focus right
+bindsym $mod+Shift+Tab focus left
+
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
