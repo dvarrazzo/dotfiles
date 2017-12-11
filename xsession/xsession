@@ -4,6 +4,9 @@
 
 hostname=$(hostname)
 
+# do it now so the bin dir can be used by the wm too
+export PATH=$HOME/etc/bin:$PATH
+
 if [ "${hostname}" = "bagheera" -o "${hostname}" = "makkuro" ]; then
     eval `gnome-keyring-daemon`
     # print message from i3 for debugging
