@@ -167,8 +167,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-for_window [window_role="alsamixer"] floating enable
-
 bar {
     status_command i3blocks
     position top
@@ -176,6 +174,10 @@ bar {
     tray_padding 0
     font pango:FontAwesome 10
 }
+
+# Make the window open clicking on the volume blocklet floating
+for_window [window_role="^alsamixer$"] floating enable
+
 
 # Applets
 exec --no-startup-id nm-applet
@@ -194,6 +196,11 @@ bindsym $mod+Shift+e exec pcmanfm
 bindsym $mod+Shift+p exec gksudo synaptic
 bindsym $mod+Shift+s exec unity-control-center
 bindsym $mod+Shift+v exec gvim
+
+# Special windows behaviour
+for_window [class="^Gitk$"] floating enable
+for_window [class="^Google-chrome"] floating enable
+
 
 # Further info:
 #
