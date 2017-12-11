@@ -5,12 +5,18 @@
 BAT=0
 
 
-acpi=$(acpi -b | grep "Battery $BAT")
+acpi=$(acpi -b 2>/dev/null | grep "Battery $BAT")
+
 # Examples of output of `acpi -b`:
 #   acpi="Battery 0: Discharging, 29%, 03:00:10 remaining"
 #   acpi="Battery 0: Unknown, 6%"
 #   acpi="Battery 0: Charging, 94%, 00:10:23 until charged"
 #   acpi="Battery 0: Full, 0%, rate information unavailable"
+
+if [ -z "${acpi}" ]; then
+    # No battery at all
+    exit
+fi
 
 state=$(echo "$acpi" | sed 's/[^:]\+: \([^,]\+\).*/\1/')
 pc=$(echo "$acpi" | sed 's/[^,]\+, \([^%]\+\).*/\1/')
