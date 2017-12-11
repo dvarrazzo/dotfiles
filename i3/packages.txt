@@ -9,6 +9,7 @@ gksu
 i3
 i3blocks
 indicator-cpufreq
+jq
 lm-sensors
 pcmanfm
 synaptic
