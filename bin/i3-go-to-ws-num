@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Go to an i3 workspace with given number prefix instead of given name.
+# e.g. if there is a workspace named 5:www go there with Mod4+5
+
+num=$1
+
+# Read the name of the workspace starting with $num
+name=$(i3-msg -t get_workspaces \
+    | jq -r ".[] .name | match(\"${num}:.*\") .string" \
+    | head -1)
+
+# If none found respect the usual behaviour (create a new one)
+if [ -z "$name" ]; then
+    name="$num"
+fi
+
+i3-msg "workspace ${name}"

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Move a container to a workspace with prefix $num (e.g. 5:www)
+
+num=$1
+
+# Read the name of the workspace starting with $num
+name=$(i3-msg -t get_workspaces \
+    | jq -r ".[] .name | match(\"${num}:.*\") .string" \
+    | head -1)
+
+# If none found respect the usual behaviour (create a new one)
+if [ -z "$name" ]; then
+    name="$num"
+fi
+
+i3-msg "move container to workspace ${name}"
