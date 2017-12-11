@@ -101,16 +101,16 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+n exec "i3-input -F 'rename workspace to %s' -P 'New workspace name '"
 
 # switch to workspace
-bindsym $mod+1 exec ./etc/bin/i3-go-to-ws-num 1
-bindsym $mod+2 exec ./etc/bin/i3-go-to-ws-num 2
-bindsym $mod+3 exec ./etc/bin/i3-go-to-ws-num 3
-bindsym $mod+4 exec ./etc/bin/i3-go-to-ws-num 4
-bindsym $mod+5 exec ./etc/bin/i3-go-to-ws-num 5
-bindsym $mod+6 exec ./etc/bin/i3-go-to-ws-num 6
-bindsym $mod+7 exec ./etc/bin/i3-go-to-ws-num 7
-bindsym $mod+8 exec ./etc/bin/i3-go-to-ws-num 8
-bindsym $mod+9 exec ./etc/bin/i3-go-to-ws-num 9
-bindsym $mod+0 exec ./etc/bin/i3-go-to-ws-num 10
+bindsym $mod+1 exec i3-go-to-ws-num 1
+bindsym $mod+2 exec i3-go-to-ws-num 2
+bindsym $mod+3 exec i3-go-to-ws-num 3
+bindsym $mod+4 exec i3-go-to-ws-num 4
+bindsym $mod+5 exec i3-go-to-ws-num 5
+bindsym $mod+6 exec i3-go-to-ws-num 6
+bindsym $mod+7 exec i3-go-to-ws-num 7
+bindsym $mod+8 exec i3-go-to-ws-num 8
+bindsym $mod+9 exec i3-go-to-ws-num 9
+bindsym $mod+0 exec i3-go-to-ws-num 10
 
 # workspace/monitor rotation
 bindsym $mod+Page_Up workspace prev_on_output
@@ -118,18 +118,17 @@ bindsym $mod+Page_Down workspace next_on_output
 bindsym $mod+Shift+Page_Up focus output left
 bindsym $mod+Shift+Page_Down focus output right
 
-
 # move focused container to workspace
-bindsym $mod+Shift+1 exec ./etc/bin/i3-move-cont-to-ws-num 1
-bindsym $mod+Shift+2 exec ./etc/bin/i3-move-cont-to-ws-num 2
-bindsym $mod+Shift+3 exec ./etc/bin/i3-move-cont-to-ws-num 3
-bindsym $mod+Shift+4 exec ./etc/bin/i3-move-cont-to-ws-num 4
-bindsym $mod+Shift+5 exec ./etc/bin/i3-move-cont-to-ws-num 5
-bindsym $mod+Shift+6 exec ./etc/bin/i3-move-cont-to-ws-num 6
-bindsym $mod+Shift+7 exec ./etc/bin/i3-move-cont-to-ws-num 7
-bindsym $mod+Shift+8 exec ./etc/bin/i3-move-cont-to-ws-num 8
-bindsym $mod+Shift+9 exec ./etc/bin/i3-move-cont-to-ws-num 9
-bindsym $mod+Shift+0 exec ./etc/bin/i3-move-cont-to-ws-num 10
+bindsym $mod+Shift+1 exec i3-move-cont-to-ws-num 1
+bindsym $mod+Shift+2 exec i3-move-cont-to-ws-num 2
+bindsym $mod+Shift+3 exec i3-move-cont-to-ws-num 3
+bindsym $mod+Shift+4 exec i3-move-cont-to-ws-num 4
+bindsym $mod+Shift+5 exec i3-move-cont-to-ws-num 5
+bindsym $mod+Shift+6 exec i3-move-cont-to-ws-num 6
+bindsym $mod+Shift+7 exec i3-move-cont-to-ws-num 7
+bindsym $mod+Shift+8 exec i3-move-cont-to-ws-num 8
+bindsym $mod+Shift+9 exec i3-move-cont-to-ws-num 9
+bindsym $mod+Shift+0 exec i3-move-cont-to-ws-num 10
 
 # Scatchpad
 bindsym $mod+minus move scratchpad
