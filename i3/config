@@ -111,8 +111,12 @@ bindsym $mod+7 exec ./etc/bin/i3-go-to-ws-num 7
 bindsym $mod+8 exec ./etc/bin/i3-go-to-ws-num 8
 bindsym $mod+9 exec ./etc/bin/i3-go-to-ws-num 9
 bindsym $mod+0 exec ./etc/bin/i3-go-to-ws-num 10
-bindsym $mod+Page_Up workspace prev
-bindsym $mod+Page_Down workspace next
+
+# workspace/monitor rotation
+bindsym $mod+Page_Up workspace prev_on_output
+bindsym $mod+Page_Down workspace next_on_output
+bindsym $mod+Shift+Page_Up focus output left
+bindsym $mod+Shift+Page_Down focus output right
 
 
 # move focused container to workspace
