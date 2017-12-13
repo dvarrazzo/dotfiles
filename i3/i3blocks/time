@@ -8,4 +8,4 @@ case $BLOCK_BUTTON in
   3) unity-control-center datetime ;;
 esac
 
-date '+%Y-%m-%d %H:%M'
+date +"%a %d %b '%y %H:%M"
