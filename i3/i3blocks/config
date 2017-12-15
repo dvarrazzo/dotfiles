@@ -127,7 +127,13 @@ signal=10
 #
 [time]
 command=~/.config/i3blocks/time
-interval=5
+# interval=5
+# Use:
+# * * * * * pkill -RTMIN+12 i3blocks
+# in your crontab to update
+interval=once
+signal=12
+
 
 # Generic media player support
 #
