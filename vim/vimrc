@@ -251,8 +251,11 @@ autocmd BufRead,BufNewFile *.sql setl filetype=pgsql | setl matchpairs-=<:>
 " ansible inventories
 autocmd BufRead,BufNewFile *.inv setl filetype=ansible_hosts
 
-" ansible inventories
+" docker files
 autocmd BufRead,BufNewFile *.Dockerfile setl filetype=dockerfile
+
+" tabs in .gitmodules
+autocmd BufRead .gitmodules setl noexpandtab
 
 " Suggested configuration for Syntastic, with my edits
 set statusline+=%#warningmsg#
