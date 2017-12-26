@@ -9,6 +9,7 @@ export PATH=$HOME/etc/bin:$PATH
 
 if [ "${hostname}" = "bagheera" -o "${hostname}" = "makkuro" ]; then
     eval `gnome-keyring-daemon`
+    gnome-settings-daemon &
     # print message from i3 for debugging
     # exec sh -c "/usr/bin/i3 -V > /tmp/i3-$(date '+%F-%k-%M-%S').log 2>&1"
     exec /usr/bin/i3
