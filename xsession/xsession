@@ -1,66 +1,30 @@
 #!/bin/bash
-# Don't use it on ubuntu 14.04/16.04: it will steal your notifications
-# gnome-session &
 
-hostname=$(hostname)
-
-# do it now so the bin dir can be used by the wm too
+# Allow i3 to find the scripts to customize it
 export PATH=$HOME/etc/bin:$PATH
 
-if [ "${hostname}" = "bagheera" -o "${hostname}" = "makkuro" ]; then
-    eval `gnome-keyring-daemon`
-    gnome-settings-daemon &
-    # print message from i3 for debugging
-    # exec sh -c "/usr/bin/i3 -V > /tmp/i3-$(date '+%F-%k-%M-%S').log 2>&1"
-    exec /usr/bin/i3
-fi
+# Have a ssh session at session level
+eval `gnome-keyring-daemon`
 
-
-# this is sort of required for e.g. keyboard configuration and maybe
-# other stuff? screensaver?
+# Magic. Without this running, visualization is generally crappy, and italic
+# fonts in dialog boxes will be rendered as unknown chars.
 gnome-settings-daemon &
 
-# run an applet as a process child of this script
-# after an optional delay
-function run {
-    APP=$1;
-    DELAY=$2;
-
-    (
-        if [ -n "$DELAY" ]; then sleep $DELAY; fi
-        exec "$APP"
-    ) &
-}
-
-run nm-applet
-run indicator-cpufreq 2
-run indicator-multiload 4
-
-case ${hostname} in
-
-    akela)
-        # sudo add-apt-repository ppa:atareao/atareao
-        run /opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator 6
-        run caffeine-indicator 8
-        ;;
-
-    bagheera)
-        run blueman-applet 6
-        # run indicator-weather 8
-        run caffeine-indicator 10
-        ;;
-
+# Customized bits for different hosts
+case $(hostname) in
     risotto)
         # swap left and right mouse buttons
         # (go back in history with the left thumb)
         xmodmap -e "pointer = 1 2 3 4 5 6 7 9 8"
 
-        run /opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator 6
-        run /opt/extras.ubuntu.com/calendar-indicator/bin/calendar-indicator 8
-        run /opt/extras.ubuntu.com/pomodoro-indicator/bin/pomodoro-indicator 10
+        # Ubuntu 16.04 decided that the screen control must be broken
+        # Used arandr to generate a reasonable configuration.
+        xrandr \
+            --output DVI-D-0 --mode 2560x1440 --pos 1440x541 --rotate normal \
+            --output DVI-D-1 --primary --mode 2560x1440 --pos 0x0 --rotate left
         ;;
 esac
 
-eval `gnome-keyring-daemon`
-
-exec /usr/bin/awesome
+# print message from i3 for debugging
+# exec sh -c "/usr/bin/i3 -V > /tmp/i3-$(date '+%F-%k-%M-%S').log 2>&1"
+exec /usr/bin/i3
