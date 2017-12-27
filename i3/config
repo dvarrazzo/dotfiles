@@ -131,6 +131,10 @@ bindsym $mod+Shift+8 exec i3-move-cont-to-ws-num 8
 bindsym $mod+Shift+9 exec i3-move-cont-to-ws-num 9
 bindsym $mod+Shift+0 exec i3-move-cont-to-ws-num 10
 
+# Scatchpad
+bindsym $mod+minus move scratchpad
+bindsym $mod+equal scratchpad show
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
