@@ -1,31 +1,29 @@
 #!/bin/bash
-# Don't use it on ubuntu 14.04/16.04: it will steal your notifications
-# gnome-session &
 
-hostname=$(hostname)
+# Allow i3 to find the scripts to customize it
+export PATH=$HOME/etc/bin:$PATH
 
-if [ "${hostname}" = "risotto" ]; then
-
-	# swap left and right mouse buttons
-	# (go back in history with the left thumb)
-	xmodmap -e "pointer = 1 2 3 4 5 6 7 9 8"
-
-	# Ubuntu 16.04 decided that the screen control must be broken
-	# Used arandr to generate a reasonable configuration.
-	xrandr \
-		--output DVI-D-0 --mode 2560x1440 --pos 1440x541 --rotate normal \
-		--output DVI-D-1 --primary --mode 2560x1440 --pos 0x0 --rotate left
-
-fi
-
+# Have a ssh session at session level
 eval `gnome-keyring-daemon`
 
-# this is sort of required for e.g. keyboard configuration and maybe
-# other stuff? screensaver?
-#
-# Is this still required? On i3 at home it didn't seem so. Here at work
-# I was using ubuntu-settings-daemon which doesn't seem available anymore...
-# gnome-settings-daemon &
+# Magic. Without this running, visualization is generally crappy, and italic
+# fonts in dialog boxes will be rendered as unknown chars.
+gnome-settings-daemon &
+
+# Customized bits for different hosts
+case $(hostname) in
+    risotto)
+        # swap left and right mouse buttons
+        # (go back in history with the left thumb)
+        xmodmap -e "pointer = 1 2 3 4 5 6 7 9 8"
+
+        # Ubuntu 16.04 decided that the screen control must be broken
+        # Used arandr to generate a reasonable configuration.
+        xrandr \
+            --output DVI-D-0 --mode 2560x1440 --pos 1440x541 --rotate normal \
+            --output DVI-D-1 --primary --mode 2560x1440 --pos 0x0 --rotate left
+        ;;
+esac
 
 # print message from i3 for debugging
 # exec sh -c "/usr/bin/i3 -V > /tmp/i3-$(date '+%F-%k-%M-%S').log 2>&1"
