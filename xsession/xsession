@@ -20,8 +20,8 @@ case $(hostname) in
         # Ubuntu 16.04 decided that the screen control must be broken
         # Used arandr to generate a reasonable configuration.
         xrandr \
-            --output DVI-D-0 --mode 2560x1440 --pos 1440x541 --rotate normal \
-            --output DVI-D-1 --primary --mode 2560x1440 --pos 0x0 --rotate left
+            --output DVI-D-0 --primary --mode 2560x1440 --pos 1440x541 \
+            --output DVI-D-1 --mode 2560x1440 --pos 0x0 --rotate left
         ;;
 esac
 
