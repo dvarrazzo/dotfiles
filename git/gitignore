@@ -9,6 +9,7 @@
 .gdb_history
 _darcs
 \#*#
+.ignore
 .agignore
 core
 tags
