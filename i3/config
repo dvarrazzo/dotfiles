@@ -212,6 +212,7 @@ bindsym $mod+Shift+v exec gvim
 for_window [class="^Gitk$"] floating enable
 for_window [class="^Gstm$"] floating enable
 for_window [class="^Evince$"] floating enable
+for_window [class="^Keepassx$"] floating enable
 for_window [class="^Google-chrome"] floating enable
 
 
