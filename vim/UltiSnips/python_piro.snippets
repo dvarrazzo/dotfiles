@@ -21,7 +21,7 @@ if __name__ == '__main__':
 	try:
 		sys.exit(main())
 
-	except ScriptError, e:
+	except ScriptError as e:
 		logger.error("%s", e)
 		sys.exit(1)
 
