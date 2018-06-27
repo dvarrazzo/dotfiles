@@ -30,9 +30,7 @@ no application icons).
 So in 14.04 you get the shit appearence of the basic gtk2-or-whatever theme,
 Windows-3.11-style. Welcome back to fucking 1993, and no Nirvana around either.
 
-To check if the notification area is fucked run appind.py__.
-
-.. __: https://gist.github.com/dvarrazzo/8374db3b36059ff1fdf1
+To check if the notification area is fucked run ``appind.py``.
 
 You can restore some style using ``lxappearance``. For the functionalities
 we'll see.
