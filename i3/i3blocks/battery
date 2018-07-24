@@ -23,7 +23,7 @@ pc=$(echo "$acpi" | sed 's/[^,]\+, \([^%]\+\).*/\1/')
 time=$(echo "$acpi" | egrep "[0-9]+:[0-9]+:[0-9]+" | sed 's/.* \([0-9]\+:[0-9]\+\+\).*/\1/')
 
 # Short cut: no battery, ac powered
-if (($pc == 0)) && [ "$state" = "Full" ]; then
+if (($pc == 0)); then
     exit 0
 fi
 
