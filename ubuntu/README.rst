@@ -52,3 +52,18 @@ The fucking drums are back
 I'm so happy. ::
 
     sudo mv -vi /usr/share/sounds/ubuntu/stereo/system-ready.ogg{,.fuckoff}
+
+
+Upgrading to 18.04
+------------------
+
+Mostly smooth, but gksudo is gone. Managed to run pkexec by starting the auth
+manager in i3 conf (without it doesnt't give permission, and reports me as a
+naughty user, so I guess I won't have a gift for Christmas this year).
+
+Somewhere is reported I seem to need to export some env bits, proposing this
+alias::
+
+    alias gksu='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY'
+
+But it doesn't seem necessary.
