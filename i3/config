@@ -196,6 +196,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id indicator-cpufreq
 exec --no-startup-id caffeine-indicator
 exec --no-startup-id /opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator
+# Needed by pkexec
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 
 # Volume control
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
@@ -205,7 +207,7 @@ bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- unmute && p
 # App shortcuts
 bindsym $mod+Shift+b exec google-chrome
 bindsym $mod+Shift+e exec pcmanfm
-bindsym $mod+Shift+p exec gksudo synaptic
+bindsym $mod+Shift+p exec pkexec synaptic
 bindsym $mod+Shift+s exec unity-control-center
 bindsym $mod+Shift+v exec gvim
 
