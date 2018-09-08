@@ -208,7 +208,8 @@ bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- unmute && p
 bindsym $mod+Shift+b exec google-chrome
 bindsym $mod+Shift+e exec pcmanfm
 bindsym $mod+Shift+p exec pkexec synaptic
-bindsym $mod+Shift+s exec unity-control-center
+# If the var is not set to GNOME the panel will be empty
+bindsym $mod+Shift+s exec env XDG_CURRENT_DESKTOP=GNOME gnome-control-center
 bindsym $mod+Shift+v exec gvim
 
 # Special windows behaviour
