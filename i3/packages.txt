@@ -5,7 +5,7 @@
 
 acpi
 fonts-font-awesome
-gksu
+# gksu shouldn't be needed/available anymore on 18.04
 i3
 i3blocks
 indicator-cpufreq
