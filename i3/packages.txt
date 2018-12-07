@@ -4,8 +4,8 @@
 #   cat packages.txt  | grep -v '^#' | xargs sudo apt install -y
 
 acpi
+flameshot
 fonts-font-awesome
-# gksu shouldn't be needed/available anymore on 18.04
 i3
 i3blocks
 indicator-cpufreq
