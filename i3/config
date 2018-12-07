@@ -210,6 +210,7 @@ bindsym $mod+Shift+p exec pkexec synaptic
 # If the var is not set to GNOME the panel will be empty
 bindsym $mod+Shift+s exec env XDG_CURRENT_DESKTOP=GNOME gnome-control-center
 bindsym $mod+Shift+v exec gvim
+bindsym Print exec flameshot gui
 
 # Special windows behaviour
 for_window [class="^Gitk$"] floating enable
