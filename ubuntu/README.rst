@@ -67,3 +67,15 @@ alias::
     alias gksu='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY'
 
 But it doesn't seem necessary.
+
+
+Broken meld display
+-------------------
+
+meld and other gtk programs have broken display. See `this bug`__ for more
+details. Solution is to replace ``run_im xim`` with ``run_im none`` in the
+``~/.xinputrc`` file.
+
+.. __: https://gitlab.gnome.org/GNOME/meld/issues/186
+
+Of course the input file breaks the display, no?
