@@ -78,3 +78,14 @@ trying `this workaround`__.
 No, cancel that, trying `this ppa`__ instead...
 
 .. __: https://launchpad.net/~as-asaw/+archive/ubuntu/fonts
+
+Broken meld display
+-------------------
+
+meld and other gtk programs have broken display. See `this bug`__ for more
+details. Solution is to replace ``run_im xim`` with ``run_im none`` in the
+``~/.xinputrc`` file.
+
+.. __: https://gitlab.gnome.org/GNOME/meld/issues/186
+
+Of course the input file breaks the display, no?
