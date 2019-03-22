@@ -427,7 +427,7 @@ if &term=="xterm" || has("gui_running")
 endif
 
 set background=dark
-set guifont=Monospace\ 8 " smaller font
+set guifont=Monospace\ 9 " smaller font
 set statusline=%<%f%h%m%r\ %y%=[%b\ 0x%B]\ \ [%l,%c%V]\ %P
 set laststatus=2        " Always show the status line
 " set ruler             " Show the cursor position all the time
