@@ -67,3 +67,14 @@ alias::
     alias gksu='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY'
 
 But it doesn't seem necessary.
+
+----
+
+On the work desktop fonts look terrible. It seems a problem with libreetypes,
+trying `this workaround`__.
+
+.. __: https://github.com/adobe/brackets/issues/14290#issuecomment-394118945
+
+No, cancel that, trying `this ppa`__ instead...
+
+.. __: https://launchpad.net/~as-asaw/+archive/ubuntu/fonts
