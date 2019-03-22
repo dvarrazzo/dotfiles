@@ -708,6 +708,8 @@ if hostname == 'risotto'
     autocmd BufRead /home/piro/src/setproctitle/* set expandtab
     autocmd BufRead /home/piro/src/pyrseas/* set expandtab
     autocmd BufRead /home/piro/src/suponoff/* set expandtab
+    autocmd BufRead /home/piro/src/mollyapi/* set expandtab
+    autocmd BufRead /home/piro/src/totus/* set expandtab
     autocmd BufRead /tmp/psql.edit.*.sql set expandtab
 
     " open my log file
