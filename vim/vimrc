@@ -337,6 +337,9 @@ function! F8UpdateIgnore()
     endif
 endfunction
 
+" should be per project, see https://github.com/ambv/black/issues/414
+let g:black_linelength=79
+let g:black_skip_string_normalization=1
 
 " Jedi: don't clobber my ag shortcut
 let g:jedi#usages_command = "<leader>u"
