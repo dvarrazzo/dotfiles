@@ -98,13 +98,14 @@ if _initialize_black_env():
 def Black():
   start = time.time()
   fast = bool(int(vim.eval("g:black_fast")))
-  line_length = int(vim.eval("g:black_linelength"))
-  mode = black.FileMode.AUTO_DETECT
-  if bool(int(vim.eval("g:black_skip_string_normalization"))):
-    mode |= black.FileMode.NO_STRING_NORMALIZATION
+  mode = black.FileMode(
+    line_length=int(vim.eval("g:black_linelength")),
+    string_normalization=not bool(int(vim.eval("g:black_skip_string_normalization"))),
+    is_pyi=vim.current.buffer.name.endswith('.pyi'),
+  )
   buffer_str = '\n'.join(vim.current.buffer) + '\n'
   try:
-    new_buffer_str = black.format_file_contents(buffer_str, line_length=line_length, fast=fast, mode=mode)
+    new_buffer_str = black.format_file_contents(buffer_str, fast=fast, mode=mode)
   except black.NothingChanged:
     print(f'Already well formatted, good job. (took {time.time() - start:.4f}s)')
   except Exception as exc:
@@ -112,7 +113,10 @@ def Black():
   else:
     cursor = vim.current.window.cursor
     vim.current.buffer[:] = new_buffer_str.split('\n')[:-1]
-    vim.current.window.cursor = cursor
+    try:
+      vim.current.window.cursor = cursor
+    except vim.error:
+      vim.current.window.cursor = (len(vim.current.buffer), 0)
     print(f'Reformatted in {time.time() - start:.4f}s.')
 
 def BlackUpgrade():
