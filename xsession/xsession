@@ -23,6 +23,9 @@ case $(hostname) in
             --output DVI-D-0 --primary --mode 2560x1440 --pos 1440x541 \
             --output DVI-D-1 --mode 2560x1440 --pos 0x0 --rotate left
         ;;
+    akela)
+        xrandr --output DVI-0 --primary
+        ;;
 esac
 
 # print message from i3 for debugging
