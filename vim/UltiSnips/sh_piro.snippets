@@ -1,5 +1,5 @@
 snippet dir "Script execution dir" !
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 endsnippet
 
@@ -7,6 +7,6 @@ snippet #! "Bash shebang and safe mode" !
 #!/bin/bash
 
 set -euo pipefail
-set -x
+# set -x
 
 endsnippet
