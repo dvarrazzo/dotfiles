@@ -4,6 +4,7 @@
 #   cat packages.txt  | grep -v '^#' | xargs sudo apt install -y
 
 acpi
+blueman
 flameshot
 fonts-font-awesome
 i3
