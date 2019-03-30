@@ -77,6 +77,7 @@ set sidescroll=1        " Scoll 1 char at time left/right
 set scrolloff=3         " How much to see around the cursor
 set sidescrolloff=3
 set showcmd             " Show partial commands
+set nojoinspaces        " One space after full-stop in join/gq operation
 
 " When sudoed, disable yankring, or it will chown the histfile to root,
 " creating errors at the next non-sudoed usage.
