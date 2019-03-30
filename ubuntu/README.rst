@@ -95,3 +95,30 @@ details. Solution is to replace ``run_im xim`` with ``run_im none`` in the
 .. __: https://gitlab.gnome.org/GNOME/meld/issues/186
 
 Of course the input file breaks the display, no?
+
+
+Bluetooth not working on the Lenovo
+-----------------------------------
+
+Bluetooth not working on makkuro (lenovo X1 carbon). "No bluetooth found" in
+the settings panel.
+
+Got in ``/var/log/messages``::
+
+    Mar 23 10:51:07 makkuro kernel: [ 7179.272081] bluetooth hci0: Direct firmware load for brcm/BCM20702A1-0a5c-21e6.hcd failed with error -2
+    ...
+    Bluetooth: hci0: last event is not cmd complete (0x0f)
+
+Followed__ some__ googling__. Got rid of the first message but not the second,
+still not working.
+
+.. __: https://forums.linuxmint.com/viewtopic.php?t=275433
+.. __: https://plugable.com/2014/06/23/plugable-usb-bluetooth-adapter-solving-hfphsp-profile-issues-on-linux/
+.. __: https://github.com/winterheart/broadcom-bt-firmware
+
+----
+
+Turns out bluetooth works alright (using command line or blueman); it's the
+control panel that doesn't work. `Opened a bug`__.
+
+.. __: https://bugs.launchpad.net/ubuntu/+source/gnome-control-center/+bug/1822439
