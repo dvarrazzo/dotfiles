@@ -18,6 +18,12 @@ From the ``../xsession`` dir:
 to have the choice of running i3 with the Gnome keyring or the Gnome
 environment. Except that...
 
+---
+
+2019-03-30: ran the gnome session, and "default" session stopped working. Had
+to replace ``default`` with ``~/.xsession`` in the ``Exec`` entry of the
+``.desktop`` file.
+
 
 ``gnome-session`` is no more
 ----------------------------
