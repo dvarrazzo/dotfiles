@@ -1,0 +1,18 @@
+#!/bin/bash
+
+function run {
+    "$1" || notify-send --icon=gtk-dialog-error Applet "error running $1" &
+}
+
+hostname=$(hostname)
+
+run nm-applet
+run indicator-cpufreq
+run caffeine-indicator
+run /opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator
+[[ $hostname =~ ^(bagheera|makkuro)$ ]] && run blueman-applet
+[[ $hostname =~ ^(akela|bagheera|makkuro)$ ]] \
+    && run /usr/bin/synology-cloud-station-drive
+
+# Needed by pkexec
+run /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1

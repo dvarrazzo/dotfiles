@@ -191,13 +191,7 @@ for_window [window_role="^alsamixer$"] floating enable
 
 
 # Applets
-exec --no-startup-id nm-applet
-exec --no-startup-id indicator-cpufreq
-exec --no-startup-id caffeine-indicator
-exec --no-startup-id blueman-applet
-exec --no-startup-id /opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator
-# Needed by pkexec
-exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id i3-applets
 
 # Volume control
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
