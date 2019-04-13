@@ -2,6 +2,9 @@
 #
 # Create all the links to config files I may want on a new system
 
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "$dir/.."
+
 ln -s etc/bash_aliases .bash_aliases
 ln -s etc/bash_completion .bash_completion
 ln -s etc/ackrc .ackrc
@@ -17,10 +20,10 @@ ln -s etc/vim .vim
 ln -s etc/vim/vimrc .vimrc
 ln -s etc/gdbinit .gdbinit
 mkdir -p .darcs
-ln -s ~/etc/darcs/defaults .darcs/
+ln -s etc/darcs/defaults .darcs/
 ln -s etc/xsession/xsession .xsession
 mkdir -p .config
-ln -s ~/etc/flake8 .config/
+ln -s etc/flake8 .config/
 mkdir -p .config/i3
-ln -s ~/etc/i3/config .config/i3/
-ln -s ~/etc/i3/i3blocks/ .config/i3blocks
+ln -s etc/i3/config .config/i3/
+ln -s etc/i3/i3blocks/ .config/i3blocks
