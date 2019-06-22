@@ -199,7 +199,7 @@ bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ unmute && p
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- unmute && pkill -RTMIN+10 i3blocks
 
 # App shortcuts
-bindsym $mod+Shift+b exec google-chrome
+bindsym $mod+Shift+b exec firefox
 bindsym $mod+Shift+e exec pcmanfm
 bindsym $mod+Shift+p exec pkexec synaptic
 # If the var is not set to GNOME the panel will be empty
