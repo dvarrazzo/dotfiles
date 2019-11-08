@@ -5,7 +5,7 @@
 
 case $BLOCK_BUTTON in
   1) zenity --calendar --title "date" --text="" >/dev/null 2>&1 ;;
-  3) unity-control-center datetime ;;
+  3) XDG_CURRENT_DESKTOP=GNOME gnome-control-center datetime ;;
 esac
 
 date +"%a %d %b %H:%M"
