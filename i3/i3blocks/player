@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -euo pipefail
+# set -x
+
+player=$(qdbus | grep MediaPlayer2 | cut -c 2-)
+if [ -z "$player" ]; then
+    # No player detected
+    exit
+fi
+
+title=$(qdbus $player /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Metadata \
+    | grep xesam:title: | cut -d " " -f 2-)
+
+if [ -z "$title" ]; then
+    # No player detected
+    exit
+fi
+
+artist=$(qdbus $player /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Metadata \
+    | grep xesam:artist: | cut -d " " -f 2-)
+
+echo $artist - $title
