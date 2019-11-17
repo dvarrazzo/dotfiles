@@ -11,6 +11,7 @@
 #     User piro
 #     DynamicForward 8080
 #     IdentityFile ~/.ssh/id_rsa-proxy
+#     ExitOnForwardFailure yes
 #
 # NOTE:
 #
@@ -20,33 +21,60 @@
 #    gsettings set org.gnome.system.proxy ignore-hosts \
 #        "['localhost', '127.0.0.0/8', '::1', 'nas', 'www.google.com']"
 
-set euo -pipefail
+set -euo pipefail
+# set -x
+
+want_host=localhost
+want_port=8080
+
+warn () {
+    echo $1 2>&1
+}
 
 die () {
     echo $1 2>&1
     exit 1
 }
 
-current_proxy=$(gsettings get org.gnome.system.proxy mode)
-if [ ! $current_proxy = "'none'" ]; then
-    die "$0: current proxy is $current_proxy: it should be 'none'"
+get () {
+    what=$1
+    where=${2:-}
+    where=${where/?*/.${where}}     # prepend a dot if not empty
+    val=$(gsettings get org.gnome.system.proxy${where} $what)
+    echo "print($val)" | python     # remove the quotes
+}
+
+mode=$(get mode)
+if [ ${mode} = "none" ]; then
+    true # all fine
+elif [ ${mode} = "manual" ]; then
+    # Fine if no-op
+    proxy="$(get host socks):$(get port socks)"
+    if [ ${proxy} = "${want_host}:${want_port}" ]; then
+        warn "Proxy is already set to '${proxy}'"
+        nc -z localhost 8080 && die "Proxy already running"
+    else
+        die "Current proxy is '${proxy}': it should be '${want_host}:${want_port}'"
+    fi
+else
+    die "Current proxy mode is '${mode}': expected 'none' or 'manual'"
 fi
 
 ssh -N proxy &
-child_pid=$!
+ssh_pid=$!
 
-gsettings set org.gnome.system.proxy.socks host localhost
-gsettings set org.gnome.system.proxy.socks port 8080
+gsettings set org.gnome.system.proxy.socks host ${want_host}
+gsettings set org.gnome.system.proxy.socks port ${want_port}
 gsettings set org.gnome.system.proxy mode manual
 
 finish () {
     echo "
-resetting proxy"
-    kill -SIGHUP $child_pid
+Resetting proxy. Bye..."
+    kill -SIGHUP $ssh_pid || warn "Couldn't kill ssh tunnel"
     gsettings set org.gnome.system.proxy mode none
 }
 
 trap finish EXIT
 
 echo System proxy configured. Press ctrl-c to stop the proxy.
-sleep infinity
+wait ${ssh_pid}
