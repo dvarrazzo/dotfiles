@@ -40,3 +40,6 @@
 [submodule "vim/bundles/nerdtree-git-plugin"]
 	path = vim/bundles/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+[submodule "vim/bundles/txtfmt"]
+	path = vim/bundles/txtfmt
+	url = https://github.com/bpstahlman/txtfmt.git

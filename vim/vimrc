@@ -22,6 +22,9 @@ set runtimepath+=~/.vim/bundles/UltiSnips
 
 " Enable Tabular
 set runtimepath+=~/.vim/bundles/tabular
+"
+" Enable Rich Text
+set runtimepath+=~/.vim/bundles/txtfmt
 
 " Enable NERDTree
 set runtimepath+=~/.vim/bundles/nerdtree
