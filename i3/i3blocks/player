@@ -60,10 +60,10 @@ artist=$(qdbus $player $path $interface.Metadata \
 
 album=$(qdbus $player $path $interface.Metadata \
     | (grep xesam:album: || true) | cut -d " " -f 2- | escape_html)
-if [ "album" ]; then
+if [ "$album" ]; then
     track=$(qdbus $player $path $interface.Metadata \
         | (grep xesam:trackNumber: || true) | cut -d " " -f 2-)
-    albtrack=" &#x00a0; &#xf192; $album &#x00a0; #$track"
+    albtrack=" &#x00a0; &#xf192; $album &#x00a0; #${track:-?}"
 fi
 
 echo "&#xf001; ${title:-title?} &#x00a0; &#xf130; ${artist:-artist?}${albtrack:-} &#x00a0; $icon"
