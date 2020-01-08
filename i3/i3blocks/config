@@ -3,6 +3,8 @@
 # Please see man i3blocks for a complete reference!
 # The man page is also hosted at http://vivien.github.io/i3blocks
 #
+# use 'i3-msg restart' to reload the file.
+#
 # List of valid properties:
 #
 # align
