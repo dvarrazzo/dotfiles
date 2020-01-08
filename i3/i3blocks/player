@@ -11,8 +11,17 @@ interface=org.mpris.MediaPlayer2.Player
 
 player=$(qdbus | (grep MediaPlayer2 || true) | cut -c 2-)
 if [ -z "$player" ]; then
-    echo "<span color='#aaa'>(no player found)</span> &#x00a0; &#xf04d;"
-    exit 0
+    # if there is no player open, on right click,
+    # spawn the program registered as default for audio/mpeg
+    if [ "${BLOCK_BUTTON:-}" == '3' ]; then
+        bin=$(binary-for-mime audio/mpeg)
+        echo "Running $(basename "$bin")! &#x00a0; &#xf135;"
+        "$bin" > /dev/null &
+        exit 0
+    else
+        echo "<span color='#aaa'>(no player running)</span> &#x00a0; &#xf04d;"
+        exit 0
+    fi
 fi
 
 case ${BLOCK_BUTTON:-} in
