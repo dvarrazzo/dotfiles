@@ -12,13 +12,15 @@
 #   font pango:FontAwesome 9
 # in the bar { }
 
+set -euo pipefail
+
 MIXER=pulse
 SCONTROL=Master
 STEP=5%
 
-case $BLOCK_BUTTON in
+case ${BLOCK_BUTTON:-} in
   1) amixer -q -D $MIXER sset $SCONTROL toggle ;;
-  3) gnome-terminal --role "alsamixer" -e "sh -c 'alsamixer && pkill -RTMIN+10 i3blocks'" ;;
+  3) gnome-terminal --role "alsamixer" -- sh -c 'alsamixer && pkill -RTMIN+10 i3blocks' ;;
   4) amixer -q -D $MIXER sset $SCONTROL ${STEP}+ unmute ;;
   5) amixer -q -D $MIXER sset $SCONTROL ${STEP}- unmute ;;
 esac
