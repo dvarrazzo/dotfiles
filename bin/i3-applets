@@ -13,6 +13,7 @@ run /opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator
 [[ $hostname =~ ^(bagheera|makkuro)$ ]] && run blueman-applet
 [[ $hostname =~ ^(akela|bagheera|makkuro)$ ]] \
     && run /usr/bin/synology-cloud-station-drive
+run i3-player-notify
 
 # Needed by pkexec
 run /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1

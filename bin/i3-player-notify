@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Listen to track changes from a media player
+# and signal the player i3block to refresh.
+
+set -euo pipefail
+# set -x
+
+signal=13
+path=/org/mpris/MediaPlayer2
+iface=org.freedesktop.DBus.Properties
+member=PropertiesChanged
+lockdir="$XDG_RUNTIME_DIR/i3/i3-player-notify.lock"
+
+function cleanup {
+    rmdir "$lockdir"
+}
+
+if mkdir "$lockdir" 2> /dev/null; then
+    trap "cleanup" EXIT
+else
+    echo "Already running" 2>&1
+    exit
+fi
+
+while read -d ' ' token
+do
+    if [ '"PlaybackStatus"' == "$token" ]
+    then
+        pkill -RTMIN+${signal} i3blocks
+    fi
+done < <(dbus-monitor \
+    "type='signal',path='${path}',interface='${iface}',member=${member}")

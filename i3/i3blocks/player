@@ -1,23 +1,55 @@
 #!/bin/bash
 
+# Display information about the track playing
+# Use i3-player-notify to receive updates on track change
+
 set -euo pipefail
 # set -x
 
-player=$(qdbus | grep MediaPlayer2 | cut -c 2-)
+path=/org/mpris/MediaPlayer2
+interface=org.mpris.MediaPlayer2.Player
+
+player=$(qdbus | (grep MediaPlayer2 || true) | cut -c 2-)
 if [ -z "$player" ]; then
-    # No player detected
-    exit
+    echo "<span color='#aaa'>(no player found)</span> &#x00a0; &#xf04d;"
+    exit 0
 fi
 
-title=$(qdbus $player /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Metadata \
-    | grep xesam:title: | cut -d " " -f 2-)
+case ${BLOCK_BUTTON:-} in
+  1) dbus-send --type=method_call --dest=$player $path $interface.PlayPause ;;
+  4) dbus-send --type=method_call --dest=$player $path $interface.Previous ;;
+  5) dbus-send --type=method_call --dest=$player $path $interface.Next ;;
+esac
 
-if [ -z "$title" ]; then
-    # No player detected
-    exit
+status=$(qdbus $player $path $interface.PlaybackStatus)
+case "$status" in
+    Playing)
+        icon="&#xf04b;" ;;
+    Paused)
+        icon="&#xf04c;" ;;
+    Stopped)
+        icon="&#xf04d;" ;;
+    *)
+        icon="$status" ;;
+esac
+
+if [ "$status" == "Stopped" ]; then
+    echo "<span color='#aaa'>(nothing playing)</span> &#x00a0; $icon"
+    exit 0
 fi
 
-artist=$(qdbus $player /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Metadata \
-    | grep xesam:artist: | cut -d " " -f 2-)
+title=$(qdbus $player $path $interface.Metadata \
+    | (grep xesam:title: || true) | cut -d " " -f 2-)
 
-echo $artist - $title
+artist=$(qdbus $player $path $interface.Metadata \
+    | (grep xesam:artist: || true) | cut -d " " -f 2-)
+
+album=$(qdbus $player $path $interface.Metadata \
+    | (grep xesam:album: || true) | cut -d " " -f 2-)
+if [ "album" ]; then
+    track=$(qdbus $player $path $interface.Metadata \
+        | (grep xesam:trackNumber: || true) | cut -d " " -f 2-)
+    albtrack=" &#x00a0; &#xf192; $album &#x00a0; #$track"
+fi
+
+echo "&#xf001; ${title:-title?} &#x00a0; &#xf130; ${artist:-artist?}${albtrack:-} &#x00a0; $icon"
