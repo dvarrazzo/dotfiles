@@ -17,6 +17,7 @@ fi
 
 case ${BLOCK_BUTTON:-} in
   1) dbus-send --type=method_call --dest=$player $path $interface.PlayPause ;;
+  3) dbus-send --type=method_call --dest=$player $path org.mpris.MediaPlayer2.Raise ;;
   4) dbus-send --type=method_call --dest=$player $path $interface.Previous ;;
   5) dbus-send --type=method_call --dest=$player $path $interface.Next ;;
 esac
