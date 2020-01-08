@@ -48,14 +48,18 @@ if [ "$status" == "Stopped" ]; then
     exit 0
 fi
 
+function escape_html () {
+    sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g'
+}
+
 title=$(qdbus $player $path $interface.Metadata \
-    | (grep xesam:title: || true) | cut -d " " -f 2-)
+    | (grep xesam:title: || true) | cut -d " " -f 2- | escape_html)
 
 artist=$(qdbus $player $path $interface.Metadata \
-    | (grep xesam:artist: || true) | cut -d " " -f 2-)
+    | (grep xesam:artist: || true) | cut -d " " -f 2- | escape_html)
 
 album=$(qdbus $player $path $interface.Metadata \
-    | (grep xesam:album: || true) | cut -d " " -f 2-)
+    | (grep xesam:album: || true) | cut -d " " -f 2- | escape_html)
 if [ "album" ]; then
     track=$(qdbus $player $path $interface.Metadata \
         | (grep xesam:trackNumber: || true) | cut -d " " -f 2-)
