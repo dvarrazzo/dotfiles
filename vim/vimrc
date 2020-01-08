@@ -525,7 +525,7 @@ set smartcase           " if pattern contains uppercase chars,
                         " the search is case _sensitive_
 
 " search highlighted text with //
-vmap // y/<C-R>"<CR>
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " remove search highlight with ,?; also close the location list
 nmap <silent> <leader>? :nohlsearch<CR>:cclose<CR>
