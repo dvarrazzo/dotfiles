@@ -41,6 +41,14 @@ To check if the notification area is fucked run ``appind.py``.
 You can restore some style using ``lxappearance``. For the functionalities
 we'll see.
 
+Qt programs may still look like Windows 95 (e.g. Clementine). For them you
+need::
+
+    [Qt]
+    style=GTK+
+
+in ``~/.config/Trolltech.conf``.
+
 
 Keyboard fucked up in Ubuntu 14.04
 ----------------------------------
