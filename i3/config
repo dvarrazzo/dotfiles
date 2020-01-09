@@ -179,13 +179,23 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
+    output primary
     status_command i3blocks
     position top
     tray_output primary
     tray_padding 0
     font pango:FontAwesome 10
-    output primary
 }
+
+bar {
+    id bar-tiny
+    output DVI-D-1
+    status_command i3blocks -c ~/.config/i3blocks/config.tiny
+    position top
+    tray_output none
+    font pango:FontAwesome 10
+}
+
 
 # Make the window open clicking on the volume blocklet floating
 for_window [window_role="^alsamixer$"] floating enable
