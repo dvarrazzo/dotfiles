@@ -9,17 +9,27 @@ set -euo pipefail
 path=/org/mpris/MediaPlayer2
 interface=org.mpris.MediaPlayer2.Player
 
+# unicode entities
+u_play="&#xf04b;"
+u_pause="&#xf04c;"
+u_stop="&#xf04d;"
+u_nbsp="&#x00a0;"
+u_rocket="&#xf135;"
+u_music="&#xf001;"
+u_mic="&#xf130;"
+u_disc="&#xf192;"
+
 player=$(qdbus | (grep MediaPlayer2 || true) | cut -c 2-)
 if [ -z "$player" ]; then
     # if there is no player open, on right click,
     # spawn the program registered as default for audio/mpeg
     if [ "${BLOCK_BUTTON:-}" == '3' ]; then
         bin=$(binary-for-mime audio/mpeg)
-        echo "Running $(basename "$bin")! &#x00a0; &#xf135;"
+        echo "Running $(basename "$bin")! $u_nbsp $u_rocket"
         "$bin" > /dev/null &
         exit 0
     else
-        echo "<span color='#aaa'>(no player running)</span> &#x00a0; &#xf04d;"
+        echo "<span color='#aaa'>(no player running)</span> $u_nbsp $u_stop"
         exit 0
     fi
 fi
@@ -34,17 +44,17 @@ esac
 status=$(qdbus $player $path $interface.PlaybackStatus)
 case "$status" in
     Playing)
-        icon="&#xf04b;" ;;
+        icon="$u_play" ;;
     Paused)
-        icon="&#xf04c;" ;;
+        icon="$u_pause" ;;
     Stopped)
-        icon="&#xf04d;" ;;
+        icon="$u_stop" ;;
     *)
         icon="$status" ;;
 esac
 
 if [ "$status" == "Stopped" ]; then
-    echo "<span color='#aaa'>(nothing playing)</span> &#x00a0; $icon"
+    echo "<span color='#aaa'>(nothing playing)</span> $u_nbsp $icon"
     exit 0
 fi
 
@@ -54,16 +64,18 @@ function escape_html () {
 
 title=$(qdbus $player $path $interface.Metadata \
     | (grep xesam:title: || true) | cut -d " " -f 2- | escape_html)
+rv="$u_music ${title:-unknown}"
 
 artist=$(qdbus $player $path $interface.Metadata \
     | (grep xesam:artist: || true) | cut -d " " -f 2- | escape_html)
+[ "$artist" ] && rv="$rv $u_nbsp $u_mic $artist"
 
 album=$(qdbus $player $path $interface.Metadata \
     | (grep xesam:album: || true) | cut -d " " -f 2- | escape_html)
-if [ "$album" ]; then
-    track=$(qdbus $player $path $interface.Metadata \
-        | (grep xesam:trackNumber: || true) | cut -d " " -f 2-)
-    albtrack=" &#x00a0; &#xf192; $album &#x00a0; #${track:-?}"
-fi
+[ "$album" ] && rv="$rv $u_nbsp $u_disc $album"
 
-echo "&#xf001; ${title:-title?} &#x00a0; &#xf130; ${artist:-artist?}${albtrack:-} &#x00a0; $icon"
+track=$(qdbus $player $path $interface.Metadata \
+    | (grep xesam:trackNumber: || true) | cut -d " " -f 2-)
+[ "$track" ] && rv="$rv $u_nbsp #$track"
+
+echo "$rv $u_nbsp $icon"
