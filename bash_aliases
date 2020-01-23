@@ -62,4 +62,7 @@ function title () {
   fi
 }
 
+# Kill an orphaned ssh-agent session
+trap 'test -n "$SSH_AGENT_PID" && eval `/usr/bin/ssh-agent -k`' 0
+
 # vim: set filetype=sh:
