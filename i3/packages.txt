@@ -14,6 +14,8 @@ jq
 lm-sensors
 pcmanfm
 synaptic
+# actually for tmux
+xclip
 zenity
 
 # sudo add-apt-repository ppa:caffeine-developers/ppa

@@ -458,9 +458,9 @@ let &guicursor = &guicursor . ",a:blinkon0"
 set listchars=tab:\|·,trail:·,precedes:<,extends:>
 
 " Mouse everywhere!
-if has("mouse")
-    set mouse=a
-endif
+set mouse=a
+" to resize panes in tmux too
+set ttymouse=xterm2
 
 set foldmethod=marker  " explicit markers {{{ and }}}
 
