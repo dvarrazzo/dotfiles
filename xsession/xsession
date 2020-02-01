@@ -12,18 +12,11 @@ gnome-settings-daemon &
 
 # Customized bits for different hosts
 case $(hostname) in
-    risotto)
+    akela)
         # swap left and right mouse buttons
         # (go back in history with the left thumb)
         xmodmap -e "pointer = 1 2 3 4 5 6 7 9 8"
 
-        # Ubuntu 16.04 decided that the screen control must be broken
-        # Used arandr to generate a reasonable configuration.
-        xrandr \
-            --output DVI-D-0 --primary --mode 2560x1440 --pos 1440x541 \
-            --output DVI-D-1 --mode 2560x1440 --pos 0x0 --rotate left
-        ;;
-    akela)
         xrandr --output DVI-0 --primary
         ;;
 esac
