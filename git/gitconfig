@@ -15,6 +15,7 @@
     cp = cherry-pick
     dc = diff --cached
     df = diff
+    gr = log --oneline --graph --all
     l1 = log --oneline
     lo = log --oneline
     lf = log --name-only
