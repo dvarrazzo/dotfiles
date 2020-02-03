@@ -19,3 +19,7 @@ for d in $(cd ${dir}/.. && ls -d vim/pack/*/*/*/); do
     git -C "../$d" checkout master
     git -C "../$d" pull
 done
+
+log "updating black"
+curl -sL https://raw.githubusercontent.com/psf/black/master/plugin/black.vim \
+    > plugin/black.vim
