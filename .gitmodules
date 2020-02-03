@@ -26,7 +26,7 @@
 	path = vim/pack/fugitive/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundles/vim-unimpaired"]
-	path = vim/bundles/vim-unimpaired
+	path = vim/pack/unimpaired/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "vim/bundles/vim-javascript"]
 	path = vim/pack/javascript/start/vim-javascript
