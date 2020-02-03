@@ -32,7 +32,7 @@
 	path = vim/pack/javascript/start/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
 [submodule "vim/bundles/vim-jsx"]
-	path = vim/bundles/vim-jsx
+	path = vim/pack/jsx/start/vim-jsx
 	url = https://github.com/mxw/vim-jsx.git
 [submodule "vim/bundles/vim-json"]
 	path = vim/pack/json/start/vim-json

@@ -21,9 +21,6 @@ set hidden              " Allow unsaved buffers to be put in background
 " Unimpaired, testing some mappings
 set runtimepath+=~/.vim/bundles/vim-unimpaired
 
-" Javascript stuff
-set runtimepath+=~/.vim/bundles/vim-jsx
-
 " note: closetag is enabled: use C-_ to close a tag.
 " note: after adding a directory, run ':helptags path/to/doc' to add the help
 
