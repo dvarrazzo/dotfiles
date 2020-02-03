@@ -29,7 +29,7 @@
 	path = vim/bundles/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "vim/bundles/vim-javascript"]
-	path = vim/bundles/vim-javascript
+	path = vim/pack/javascript/start/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
 [submodule "vim/bundles/vim-jsx"]
 	path = vim/bundles/vim-jsx
