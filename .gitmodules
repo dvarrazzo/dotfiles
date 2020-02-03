@@ -8,7 +8,7 @@
 	path = vim/pack/nerdtree/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "vim/bundles/ack"]
-	path = vim/bundles/ack
+	path = vim/pack/ack/start/ack
 	url = https://github.com/mileszs/ack.vim.git
 [submodule "vim/bundles/ansible-yaml"]
 	path = vim/bundles/ansible-yaml.bak

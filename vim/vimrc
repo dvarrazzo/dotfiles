@@ -27,9 +27,6 @@ set runtimepath+=~/.vim/bundles/UltiSnips
 " Enable Tabular
 set runtimepath+=~/.vim/bundles/tabular
 
-" Enable ack.vim
-set runtimepath+=~/.vim/bundles/ack
-
 " Ansible
 if v:version > 703
     set runtimepath+=~/.vim/bundles/ansible-vim
