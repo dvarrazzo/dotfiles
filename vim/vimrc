@@ -27,9 +27,6 @@ set runtimepath+=~/.vim/bundles/UltiSnips
 " Enable Tabular
 set runtimepath+=~/.vim/bundles/tabular
 
-" Enable pgsql.vim
-set runtimepath+=~/.vim/bundles/pgsql
-
 " Enable syntastic
 set runtimepath+=~/.vim/bundles/syntastic
 

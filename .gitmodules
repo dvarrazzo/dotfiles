@@ -17,7 +17,7 @@
 	path = vim/pack/ansible/start/ansible-vim
 	url = https://github.com/pearofducks/ansible-vim.git
 [submodule "vim/bundles/pgsql"]
-	path = vim/bundles/pgsql
+	path = vim/pack/pgsql/start/pgsql.vim
 	url = https://github.com/dvarrazzo/pgsql.vim.git
 [submodule "vim/bundles/syntastic"]
 	path = vim/bundles/syntastic
