@@ -52,3 +52,6 @@
 [submodule "vim/pack/yankring/start/YankRing.vim"]
 	path = vim/pack/yankring/start/YankRing.vim
 	url = https://github.com/vim-scripts/YankRing.vim.git
+[submodule "vim/pack/taboo/start/taboo.vim"]
+	path = vim/pack/taboo/start/taboo.vim
+	url = https://github.com/gcmt/taboo.vim.git
