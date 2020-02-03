@@ -18,44 +18,6 @@ set viminfo='20,\"50    " Read/write a .viminfo file, don't store more
 set history=50          " Keep 50 lines of command line history
 set hidden              " Allow unsaved buffers to be put in background
 
-" Unimpaired, testing some mappings
-set runtimepath+=~/.vim/bundles/vim-unimpaired
-
-" Enable UltiSnip plugin
-set runtimepath+=~/.vim/bundles/UltiSnips
-
-" Enable Tabular
-set runtimepath+=~/.vim/bundles/tabular
-
-" Enable NERDTree
-set runtimepath+=~/.vim/bundles/nerdtree
-set runtimepath+=~/.vim/bundles/nerdtree-git-plugin
-"
-" Enable ack.vim
-set runtimepath+=~/.vim/bundles/ack
-
-" Ansible
-if v:version > 703
-    set runtimepath+=~/.vim/bundles/ansible-vim
-endif
-
-" Enable pgsql.vim
-set runtimepath+=~/.vim/bundles/pgsql
-
-" Enable syntastic
-set runtimepath+=~/.vim/bundles/syntastic
-
-" Integration with git
-set runtimepath+=~/.vim/bundles/vim-fugitive
-
-" Javascript stuff
-set runtimepath+=~/.vim/bundles/vim-javascript
-set runtimepath+=~/.vim/bundles/vim-json
-set runtimepath+=~/.vim/bundles/vim-jsx
-
-" note: closetag is enabled: use C-_ to close a tag.
-" note: after adding a directory, run ':helptags path/to/doc' to add the help
-
 "}}}
 
 " Editing {{{
@@ -65,12 +27,6 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-
-" Enable IndentTab for every file.
-" Note that this applies on ":tabe file", not on a naked ":tabe", that's
-" confusing and probably messes up setting filetype and stuff too, which
-" always seem to behave inconsistently.
-autocmd BufRead,BufNewFile * call IndentTab#Set(1,0)
 
 set wrap                " These guys will never learn the world stops at col 80
 set bs=indent,eol,start " Allow backspacing over everything in insert mode
@@ -97,6 +53,11 @@ let g:yankring_history_file = '.yankring_history'
 set clipboard=unnamed,unnamedplus,autoselect,exclude:cons\\\|linux
 " note: appending after "exclude:" with "+unnamed" doesn't work.
 " default was "autoselect,exclude:cons\\\|linux"
+
+" \\ for commenting (region, selection, movement etc.)
+xmap \\  <Plug>Commentary
+nmap \\  <Plug>Commentary
+nmap \\\ <Plug>CommentaryLine
 
 "}}}
 

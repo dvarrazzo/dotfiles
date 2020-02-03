@@ -12,7 +12,7 @@ Create symlinks to the config files::
 
 Generate vim help for all the plugins::
 
-    for d in $(find etc/vim -type d -name doc); do vim -c "helptags $d" -c q; done
+    for d in $(find ~/.vim/ -type d -name doc); do vim -c "helptags $d" -c q; done
 
 Perfect.
 

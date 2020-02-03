@@ -14,7 +14,7 @@
 "    - restore cursor/window position after formatting
 
 if v:version < 700 || !has('python3')
-    echo "This script requires vim7.0+ with Python 3.6 support."
+    echo "The black.vim plugin requires vim7.0+ with Python 3.6 support."
     finish
 endif
 
@@ -24,7 +24,11 @@ endif
 
 let g:load_black = "py1.0"
 if !exists("g:black_virtualenv")
-  let g:black_virtualenv = "~/.vim/black"
+  if has("nvim")
+    let g:black_virtualenv = "~/.local/share/nvim/black"
+  else
+    let g:black_virtualenv = "~/.vim/black"
+  endif
 endif
 if !exists("g:black_fast")
   let g:black_fast = 0
@@ -37,10 +41,17 @@ if !exists("g:black_skip_string_normalization")
 endif
 
 python3 << endpython3
+import os
 import sys
 import vim
 
 def _get_python_binary(exec_prefix):
+  try:
+    default = vim.eval("g:pymode_python").strip()
+  except vim.error:
+    default = ""
+  if default and os.path.exists(default):
+    return default
   if sys.platform[:3] == "win":
     return exec_prefix / 'python.exe'
   return exec_prefix / 'bin' / 'python3'
@@ -87,8 +98,8 @@ def _initialize_black_env(upgrade=False):
     print('DONE! You are all set, thanks for waiting ✨ 🍰 ✨')
   if first_install:
     print('Pro-tip: to upgrade Black in the future, use the :BlackUpgrade command and restart Vim.\n')
-  if sys.path[0] != virtualenv_site_packages:
-    sys.path.insert(0, virtualenv_site_packages)
+  if virtualenv_site_packages not in sys.path:
+    sys.path.append(virtualenv_site_packages)
   return True
 
 if _initialize_black_env():
@@ -111,12 +122,20 @@ def Black():
   except Exception as exc:
     print(exc)
   else:
-    cursor = vim.current.window.cursor
+    current_buffer = vim.current.window.buffer
+    cursors = []
+    for i, tabpage in enumerate(vim.tabpages):
+      if tabpage.valid:
+        for j, window in enumerate(tabpage.windows):
+          if window.valid and window.buffer == current_buffer:
+            cursors.append((i, j, window.cursor))
     vim.current.buffer[:] = new_buffer_str.split('\n')[:-1]
-    try:
-      vim.current.window.cursor = cursor
-    except vim.error:
-      vim.current.window.cursor = (len(vim.current.buffer), 0)
+    for i, j, cursor in cursors:
+      window = vim.tabpages[i].windows[j]
+      try:
+        window.cursor = cursor
+      except vim.error:
+        window.cursor = (len(window.buffer), 0)
     print(f'Reformatted in {time.time() - start:.4f}s.')
 
 def BlackUpgrade():

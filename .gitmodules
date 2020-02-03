@@ -1,42 +1,57 @@
 [submodule "vim/bundles/UltiSnips"]
-	path = vim/bundles/UltiSnips
+	path = vim/pack/ultisnips/start/ultisnips
 	url = https://github.com/SirVer/ultisnips
 [submodule "vim/bundles/tabular"]
-	path = vim/bundles/tabular
+	path = vim/pack/tabular/start/tabular
 	url = git://github.com/godlygeek/tabular.git
 [submodule "vim/bundles/nerdtree"]
-	path = vim/bundles/nerdtree
+	path = vim/pack/nerdtree/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "vim/bundles/ack"]
-	path = vim/bundles/ack
+	path = vim/pack/ack/start/ack
 	url = https://github.com/mileszs/ack.vim.git
 [submodule "vim/bundles/ansible-yaml"]
 	path = vim/bundles/ansible-yaml.bak
 	url = https://github.com/chase/vim-ansible-yaml.git
 [submodule "vim/bundles/ansible-vim"]
-	path = vim/bundles/ansible-vim
+	path = vim/pack/ansible/start/ansible-vim
 	url = https://github.com/pearofducks/ansible-vim.git
 [submodule "vim/bundles/pgsql"]
-	path = vim/bundles/pgsql
+	path = vim/pack/pgsql/start/pgsql.vim
 	url = https://github.com/dvarrazzo/pgsql.vim.git
 [submodule "vim/bundles/syntastic"]
-	path = vim/bundles/syntastic
+	path = vim/pack/syntastic/start/syntastic
 	url = https://github.com/scrooloose/syntastic.git
 [submodule "vim/bundles/vim-fugitive"]
-	path = vim/bundles/vim-fugitive
+	path = vim/pack/fugitive/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundles/vim-unimpaired"]
-	path = vim/bundles/vim-unimpaired
+	path = vim/pack/unimpaired/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "vim/bundles/vim-javascript"]
-	path = vim/bundles/vim-javascript
+	path = vim/pack/javascript/start/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
 [submodule "vim/bundles/vim-jsx"]
-	path = vim/bundles/vim-jsx
+	path = vim/pack/jsx/start/vim-jsx
 	url = https://github.com/mxw/vim-jsx.git
 [submodule "vim/bundles/vim-json"]
-	path = vim/bundles/vim-json
+	path = vim/pack/json/start/vim-json
 	url = https://github.com/elzr/vim-json.git
 [submodule "vim/bundles/nerdtree-git-plugin"]
-	path = vim/bundles/nerdtree-git-plugin
+	path = vim/pack/nerdtree/start/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+[submodule "vim/pack/closetag/start"]
+	path = vim/pack/closetag/start/vim-closetag
+	url = https://github.com/alvan/vim-closetag.git
+[submodule "vim/pack/commentary/start/commentary"]
+	path = vim/pack/commentary/start/commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim/pack/surround/start/vim-surround"]
+	path = vim/pack/surround/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/pack/yankring/start/YankRing.vim"]
+	path = vim/pack/yankring/start/YankRing.vim
+	url = https://github.com/vim-scripts/YankRing.vim.git
+[submodule "vim/pack/taboo/start/taboo.vim"]
+	path = vim/pack/taboo/start/taboo.vim
+	url = https://github.com/gcmt/taboo.vim.git
