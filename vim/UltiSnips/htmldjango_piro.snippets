@@ -1,1 +1,16 @@
 extends html, htmldjango
+
+snippet % "django command" i!
+{% $1 %}
+	$2
+{% end${1/(\w+).*/$1/} %}
+endsnippet
+
+snippet { "django variable" i!
+{{$1}}
+endsnippet
+
+snippet # "django variable" i!
+{# $1 #}
+$2
+endsnippet
