@@ -20,7 +20,7 @@
 	path = vim/pack/pgsql/start/pgsql.vim
 	url = https://github.com/dvarrazzo/pgsql.vim.git
 [submodule "vim/bundles/syntastic"]
-	path = vim/bundles/syntastic
+	path = vim/pack/syntastic/start/syntastic
 	url = https://github.com/scrooloose/syntastic.git
 [submodule "vim/bundles/vim-fugitive"]
 	path = vim/bundles/vim-fugitive
