@@ -59,6 +59,9 @@ xmap \\  <Plug>Commentary
 nmap \\  <Plug>Commentary
 nmap \\\ <Plug>CommentaryLine
 
+" enable closetag in django
+let g:closetag_filetypes = 'html,xhtml,phtml,htmldjango'
+
 "}}}
 
 " Keybindings {{{
