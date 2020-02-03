@@ -24,9 +24,6 @@ set runtimepath+=~/.vim/bundles/vim-unimpaired
 " Enable UltiSnip plugin
 set runtimepath+=~/.vim/bundles/UltiSnips
 
-" Enable Tabular
-set runtimepath+=~/.vim/bundles/tabular
-
 " Integration with git
 set runtimepath+=~/.vim/bundles/vim-fugitive
 
