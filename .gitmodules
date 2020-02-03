@@ -40,3 +40,6 @@
 [submodule "vim/bundles/nerdtree-git-plugin"]
 	path = vim/pack/nerdtree/start/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+[submodule "vim/pack/closetag/start"]
+	path = vim/pack/closetag/start/vim-closetag
+	url = https://github.com/alvan/vim-closetag.git
