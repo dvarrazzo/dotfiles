@@ -27,10 +27,6 @@ set runtimepath+=~/.vim/bundles/UltiSnips
 " Enable Tabular
 set runtimepath+=~/.vim/bundles/tabular
 
-" Enable NERDTree
-set runtimepath+=~/.vim/bundles/nerdtree
-set runtimepath+=~/.vim/bundles/nerdtree-git-plugin
-"
 " Enable ack.vim
 set runtimepath+=~/.vim/bundles/ack
 

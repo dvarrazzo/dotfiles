@@ -5,7 +5,7 @@
 	path = vim/bundles/tabular
 	url = git://github.com/godlygeek/tabular.git
 [submodule "vim/bundles/nerdtree"]
-	path = vim/bundles/nerdtree
+	path = vim/pack/nerdtree/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "vim/bundles/ack"]
 	path = vim/bundles/ack
@@ -38,5 +38,5 @@
 	path = vim/bundles/vim-json
 	url = https://github.com/elzr/vim-json.git
 [submodule "vim/bundles/nerdtree-git-plugin"]
-	path = vim/bundles/nerdtree-git-plugin
+	path = vim/pack/nerdtree/start/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
