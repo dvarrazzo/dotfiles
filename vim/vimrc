@@ -28,12 +28,6 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
-" Enable IndentTab for every file.
-" Note that this applies on ":tabe file", not on a naked ":tabe", that's
-" confusing and probably messes up setting filetype and stuff too, which
-" always seem to behave inconsistently.
-autocmd BufRead,BufNewFile * call IndentTab#Set(1,0)
-
 set wrap                " These guys will never learn the world stops at col 80
 set bs=indent,eol,start " Allow backspacing over everything in insert mode
 set showmatch           " Show matching parenthesis when writing
