@@ -27,11 +27,6 @@ set runtimepath+=~/.vim/bundles/UltiSnips
 " Enable Tabular
 set runtimepath+=~/.vim/bundles/tabular
 
-" Ansible
-if v:version > 703
-    set runtimepath+=~/.vim/bundles/ansible-vim
-endif
-
 " Enable pgsql.vim
 set runtimepath+=~/.vim/bundles/pgsql
 
