@@ -60,6 +60,11 @@ set clipboard=unnamed,unnamedplus,autoselect,exclude:cons\\\|linux
 " note: appending after "exclude:" with "+unnamed" doesn't work.
 " default was "autoselect,exclude:cons\\\|linux"
 
+" \\ for commenting (region, selection, movement etc.)
+xmap \\  <Plug>Commentary
+nmap \\  <Plug>Commentary
+nmap \\\ <Plug>CommentaryLine
+
 "}}}
 
 " Keybindings {{{

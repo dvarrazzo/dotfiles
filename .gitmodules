@@ -43,3 +43,6 @@
 [submodule "vim/pack/closetag/start"]
 	path = vim/pack/closetag/start/vim-closetag
 	url = https://github.com/alvan/vim-closetag.git
+[submodule "vim/pack/commentary/start/commentary"]
+	path = vim/pack/commentary/start/commentary
+	url = https://github.com/tpope/vim-commentary.git
