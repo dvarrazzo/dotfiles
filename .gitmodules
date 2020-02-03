@@ -55,3 +55,6 @@
 [submodule "vim/pack/taboo/start/taboo.vim"]
 	path = vim/pack/taboo/start/taboo.vim
 	url = https://github.com/gcmt/taboo.vim.git
+[submodule "vim/pack/css3/start/vim-css3-syntax"]
+	path = vim/pack/css3/start/vim-css3-syntax
+	url = https://github.com/hail2u/vim-css3-syntax.git
