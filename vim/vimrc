@@ -2,7 +2,11 @@
 " Copyright (C) 2008-2013 Daniele Varrazzo
 " All rights reserved.
 
-" note: to reload, use ':so %'
+" NOTE: to reload, use ':so %'
+" NOTE: Watch the /usr/share/vim/addons/ dir! The editexisting extension was
+" slowing down gvim starting and generally doing what I don't want (I told you
+" edit this file: bloody edit it, don't tell me it's open somewhere in my 18 desks).
+" You want: sudo rm /usr/share/vim/addons/plugin/editexisting.vim
 
 
 " General {{{
@@ -195,9 +199,6 @@ let g:UltiSnipsJumpForwardTrigger='<c-y>'
 filetype off
 
 " Ubuntu vim addons. Includes golang.
-" NOTE: Watch what's in that dir! The editexisting extension was slowing down
-" gvim starting and generally doing what I don't want (I told you edit this
-" file: bloody edit it, don't tell me it's open somewhere in my 18 desks).
 set runtimepath+=/usr/share/vim/addons/
 
 syntax on               " go for Vim syntax highlight
