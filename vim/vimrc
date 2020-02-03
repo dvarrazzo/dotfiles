@@ -21,9 +21,6 @@ set hidden              " Allow unsaved buffers to be put in background
 " Unimpaired, testing some mappings
 set runtimepath+=~/.vim/bundles/vim-unimpaired
 
-" Integration with git
-set runtimepath+=~/.vim/bundles/vim-fugitive
-
 " Javascript stuff
 set runtimepath+=~/.vim/bundles/vim-javascript
 set runtimepath+=~/.vim/bundles/vim-json

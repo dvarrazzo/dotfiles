@@ -23,7 +23,7 @@
 	path = vim/pack/syntastic/start/syntastic
 	url = https://github.com/scrooloose/syntastic.git
 [submodule "vim/bundles/vim-fugitive"]
-	path = vim/bundles/vim-fugitive
+	path = vim/pack/fugitive/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundles/vim-unimpaired"]
 	path = vim/bundles/vim-unimpaired
