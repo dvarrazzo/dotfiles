@@ -49,3 +49,6 @@
 [submodule "vim/pack/surround/start/vim-surround"]
 	path = vim/pack/surround/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/pack/yankring/start/YankRing.vim"]
+	path = vim/pack/yankring/start/YankRing.vim
+	url = https://github.com/vim-scripts/YankRing.vim.git
