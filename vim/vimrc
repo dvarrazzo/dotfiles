@@ -57,7 +57,7 @@ set runtimepath+=~/.vim/bundles/vim-jsx
 " Editing {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set noexpandtab     " gambit setting
+set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
