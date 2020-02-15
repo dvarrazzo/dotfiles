@@ -6,11 +6,17 @@ snippet % "django command" i!
 {% end${1/(\w+).*/$1/} %}
 endsnippet
 
+snippet %- "django command" i!
+{%- $1 %}
+	$2
+{%- end${1/(\w+).*/$1/} %}
+endsnippet
+
 snippet { "django variable" i!
 {{$1}}
 endsnippet
 
-snippet # "django variable" i!
+snippet # "django comment" i!
 {# $1 #}
 $2
 endsnippet
