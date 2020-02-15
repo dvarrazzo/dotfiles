@@ -208,6 +208,9 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 " tmpl files are django for me
 autocmd BufRead,BufNewFile *.tmpl setl filetype=htmldjango
 
+" lektor files. they are not reST, but some content is
+autocmd BufRead,BufNewFile *.lr setl filetype=rst
+
 " cindent in c-style files
 autocmd FileType c,cpp,java setl cindent
 
