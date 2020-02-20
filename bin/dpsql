@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -euo pipefail
+# set -x
+
+if [ -z "${1:-}" ]; then
+    echo "
+Connect to a postgres db into a docker instance named NAME.
+
+Usage: $(basename $0) NAME [ARGS...]
+" >&2
+    exit 2
+fi
+
+PGHOST=$(docker inspect --format '{{ .NetworkSettings.Networks.bridge.IPAddress }}' "$1")
+export PGHOST
+
+shift
+exec psql "$@"
