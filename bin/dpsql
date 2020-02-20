@@ -12,7 +12,8 @@ Usage: $(basename $0) NAME [ARGS...]
     exit 2
 fi
 
-PGHOST=$(docker inspect --format '{{ .NetworkSettings.Networks.bridge.IPAddress }}' "$1")
+# TODO: what if there's more than one network?
+PGHOST=$(docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$1")
 export PGHOST
 
 shift
