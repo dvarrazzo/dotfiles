@@ -7,6 +7,7 @@ acpi
 blueman
 flameshot
 fonts-font-awesome
+gnome-clocks
 i3
 i3blocks
 indicator-cpufreq

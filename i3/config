@@ -215,6 +215,7 @@ for_window [class="^Evince$"] floating enable
 for_window [class="^Keepassx$"] floating enable
 for_window [class="^Google-chrome"] floating enable
 for_window [class="^Blueman-manager"] floating enable
+for_window [class="^Gnome-clocks"] floating enable
 
 
 # Further info:
