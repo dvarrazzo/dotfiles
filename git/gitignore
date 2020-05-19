@@ -13,3 +13,4 @@ _darcs
 .agignore
 core
 tags
+/env
