@@ -235,6 +235,8 @@ autocmd BufRead .gitmodules setl noexpandtab
 
 " ALE configuration
 let g:ale_echo_msg_format = '[%code%] %severity%: %s (%linter%)'
+let g:ale_fixers = {'python': ['black']}
+nnoremap <leader>f :ALEFix<CR>
 
 let s:vimrcdir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
@@ -291,10 +293,6 @@ function! F8UpdateIgnore()
         let g:ale_python_flake8_options = ''
     endif
 endfunction
-
-" should be per project, see https://github.com/ambv/black/issues/414
-let g:black_linelength=79
-" let g:black_skip_string_normalization=1
 
 " Jedi: don't clobber my ag shortcut
 let g:jedi#usages_command = "<leader>u"
