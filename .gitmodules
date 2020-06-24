@@ -19,9 +19,6 @@
 [submodule "vim/bundles/pgsql"]
 	path = vim/pack/pgsql/start/pgsql.vim
 	url = https://github.com/dvarrazzo/pgsql.vim.git
-[submodule "vim/bundles/syntastic"]
-	path = vim/pack/syntastic/start/syntastic
-	url = https://github.com/scrooloose/syntastic.git
 [submodule "vim/bundles/vim-fugitive"]
 	path = vim/pack/fugitive/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
@@ -70,3 +67,6 @@
 [submodule "vim/pack/airline/start/vim-airline"]
 	path = vim/pack/airline/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
+[submodule "vim/pack/git-plugins/start/ale"]
+	path = vim/pack/git-plugins/start/ale
+	url = https://github.com/dense-analysis/ale.git

@@ -233,31 +233,10 @@ autocmd BufRead,BufNewFile *.Dockerfile setl filetype=dockerfile
 " tabs in .gitmodules
 autocmd BufRead .gitmodules setl noexpandtab
 
-" Suggested configuration for Syntastic, with my edits
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_javascript_checkers = ['eslint']
+" ALE configuration
+let g:ale_echo_msg_format = '[%code%] %severity%: %s (%linter%)'
 
 let s:vimrcdir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-
-function! ChooseFlake8()
-    let buf = bufnr('')
-    if syntastic#util#parseShebang(buf)['exe']  =~# '\m\<python3'
-        let b:syntastic_python_flake8_exec = s:vimrcdir . '/../bin/flake8.3'
-    else
-        let b:syntastic_python_flake8_exec = s:vimrcdir . '/../bin/flake8.2'
-    endif
-endfunction
-
-" Mostly to remember about this option...
-let g:syntastic_python_pylint_quiet_messages = {"regex":"too-few-public-methods"}
 
 
 " Silence the warning/error code under the cursor
@@ -275,10 +254,10 @@ function! F8IgnoreThis()
     if !exists('loc') | echo "no error found here" | return | endif
 
     if !exists('b:flake8_silenced') | let b:flake8_silenced = {} | endif
-    let code = substitute(loc.text, '.*\[\(.*\)\]', '\1', '')
+    let code = substitute(loc.text, '.*\[\(.*\)\].*', '\1', '')
     let b:flake8_silenced[code] = loc.text
     call F8UpdateIgnore()
-    execute "SyntasticCheck"
+    execute "ALELint"
 endfunction
 
 " Stop ignoring an ignored error
@@ -297,19 +276,19 @@ function! F8Unignore()
     let i = inputlist(prompt)
     if i <= 0 || i >= len(prompt) | return | endif
 
-    let code = substitute(prompt[i], '.*\[\(.*\)\]', '\1', '')
+    let code = substitute(prompt[i], '.*\[\(.*\)\].*', '\1', '')
     call remove(b:flake8_silenced, code)
     call F8UpdateIgnore()
-    execute "SyntasticCheck"
+    execute "ALELint"
 endfunction
 
-" Update the global syntastic var to reflect the buffer content
+" Update the global ale var to reflect the buffer content
 function! F8UpdateIgnore()
     if exists('b:flake8_silenced') && len(b:flake8_silenced) > 0
-        let g:syntastic_python_flake8_args =
+        let g:ale_python_flake8_options =
             \ '--ignore=' . join(keys(b:flake8_silenced),',')
     else
-        let g:syntastic_python_flake8_args = ''
+        let g:ale_python_flake8_options = ''
     endif
 endfunction
 
