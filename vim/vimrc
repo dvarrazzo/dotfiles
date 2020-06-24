@@ -236,6 +236,14 @@ autocmd BufRead .gitmodules setl noexpandtab
 " ALE configuration
 let g:ale_echo_msg_format = '[%code%] %severity%: %s (%linter%)'
 let g:ale_fixers = {'python': ['black']}
+
+" don't run mypy on test suites
+let g:ale_pattern_options = {
+\ '.*\.pyi$': {'ale_linters': ['mypy']},
+\ 'tests/.*\.py$': {'ale_linters': ['flake8']},
+\ 'setup\.py$': {'ale_linters': ['flake8']},
+\}
+
 nnoremap <leader>f :ALEFix<CR>
 
 let s:vimrcdir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
