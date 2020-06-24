@@ -62,10 +62,6 @@ nmap \\\ <Plug>CommentaryLine
 " enable closetag in django
 let g:closetag_filetypes = 'html,xhtml,phtml,htmldjango'
 
-" configure python completion
-let g:jedi#popup_on_dot = 0
-let g:jedi#use_splits_not_buffers = "top"
-
 " map Ctrl-j/k to up/down in complete menu
 inoremap <expr> <C-j>       pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k>       pumvisible() ? "\<C-p>" : "\<C-k>"
@@ -319,11 +315,13 @@ endfunction
 
 " should be per project, see https://github.com/ambv/black/issues/414
 let g:black_linelength=79
-let g:black_skip_string_normalization=1
+" let g:black_skip_string_normalization=1
 
 " Jedi: don't clobber my ag shortcut
 let g:jedi#usages_command = "<leader>u"
-let g:jedi#smart_auto_mappings = 0
+let g:jedi#show_call_signatures = "2"
+let g:jedi#popup_on_dot = 0
+let g:jedi#use_splits_not_buffers = "top"
 
 
 "}}}
