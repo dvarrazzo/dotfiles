@@ -58,3 +58,6 @@
 [submodule "vim/pack/css3/start/vim-css3-syntax"]
 	path = vim/pack/css3/start/vim-css3-syntax
 	url = https://github.com/hail2u/vim-css3-syntax.git
+[submodule "vim/pack/jedi/start/jedi-vim"]
+	path = vim/pack/jedi/start/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim.git
