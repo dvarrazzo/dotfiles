@@ -64,3 +64,9 @@
 [submodule "fzf"]
 	path = fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "vim/pack/repeat/start/vim-repeat"]
+	path = vim/pack/repeat/start/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "vim/pack/airline/start/vim-airline"]
+	path = vim/pack/airline/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
