@@ -66,13 +66,13 @@ title=$(qdbus $player $path $interface.Metadata \
     | (grep xesam:title: || true) | cut -d " " -f 2- | escape_html)
 rv="$u_music ${title:-unknown}"
 
-artist=$(qdbus $player $path $interface.Metadata \
-    | (grep xesam:artist: || true) | cut -d " " -f 2- | escape_html)
-[ "$artist" ] && rv="$rv $u_nbsp $u_mic $artist"
-
 album=$(qdbus $player $path $interface.Metadata \
     | (grep xesam:album: || true) | cut -d " " -f 2- | escape_html)
-[ "$album" ] && rv="$rv $u_nbsp $u_disc $album"
+[ "$album" ] && rv="$u_disc $album $u_nbsp $rv"
+
+artist=$(qdbus $player $path $interface.Metadata \
+    | (grep xesam:artist: || true) | cut -d " " -f 2- | escape_html)
+[ "$artist" ] && rv="$u_mic $artist $u_nbsp $rv"
 
 track=$(qdbus $player $path $interface.Metadata \
     | (grep xesam:trackNumber: || true) | cut -d " " -f 2-)
