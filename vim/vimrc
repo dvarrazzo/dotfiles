@@ -62,6 +62,14 @@ nmap \\\ <Plug>CommentaryLine
 " enable closetag in django
 let g:closetag_filetypes = 'html,xhtml,phtml,htmldjango'
 
+" configure python completion
+let g:jedi#popup_on_dot = 0
+let g:jedi#use_splits_not_buffers = "top"
+
+" map Ctrl-j/k to up/down in complete menu
+inoremap <expr> <C-j>       pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k>       pumvisible() ? "\<C-p>" : "\<C-k>"
+
 "}}}
 
 " Keybindings {{{
