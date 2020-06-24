@@ -61,3 +61,6 @@
 [submodule "vim/pack/jedi/start/jedi-vim"]
 	path = vim/pack/jedi/start/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "fzf"]
+	path = fzf
+	url = https://github.com/junegunn/fzf.git

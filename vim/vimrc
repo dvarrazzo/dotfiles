@@ -165,6 +165,9 @@ filetype off
 " Ubuntu vim addons. Includes golang.
 set runtimepath+=/usr/share/vim/addons/
 
+" add fuzzy search
+set runtimepath+=~/etc/fzf
+
 syntax on               " go for Vim syntax highlight
 filetype plugin on      " enable loading filetype plugins
 filetype indent on      " enable loading filetype intendation mode
