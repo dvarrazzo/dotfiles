@@ -65,4 +65,8 @@ function title () {
 # Kill an orphaned ssh-agent session
 trap 'test -n "$SSH_AGENT_PID" && eval `/usr/bin/ssh-agent -k`' 0
 
+# Use ag to feed fzf in order to avoid gitignored crap
+export FZF_DEFAULT_COMMAND='ag -g ""'
+
+
 # vim: set filetype=sh:
