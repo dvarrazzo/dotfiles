@@ -479,6 +479,14 @@ nnoremap <silent>th :execute TabLeft()<cr>
 nnoremap tn :TabooRename<space>
 nnoremap <silent>tr :TabooReset<cr>
 
+" Status line customisation
+" I know my branch
+let g:airline_section_b=''
+" I care about the encoding only if not standard
+:let g:airline_section_y="%{airline#util#wrap(substitute(airline#parts#ffenc(), 'utf-8\\\[unix\\\]', '', ''),0)}"
+" Less bs in the position
+let g:airline_section_z='%2p%%%#__accent_bold#%4l%#__restore__#%#__accent_bold#/%L%#__restore__# :%3v'
+
 "}}}
 
 " Search {{{
