@@ -437,6 +437,7 @@ set foldmethod=marker  " explicit markers {{{ and }}}
     \ "zM: close all folds \n"
     \ "zj: move down one fold \n"
     \ "zk: move up one fold \n"
+    \ "set foldmethod=syntax when you need (navigate JSON) \n"
 
 " More readable folded color (on default color scheme)
 " hi Folded guifg=Blue
