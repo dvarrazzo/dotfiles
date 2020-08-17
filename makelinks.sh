@@ -5,25 +5,25 @@
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$dir/.."
 
-ln -s etc/bash_aliases .bash_aliases
-ln -s etc/bash_completion .bash_completion
-ln -s etc/ackrc .ackrc
-ln -s etc/git/gitconfig .gitconfig
-ln -s etc/git/gitignore .gitignore
-ln -s etc/git/git_template .git_template
-ln -s etc/hg/hgrc .hgrc
-ln -s etc/less/lessfilter .lessfilter
-ln -s etc/psqlrc .psqlrc
-ln -s etc/sqliterc .sqliterc
-ln -s etc/tmux.conf .tmux.conf
-ln -s etc/vim .vim
-ln -s etc/vim/vimrc .vimrc
-ln -s etc/gdbinit .gdbinit
+ln -s $dir/bash_aliases .bash_aliases
+ln -s $dir/bash_completion .bash_completion
+ln -s $dir/ackrc .ackrc
+ln -s $dir/git/gitconfig .gitconfig
+ln -s $dir/git/gitignore .gitignore
+ln -s $dir/git/git_template .git_template
+ln -s $dir/hg/hgrc .hgrc
+ln -s $dir/less/lessfilter .lessfilter
+ln -s $dir/psqlrc .psqlrc
+ln -s $dir/sqliterc .sqliterc
+ln -s $dir/tmux.conf .tmux.conf
+ln -s $dir/vim .vim
+ln -s $dir/vim/vimrc .vimrc
+ln -s $dir/gdbinit .gdbinit
 mkdir -p .darcs
-ln -s etc/darcs/defaults .darcs/
-ln -s etc/xsession/xsession .xsession
+ln -s $dir/darcs/defaults .darcs/
+ln -s $dir/xsession/xsession .xsession
 mkdir -p .config
-ln -s etc/flake8 .config/
+ln -s $dir/flake8 .config/
 mkdir -p .config/i3
-ln -s etc/i3/config .config/i3/
-ln -s etc/i3/i3blocks/ .config/i3blocks
+ln -s $dir/i3/config .config/i3/
+ln -s $dir/i3/i3blocks/ .config/i3blocks
