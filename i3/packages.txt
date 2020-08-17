@@ -22,6 +22,7 @@ policykit-1-gnome
 qdbus-qt5
 # Maybe needed for 'etc/i3/i3blocks/player'?
 # qt5-default
+suckless-tools
 synaptic
 sysstat
 # actually for tmux
