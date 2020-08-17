@@ -7,16 +7,26 @@ acpi
 blueman
 flameshot
 fonts-font-awesome
+# from 20.04
+fzf
 gnome-clocks
+gnome-screensaver
 i3
 i3blocks
 indicator-cpufreq
 jq
 lm-sensors
 pcmanfm
+# maybe required on 20.04 to run "pkexec synaptic"?
+policykit-1-gnome
+qdbus-qt5
+# Maybe needed for 'etc/i3/i3blocks/player'?
+# qt5-default
 synaptic
+sysstat
 # actually for tmux
 xclip
+xss-lock
 zenity
 
 # sudo add-apt-repository ppa:caffeine-developers/ppa
