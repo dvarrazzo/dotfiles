@@ -10,10 +10,11 @@ moron thinks `it is confusing`__.
 
 .. __: https://bugs.launchpad.net/ubuntu/+source/lightdm/+bug/818864
 
-From the ``../xsession`` dir:
+You can:
 
-- copy ``xsession.desktop`` as ``/usr/share/xsessions``;
-- symlink ``xsession`` as ``~/.xsession``
+ - ``sudo cp -vi ~/etc/xsession/xsession.desktop /usr/share/xsessions/``
+ - ``ln -s ~/etc/xsession/xsession ~/.xsession``
+
 
 to have the choice of running i3 with the Gnome keyring or the Gnome
 environment. Except that...

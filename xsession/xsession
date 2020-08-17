@@ -6,9 +6,19 @@ export PATH=$HOME/etc/bin:$PATH
 # Have a ssh session at session level
 eval `gnome-keyring-daemon`
 
+# Ubuntu 20.04 -> 2004
+lsb="$(source /etc/lsb-release && echo ${DISTRIB_RELEASE/./})"
+
 # Magic. Without this running, visualization is generally crappy, and italic
 # fonts in dialog boxes will be rendered as unknown chars.
-gnome-settings-daemon &
+if (( $lsb < 2004 )); then
+    gnome-settings-daemon &
+fi
+
+# Something used to start automatically, now it doesn't
+if (( $lsb >= 2004 )); then
+    gnome-screensaver &
+fi
 
 # Customized bits for different hosts
 case $(hostname) in
@@ -22,5 +32,5 @@ case $(hostname) in
 esac
 
 # print message from i3 for debugging
-# exec sh -c "/usr/bin/i3 -V > /tmp/i3-$(date '+%F-%k-%M-%S').log 2>&1"
+# exec sh -c "/usr/bin/i3 -V > ~/i3-$(date '+%F-%k-%M-%S').log 2>&1"
 exec /usr/bin/i3

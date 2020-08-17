@@ -697,16 +697,13 @@ if hostname == 'risotto'
 
 endif
 
-if hostname == 'akela'
-
-    set guifont=Monospace\ 10 " a bit bigger...
-
+" bigger fonts on hi res displays
+if hostname == 'akela' || hostname == 'goya'
+    set guifont=Monospace\ 10
 endif
 
 if hostname == 'makkuro'
-
     set guifont=Monospace\ 9 " a bit bigger...
-
 endif
 
 "}}}
