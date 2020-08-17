@@ -131,3 +131,19 @@ Turns out bluetooth works alright (using command line or blueman); it's the
 control panel that doesn't work. `Opened a bug`__.
 
 .. __: https://bugs.launchpad.net/ubuntu/+source/gnome-control-center/+bug/1822439
+
+
+Samba on Ubuntu 20.04
+=====================
+
+Samba 4.11 (on Ubuntu 20.04) has `disabled SMB1`__, which seems needed for the
+nas.
+
+.. __: https://www.samba.org/samba/history/samba-4.11.0.html
+
+Added the following to ``/etc/samba/smb.conf`` to make it work::
+
+   client min protocol = NT1
+
+Later I discovered how to bump the smb version on the nas so this shouldn't be
+needed anymore.
