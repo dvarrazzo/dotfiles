@@ -45,3 +45,6 @@
     fontdiff = -family \"Liberation Mono\" -size 8 -weight normal -slant roman -underline 0 -overstrike 0
 [advice]
 	ignoredHook = false
+
+[credential]
+    helper = /home/piro/etc/bin/git-cred-helper.sh
