@@ -9,7 +9,7 @@ if [[ "${1:-}" == "" ]]; then
     echo "usage: $0 container
 
 Error: container name needed.
-" >&1
+" >&2
     exit 2
 fi
 
