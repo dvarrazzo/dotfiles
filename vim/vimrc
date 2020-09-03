@@ -698,7 +698,7 @@ if hostname == 'risotto'
 endif
 
 " bigger fonts on hi res displays
-if hostname == 'akela' || hostname == 'goya'
+if hostname == 'akela' || hostname == 'baloo'
     set guifont=Monospace\ 10
 endif
 
