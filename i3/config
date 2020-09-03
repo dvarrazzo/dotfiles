@@ -219,6 +219,11 @@ for_window [class="^Google-chrome"] floating enable
 for_window [class="^Blueman-manager"] floating enable
 for_window [class="^Gnome-clocks"] floating enable
 
+# Backlight up/down on lenovo
+# Note that this requires a sudo with no password:
+# piro ALL=(ALL) NOPASSWD: /home/piro/etc/bin/lenovo-backlight
+bindsym XF86MonBrightnessUp exec test $(hostname) != "baloo" || sudo /home/piro/etc/bin/lenovo-backlight 5%+
+bindsym XF86MonBrightnessDown exec test $(hostname) != "baloo" || sudo /home/piro/etc/bin/lenovo-backlight 5%-
 
 # Further info:
 #

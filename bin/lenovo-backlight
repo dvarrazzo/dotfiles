@@ -1,0 +1,2 @@
+#!/bin/sh
+brightnessctl -d intel_backlight s $1

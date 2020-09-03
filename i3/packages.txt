@@ -5,6 +5,7 @@
 
 acpi
 blueman
+brightnessctl
 flameshot
 fonts-font-awesome
 # from 20.04
