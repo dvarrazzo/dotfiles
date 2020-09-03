@@ -185,6 +185,8 @@ bar {
     tray_padding 0
     font pango:FontAwesome 10
     output primary
+    # vertical benq on baloo
+    output DP-1-1
 }
 
 # Make the window open clicking on the volume blocklet floating
