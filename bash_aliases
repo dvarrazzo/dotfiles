@@ -63,7 +63,7 @@ function title () {
 }
 
 # Kill an orphaned ssh-agent session
-trap 'egrep -q "^Name:\s+ssh-agent" /proc/$SSH_AGENT_PID/status 2>/dev/null && eval `/usr/bin/ssh-agent -k`' 0
+# trap 'egrep -q "^Name:\s+ssh-agent" /proc/$SSH_AGENT_PID/status 2>/dev/null && eval `/usr/bin/ssh-agent -k`' 0
 
 # Use ag to feed fzf in order to avoid gitignored crap
 export FZF_DEFAULT_COMMAND='ag -g ""'
