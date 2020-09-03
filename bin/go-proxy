@@ -41,7 +41,7 @@ get () {
     where=${2:-}
     where=${where/?*/.${where}}     # prepend a dot if not empty
     val=$(gsettings get org.gnome.system.proxy${where} $what)
-    echo "print($val)" | python     # remove the quotes
+    echo "print($val)" | python3     # remove the quotes
 }
 
 mode=$(get mode)
