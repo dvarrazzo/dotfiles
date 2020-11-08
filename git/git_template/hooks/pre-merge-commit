@@ -1,0 +1,6 @@
+#!/bin/bash
+git diff --cached | grep -C2 NOMERGE
+if [[ $? == 0 ]]; then
+	echo "Y U MERGE!!1" >&2
+	exit 1
+fi
