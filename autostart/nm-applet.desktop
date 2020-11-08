@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/nm-applet
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_GB]=Network
+Name=Network
+Comment[en_GB]=Manage your network connections
+Comment=Manage your network connections
+Icon=nm-device-wireless

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_GB]=Authentication agent
+Name=Authentication agent
+Comment[en_GB]=Without this you can't sudo in graphical interface
+Comment=Without this you can't sudo in graphical interface

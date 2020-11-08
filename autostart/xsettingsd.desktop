@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/xsettingsd
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_GB]=xsettingsd: Fix style
+Name=xsettingsd: Fix style
+Comment[en_GB]=xsettingsd is a daemon that implements the XSETTINGS specification
+Comment=xsettingsd is a daemon that implements the XSETTINGS specification

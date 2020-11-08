@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/gnome-screensaver
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_GB]=Gnome Screensaver
+Name=Gnome Screensaver
+Comment[en_GB]=the background thing, which should allow gnome-screensaver-command
+Comment=the background thing, which should allow gnome-screensaver-command

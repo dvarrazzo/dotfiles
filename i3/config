@@ -193,9 +193,6 @@ bar {
 for_window [window_role="^alsamixer$"] floating enable
 
 
-# Applets
-exec --no-startup-id i3-applets
-
 # Volume control
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ unmute && pkill -RTMIN+10 i3blocks

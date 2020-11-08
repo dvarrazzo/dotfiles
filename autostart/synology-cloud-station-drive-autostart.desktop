@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Synology Cloud Station Drive
+Comment=Synology Cloud Station Drive
+Exec=synology-cloud-station-drive autostart
+Icon=/opt/Synology/CloudStation/images/ico_72_cloud_station.png
+Terminal=false
+Type=Application
+Categories=Network;FileTransfer;
+X-GNOME-Autostart-enabled=true

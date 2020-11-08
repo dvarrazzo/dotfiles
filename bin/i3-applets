@@ -6,13 +6,13 @@ function run {
 
 hostname=$(hostname)
 
-run nm-applet
-run indicator-cpufreq
-run caffeine-indicator
-run /opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator
-[[ $hostname =~ ^(bagheera|makkuro)$ ]] && run blueman-applet
-[[ $hostname =~ ^(akela|bagheera|makkuro)$ ]] \
-    && run /usr/bin/synology-cloud-station-drive
+# run nm-applet
+# run indicator-cpufreq
+# run caffeine-indicator
+# run /opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator
+# [[ $hostname =~ ^(bagheera|makkuro)$ ]] && run blueman-applet
+# [[ $hostname =~ ^(akela|bagheera|makkuro)$ ]] \
+#     && run /usr/bin/synology-cloud-station-drive
 run i3-player-notify
 
 # Needed by pkexec

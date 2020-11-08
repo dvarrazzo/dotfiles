@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/piro/etc/bin/i3-player-notify
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_GB]=i3 player notify
+Name=i3 player notify
+Comment[en_GB]=signal the player i3block to refresh on media player track change
+Comment=signal the player i3block to refresh on media player track change
