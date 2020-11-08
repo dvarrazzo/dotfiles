@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # [SNIPPET_NAME: Create an Application Indicator]
 # [SNIPPET_CATEGORIES: Application Indicator]
@@ -30,15 +30,15 @@ class AppIndicatorExample:
 
         # create items for the menu - labels, checkboxes, radio buttons and images are supported:
 
-        item = gtk.MenuItem("Regular Menu Item")
+        item = gtk.MenuItem(label="Regular Menu Item")
         item.show()
         self.menu.append(item)
 
-        check = gtk.CheckMenuItem("Check Menu Item")
+        check = gtk.CheckMenuItem(label="Check Menu Item")
         check.show()
         self.menu.append(check)
 
-        radio = gtk.RadioMenuItem(None, "Radio Menu Item")
+        radio = gtk.RadioMenuItem(label="Radio Menu Item")
         radio.show()
         self.menu.append(radio)
 

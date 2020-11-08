@@ -157,8 +157,16 @@ The xsession method doesn't seem to work very well. However the repos:
     git@github.com:i3-gnome/i3-gnome.git
 
 does almost the right thing. Most of the stuff is already started (keyring,
-bluetooth). Xrandr didn't start, but it can be added as an
-autostart script (in ``gnome-session-properties``).
+bluetooth). Xrandr didn't start, but it can be added as an autostart script
+(in ``gnome-session-properties``, which FYI, manages stuff in
+``~/.config/autostart/``).
 
 Note: you have to disable ibus with ``gnome-language-selector``, like in 2014!
 Or you won't have UK keyboard, only US.
+
+
+Broken style on 20.04
+=====================
+
+Style is broken in i3-gnome session. lxappearance settings don't seem to
+apply. It seems that xsettingsd helps: trying to add it to the session.
