@@ -240,7 +240,9 @@ let g:ale_fixers = {
 \   'python': ['black'],
 \   'javascript': ['eslint'],
 \}
-
+let g:ale_linters = {
+\   'python': ['flake8', 'mypy'],
+\}
 " don't run mypy on test suites
 let g:ale_pattern_options = {
 \ '.*\.pyi$': {'ale_linters': ['mypy']},
