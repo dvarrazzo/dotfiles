@@ -234,6 +234,10 @@ autocmd BufRead,BufNewFile *.Dockerfile setl filetype=dockerfile
 " tabs in .gitmodules
 autocmd BufRead .gitmodules setl noexpandtab
 
+" Activate the spell checker on these files
+autocmd BufReadPost COMMIT_EDITMSG setl spell
+autocmd FileType rst setl spell
+
 " ALE configuration
 let g:ale_echo_msg_format = '[%code%] %severity%: %s (%linter%)'
 let g:ale_fixers = {
