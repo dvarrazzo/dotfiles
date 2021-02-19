@@ -1,10 +1,11 @@
 \set QUIET 1
-\set HISTCONTROL ignoredups
 \set appname `echo \'${PGAPPNAME:-$USER@$(hostname)}:psql\'`
 set application_name to :appname;
 \timing
 \set HISTCONTROL ignoreboth
 \set PROMPT1 '%x%/%R%# '
-\pset format wrapped
-\x auto
+\pset format aligned
+\pset linestyle unicode
+\pset border 2
+\setenv PAGER pspg
 \set QUIET 0
