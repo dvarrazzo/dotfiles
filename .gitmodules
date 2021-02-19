@@ -73,3 +73,6 @@
 [submodule "vim/pack/plugins/start/rust.vim"]
 	path = vim/pack/plugins/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim
+[submodule "vim/pack/riv/start/riv.vim"]
+	path = vim/pack/riv/start/riv.vim
+	url = https://github.com/gu-fan/riv.vim.git

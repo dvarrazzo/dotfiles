@@ -15,6 +15,5 @@ fi
 
 container=$(docker-compose ps -q "$1")
 
-docker inspect \
-    --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' \
-    "$container"
+docker inspect "$container" \
+    | jq -r '[.[0].NetworkSettings.Networks[] | .IPAddress][0]'
