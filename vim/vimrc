@@ -243,6 +243,7 @@ let g:ale_echo_msg_format = '[%code%] %severity%: %s (%linter%)'
 let g:ale_fixers = {
 \   'python': ['black'],
 \   'javascript': ['eslint'],
+\   'rust': ['rustfmt'],
 \}
 let g:ale_linters = {
 \   'python': ['flake8', 'mypy'],
