@@ -49,7 +49,6 @@ link tmux.conf ~/.tmux.conf
 link vim ~/.vim
 link vim/vimrc ~/.vimrc
 link gdbinit ~/.gdbinit
-link darcs/defaults ~/.darcs/defaults
 link xsession/xsession ~/.xsession
 link flake8 ~/.config/flake8
 link i3/config ~/.config/i3/config

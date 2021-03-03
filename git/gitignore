@@ -7,7 +7,6 @@
 *.pyd
 *.o
 .gdb_history
-_darcs
 \#*#
 .ignore
 .agignore
