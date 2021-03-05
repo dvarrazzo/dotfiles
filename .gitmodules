@@ -76,3 +76,6 @@
 [submodule "vim/pack/riv/start/riv.vim"]
 	path = vim/pack/riv/start/riv.vim
 	url = https://github.com/gu-fan/riv.vim.git
+[submodule "vim/pack/plugins/start/vim-toml"]
+	path = vim/pack/plugins/start/vim-toml
+	url = https://github.com/cespare/vim-toml.git
