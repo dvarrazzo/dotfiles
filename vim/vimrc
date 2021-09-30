@@ -367,7 +367,8 @@ let NERDTreeShowHidden=1
 let NERDTreeRespectWildIgnore=1
 let NERDTreeWinSize=21
 let NERDTreeIgnore = ['\~$', '\.pyc$', '\.bak$', '^__pycache__$',
-    \ '^\.cache$[[dir]]', '\.egg-info$[[dir]]', '^\.git$[[dir]]']
+    \ '^\.cache$[[dir]]', '\.egg-info$[[dir]]', '^\.git$[[dir]]',
+    \ '^\.mypy_cache$[[dir]]', '^\.pytest_cache$[[dir]]']
 
 nmap <leader>t :NERDTreeToggle<CR>
 nmap <leader>T :NERDTreeMirror<CR>
