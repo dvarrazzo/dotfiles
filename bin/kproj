@@ -1,0 +1,91 @@
+#!/bin/bash
+
+# "project" a directory from a kubernetes container to localhost and sync back
+# the edits happening in that dir.
+#
+# usage: kproj pod dir
+# usage: kproj pod@namespace dir
+
+set -euo pipefail
+# set -x
+
+function log() {
+    echo "$1" >&2
+}
+function error() {
+    log "Error: $1."
+    exit 1
+}
+
+# Pre-flight check
+command -v krsync > /dev/null || error "Script 'krsync' not found."
+command -v inotifywait > /dev/null || error "Command 'inotifywait' not found."
+# TODO: the container must contain rsync. How to check it?
+
+function usage() {
+    log "Usage: $0 [--keep] POD[@NAMESPACE] /PATH/TO/EDIT"
+    [[ ! ${1:-} ]] || log "Error: $1."
+    exit 2
+}
+
+keep=""
+POSARGS=()
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --help)
+            usage
+            ;;
+        --keep)
+            keep="yes"
+            shift
+            ;;
+        -*|--*)
+            usage "unknown option: '$1'"
+            ;;
+        *)
+            POSARGS+=("$1")
+            shift
+            ;;
+    esac
+done
+
+set -- "${POSARGS[@]}" # restore positional parameters
+
+pod=${1:-}
+[[ "${pod}" ]] || usage "pod not specified"
+shift
+
+srcdir=${1:-}
+[[ "${srcdir}" ]] || usage "source dir not specified"
+shift
+
+tgtdir=$(realpath "$(basename "${srcdir}")")
+if [[ -e "$tgtdir" ]]; then
+    error "target dir exists: '${tgtdir}'"
+fi
+
+finish () {
+    # Go to a new line after ^C
+    log "
+"
+    if [[ ! "${keep}" ]]; then
+        log "Deleting dir '${tgtdir}'."
+        rm -rf "${tgtdir}"
+    else
+        log "Directory left in place: '${tgtdir}'."
+    fi
+}
+trap finish EXIT
+
+# Sync the first image of the directory
+krsync -av ${pod}:${srcdir}/ "${tgtdir}/"
+
+log "You can now edit '${tgtdir}'."
+log "Press Ctrl-C to stop syncing."
+
+while true; do
+    inotifywait -q -r -e modify,attrib,close_write,move,create,delete "${tgtdir}"
+    krsync -av --delete "${tgtdir}/" ${pod}:${srcdir}/
+    log "Press Ctrl-C to stop syncing."
+done
