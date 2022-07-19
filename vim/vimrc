@@ -248,11 +248,8 @@ let g:ale_fixers = {
 let g:ale_linters = {
 \   'python': ['flake8', 'mypy'],
 \}
-" don't run mypy on test suites
 let g:ale_pattern_options = {
 \ '.*\.pyi$': {'ale_linters': ['mypy']},
-\ 'tests/.*\.py$': {'ale_linters': ['flake8']},
-\ 'setup\.py$': {'ale_linters': ['flake8']},
 \}
 
 nnoremap <leader>f :ALEFix<CR>
