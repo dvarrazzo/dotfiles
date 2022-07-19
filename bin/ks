@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Print one or all the secrets from a kubernetes secret.
+#
+# Usage:
+#
+#   ks NAME [ARGS...] -- dump keys and value of secret NAME
+#   ks NAME KEY [ARGS...] -- dump a single KEY of secret NAME
+#
+# Extra ARGS are passed to `kubectl get secret`.
+
+set -euo pipefail
+
+name="$1"
+shift
+
+if [[ "${1:-}" == "" || "${1:0:1}" == "-" ]]; then
+    kubectl get secret -o go-template='{{range $k,$v := .data}}{{printf "%s: " $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{"\n"}}{{end}}' "$@" "$name"
+else
+    key="$1"
+    shift
+
+    kubectl get secret -o template="{{index .data \"$key\" | base64decode}}" "$@" $name
+
+    # Newline if printing in console
+    if [ -t 1 ]; then
+        echo ""
+    fi
+fi

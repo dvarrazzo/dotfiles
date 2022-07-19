@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Print one or all the values from a kubernetes configmap
+#
+# Usage:
+#
+#   ks NAME [ARGS...] -- dump keys and value of configmap NAME
+#   ks NAME KEY [ARGS...] -- dump a single KEY of configmap NAME
+#
+# Extra ARGS are passed to `kubectl get configmap`.
+
+set -euo pipefail
+
+name="$1"
+shift
+
+if [[ "${1:-}" == "" || "${1:0:1}" == "-" ]]; then
+    kubectl get configmap -o go-template='{{range $k,$v := .data}}{{printf "%s: " $k}}{{if not $v}}{{$v}}{{else}}{{$v}}{{end}}{{"\n"}}{{end}}' "$@" "$name"
+else
+    key="$1"
+    shift
+
+    kubectl get configmap -o template="{{index .data \"$key\"}}" "$@" $name
+
+    # Newline if printing in console
+    if [ -t 1 ]; then
+        echo ""
+    fi
+fi
