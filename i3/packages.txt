@@ -6,6 +6,7 @@
 acpi
 blueman
 brightnessctl
+direnv
 flameshot
 fonts-font-awesome
 # from 20.04
@@ -35,4 +36,4 @@ zenity
 caffeine
 
 # sudo add-apt-repository ppa:atareao/atareao
-my-weather-indicator
+# my-weather-indicator
