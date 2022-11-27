@@ -1,9 +1,6 @@
 [submodule "vim/bundles/UltiSnips"]
 	path = vim/pack/ultisnips/start/ultisnips
 	url = https://github.com/SirVer/ultisnips
-[submodule "vim/bundles/tabular"]
-	path = vim/pack/tabular/start/tabular
-	url = git://github.com/godlygeek/tabular.git
 [submodule "vim/bundles/nerdtree"]
 	path = vim/pack/nerdtree/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
