@@ -170,3 +170,8 @@ Broken style on 20.04
 
 Style is broken in i3-gnome session. lxappearance settings don't seem to
 apply. It seems that xsettingsd helps: trying to add it to the session.
+
+Update in 22.04
+---------------
+
+lxappearance seems to work here.
