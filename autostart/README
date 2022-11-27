@@ -1,2 +1,4 @@
+Copy the items you are interested into ``~/.config/autostart``.
+
 Use ``gnome-session-properties`` to manage these items ("Startup Application"
 if using the title).
