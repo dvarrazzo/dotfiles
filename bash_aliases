@@ -11,6 +11,7 @@ export UBUNTU_MENUPROXY=
 
 # NAAAAAHHH... CDPATH!
 CDPATH=".:~/dev:~:~/dev/fs"
+export PATH=/home/piro/etc/bin:$PATH
 
 alias ll='ls -l'
 alias grep='grep --color=auto -I'
@@ -69,5 +70,9 @@ function title () {
 # Use ag to feed fzf in order to avoid gitignored crap
 export FZF_DEFAULT_COMMAND='ag -g ""'
 
+test -f /usr/share/doc/fzf/examples/key-bindings.bash && source /usr/share/doc/fzf/examples/key-bindings.bash
+
+# direnv
+eval "$(direnv hook bash)"
 
 # vim: set filetype=sh:
