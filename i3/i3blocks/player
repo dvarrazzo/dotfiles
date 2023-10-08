@@ -19,8 +19,19 @@ u_music="&#xf001;"
 u_mic="&#xf130;"
 u_disc="&#xf192;"
 
-player=$(qdbus | (grep MediaPlayer2 || true) | cut -c 2-)
-if [ -z "$player" ]; then
+# Look for the services which are actually players, and stop if one is playing.
+player=""
+services=$(qdbus | (grep MediaPlayer2 || true))
+for service in $services
+do
+    if [[ "$(qdbus $service $path $interface.CanControl || true)" == "true" ]]
+    then
+        player=$service
+        break
+    fi
+done
+
+if [[ ! "$player" ]]; then
     # if there is no player open, on right click,
     # spawn the program registered as default for audio/mpeg
     if [ "${BLOCK_BUTTON:-}" == '3' ]; then
@@ -35,14 +46,14 @@ if [ -z "$player" ]; then
 fi
 
 case ${BLOCK_BUTTON:-} in
-  1) dbus-send --type=method_call --dest=$player $path $interface.PlayPause ;;
-  3) dbus-send --type=method_call --dest=$player $path org.mpris.MediaPlayer2.Raise ;;
-  4) dbus-send --type=method_call --dest=$player $path $interface.Previous ;;
-  5) dbus-send --type=method_call --dest=$player $path $interface.Next ;;
+  1) qdbus $player $path $interface.PlayPause ;;
+  3) qdbus $player $path org.mpris.MediaPlayer2.Raise ;;
+  4) qdbus $player $path $interface.Previous ;;
+  5) qdbus $player $path $interface.Next ;;
 esac
 
-status=$(qdbus $player $path $interface.PlaybackStatus)
-case "$status" in
+play_status=$(qdbus $player $path $interface.PlaybackStatus)
+case "$play_status" in
     Playing)
         icon="$u_play" ;;
     Paused)
@@ -50,10 +61,10 @@ case "$status" in
     Stopped)
         icon="$u_stop" ;;
     *)
-        icon="$status" ;;
+        icon="$play_status" ;;
 esac
 
-if [ "$status" == "Stopped" ]; then
+if [[ "$play_status" == "Stopped" ]]; then
     echo "<span color='#aaa'>(nothing playing)</span> $u_nbsp $icon"
     exit 0
 fi

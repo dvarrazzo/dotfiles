@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Execute a Player method on a player (the playing one if available).
+#
+# Available commands are: Next, Pause, Play, PlayPause, Previous, Stop
+# (defined on the org.mpris.MediaPlayer2.Player dbus interface).
+
+set -euo pipefail
+# set -x
+
+path=/org/mpris/MediaPlayer2
+interface=org.mpris.MediaPlayer2.Player
+
+method=$1
+
+player=""
+services=$(qdbus | (grep MediaPlayer2 || true))
+for service in $services
+do
+    if [[ "$(qdbus $service $path $interface.CanControl || true)" == "true" ]]
+    then
+        player=$service
+        echo "found player: $player" >&2
+    fi
+done
+
+if [[ ! "$player" ]]; then
+    echo "No player available" >&2
+    exit 0
+fi
+
+qdbus $player $path $interface.$method
