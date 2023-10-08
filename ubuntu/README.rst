@@ -73,7 +73,7 @@ Upgrading to 18.04
 ------------------
 
 Mostly smooth, but gksudo is gone. Managed to run pkexec by starting the auth
-manager in i3 conf (without it doesnt't give permission, and reports me as a
+manager in i3 conf (without it doesn't give permission, and reports me as a
 naughty user, so I guess I won't have a gift for Christmas this year).
 
 Somewhere is reported I seem to need to export some env bits, proposing this
@@ -172,6 +172,8 @@ Style is broken in i3-gnome session. lxappearance settings don't seem to
 apply. It seems that xsettingsd helps: trying to add it to the session.
 
 Update in 22.04
----------------
+===============
 
 lxappearance seems to work here.
+
+Missing icons: install the 'adwaita-icon-theme-full' package.

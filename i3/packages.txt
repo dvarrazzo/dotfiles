@@ -4,6 +4,7 @@
 #   cat packages.txt  | grep -v '^#' | xargs sudo apt install -y
 
 acpi
+adwaita-icon-theme-full
 blueman
 brightnessctl
 direnv
