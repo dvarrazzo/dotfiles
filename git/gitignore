@@ -10,7 +10,7 @@
 \#*#
 .ignore
 .agignore
-core
+/core
 tags
 /env
 .venv
