@@ -1,5 +1,5 @@
 snippet dir "Script execution dir" !
-dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 endsnippet
 
@@ -7,11 +7,24 @@ snippet #! "Bash shebang and safe mode" !
 #!/bin/bash
 
 set -euo pipefail
-# set -x
 
 endsnippet
 
 # https://adpgtech.blogspot.com/2015/12/psql-c-will-no-longer-imply-no-psqlrc.html
 snippet psql "psql clear output" !
 psql -AXqt 
+endsnippet
+
+snippet log "create a log function" !
+function log {
+	echo "$@" >&2
+}
+endsnippet
+
+snippet error "create a function to exit with error" !
+function error {
+	# Print an error message and exit.
+	log "ERROR: $@"
+	exit 1
+}
 endsnippet
