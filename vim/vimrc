@@ -629,7 +629,7 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " inject a Python breakpoint
-nnoremap <leader>b Oimport pdb; pdb.set_trace()<ESC>^
+nnoremap <leader>b Obreakpoint()<ESC>^
 
 " w!! if you forget to sudo before saving
 cmap w!! w !sudo tee % >/dev/null
