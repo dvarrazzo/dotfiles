@@ -5,6 +5,7 @@ alias less='less -R'
 export EDITOR=vim
 export PGAPPNAME=$USER@$(hostname)
 export PG_REGRESS_DIFF_OPTS=-u
+export PSPG="--style=16"
 
 # Avoid "WARNING **: Unable to create Ubuntu Menu Proxy" starting gvim
 export UBUNTU_MENUPROXY=
