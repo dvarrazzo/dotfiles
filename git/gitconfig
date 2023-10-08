@@ -47,4 +47,4 @@
 	ignoredHook = false
 
 [credential]
-    helper = /home/piro/etc/bin/git-cred-helper.sh
+    # helper = /home/piro/etc/bin/git-cred-helper.sh
